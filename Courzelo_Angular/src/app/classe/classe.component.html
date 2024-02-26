@@ -1,0 +1,42 @@
+<app-back></app-back>
+
+<main id="main" class="main">
+<section class="section dashboard">
+
+  
+  <div class="row">
+
+    
+      <div class="row">
+        <table  class="table table-hover text-center">
+          <thead>
+            <tr>
+          
+              <th scope="col">Capacity</th>
+              <th scope="col">Level</th>
+              <th scope="col">Progress</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let class of classes">
+              
+              <td>{{ class.capacity}}</td>
+              <td>{{class.level}}</td>
+              <td>{{ class.progress }}</td>
+              <td><button type="button" class="btn btn-outline-success" >Update</button> 
+                <button type="button" class="btn btn-outline-danger">Delete</button>
+                <button type="button" class="btn btn-outline-info">Show</button></td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+
+        <button type="button"  class="btn btn-outline-success" routerLink="/addClass" >Add</button> 
+ 
+      </div>
+    </div>
+
+</section>
+</main>

@@ -1,0 +1,25 @@
+<form [formGroup]="classForm" (ngSubmit)="addClass()">
+    <div class="form-group">
+        <label>Capacity</label>
+        <input type="text" formControlName="capacity" class="form-control" placeholder="capacity">
+    </div>
+    <div class="form-group">
+        <label>Level</label>
+        <input type="text" formControlName="level" class="form-control" placeholder="level">
+    </div>
+    <div class="form-group">
+        <label>Progress</label>
+        <input type="text" formControlName="progress" class="form-control" placeholder="progress">
+    </div>
+
+    <div *ngIf="classForm.controls['capacity'].errors &&
+    classForm.get('capacity')?.touched">
+        <div *ngIf="classForm.controls['capacity'].hasError('required')">
+            required
+        </div>
+        <div *ngIf="classForm.controls['capacity'].hasError('minlength')">
+            Message minLength
+        </div>
+    </div>
+    <button type="button"  class="btn btn-outline-success" (click)="addClass()" >Add</button> 
+</form>
