@@ -1,0 +1,44 @@
+<app-back></app-back>
+
+<main id="main" class="main">
+<section class="section dashboard">
+
+  
+  <div class="row">
+
+    
+      <div class="row">
+        <table  class="table table-hover text-center">
+          <thead>
+            <tr>
+          
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+         
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let l of lesson">
+              
+              <td>{{ l.title}}</td>
+              <td>{{ l.content}}</td>
+         
+       
+              <td><button type="button" class="btn btn-outline-success" >Update</button> 
+                <button type="button" class="btn btn-outline-danger">Delete</button>
+                <button type="button" class="btn btn-outline-info" routerLink="/">Show</button></td>
+            </tr>
+            
+            
+          </tbody>
+        </table>
+
+        <button type="button"  class="btn btn-outline-success" routerLink="/addLesson" >Add</button> 
+ 
+      </div>
+    </div>
+
+</section>
+</main>
+

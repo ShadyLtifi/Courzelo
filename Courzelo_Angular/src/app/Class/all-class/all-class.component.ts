@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { ClassService } from '../Service/Course/Class/class.service';
-import { Class } from '../models/Class/class';
+import { Class } from 'src/app/models/Class/class';
+import { ClassService } from 'src/app/Service/Course/Class/class.service';
 
 @Component({
-  selector: 'app-classe',
-  templateUrl: './classe.component.html',
-  styleUrls: ['./classe.component.css']
+  selector: 'app-all-class',
+  templateUrl: './all-class.component.html',
+  styleUrls: ['./all-class.component.css']
 })
-export class ClasseComponent {
+export class AllClassComponent {
+
   classes?: Class[] ;
   currentClass?: Class;
   currentIndex = -1;
@@ -30,6 +31,4 @@ export class ClasseComponent {
           console.log(error);
         });
   }
-
- 
 }

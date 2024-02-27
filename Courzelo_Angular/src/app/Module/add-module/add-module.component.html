@@ -1,0 +1,35 @@
+<app-back></app-back>
+
+<main id="main" class="main">
+    <section class="section dashboard">
+<form [formGroup]="moduleForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" formControlName="titleModule" class="form-control" placeholder="titleModule">
+        <div>
+            Title: {{ moduleForm.get('titleModule') }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Duration</label>
+        <input type="text" formControlName="nbreHeure" class="form-control" placeholder="nbreHeure">
+        <div>
+            Duration: {{ moduleForm.get('nbreHeure') }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" formControlName="description" class="form-control" placeholder="description">
+        <div>
+            Description: {{ moduleForm.get('description') }}
+        </div>
+    </div>
+
+
+ 
+    
+    <button type="button"  class="btn btn-outline-success" (click)="onSubmit()" >Add</button> 
+</form>
+    </section></main>
+

@@ -13,9 +13,8 @@ export class ClassService {
   getAll() : Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/retrieveallclass`);
   }
-  addClass(data:Class): Observable<any>{
-    return this.http.post(`${this.apiUrl}`, data);
-    
+  addClass(data: Class): Observable<any> {
+    return this.http.post(`${this.apiUrl}/addClass`, data);
   }
   
 }

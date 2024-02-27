@@ -1,5 +1,5 @@
 export class Class {
-    id?: number;
+    idClass?: string;
     capacity?: number;
     level?: Level;
     progress?: number;

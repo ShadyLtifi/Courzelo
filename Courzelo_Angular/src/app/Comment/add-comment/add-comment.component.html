@@ -1,0 +1,22 @@
+<app-back></app-back>
+
+<main id="main" class="main">
+    <section class="section dashboard">
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Message</label>
+        <input type="text" formControlName="message" class="form-control" placeholder="message">
+        <div>
+            Message: {{ commentForm.get('message') }}
+        </div>
+    </div>
+   
+
+    <div class="form-group">
+        <label for="datecomment">Date:</label>
+  <input type="date" id="datecomment" class="form-control" formControlName="datecomment">
+    </div>
+    
+    <button type="button"  class="btn btn-outline-success" (click)="onSubmit()" >Add</button> 
+</form>
+    </section></main>

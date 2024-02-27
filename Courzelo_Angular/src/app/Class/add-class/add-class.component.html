@@ -1,0 +1,38 @@
+<main id="main" class="main">
+    <section class="section dashboard">
+<form [formGroup]="classForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Capacity</label>
+        <input type="text" formControlName="capacity" class="form-control" placeholder="capacity">
+        <div>
+            Capacity: {{ classForm.get('capacity') }}
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <label>Progress</label>
+        <input type="text" formControlName="progress" class="form-control" placeholder="progress">
+        <div>
+            Progress: {{ classForm.get('progress') }}
+        </div>
+    </div>
+
+    <div *ngIf="classForm.controls['capacity'].errors &&
+    classForm.get('capacity')?.touched">
+        <div *ngIf="classForm.controls['capacity'].hasError('required')">
+            required
+        </div>
+        <div *ngIf="classForm.controls['capacity'].hasError('minlength')">
+            Message minLength
+        </div>
+    </div>
+    <div class="mb-4">
+                   <label for="vulnerabilite" class="form-label">Level</label>
+                   <select id="vulnerabilite" name="vulnerabilite" class="form-control" formControlName="level" required>
+                    <option value="" disabled selected>Choisissez une option</option>
+                    <option *ngFor="let level of level" [value]="level">{{ level }}</option>
+                </select>
+                </div>
+    <button type="button"  class="btn btn-outline-success" (click)="onSubmit()" >Add</button> 
+</form>
+    </section></main>

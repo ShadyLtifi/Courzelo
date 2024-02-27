@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Lesson } from 'src/app/models/Lesson/lesson';
+import { Course } from 'src/app/models/Course/Course';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LessonService {
+export class CourseService {
 
   private apiUrl = 'http://localhost:6085';
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<any> {
-    return this.http.get<any[]>(`${this.apiUrl}/retrieveallLesson`);
+    return this.http.get<any[]>(`${this.apiUrl}/retrieveallCourse`);
   }
-  addLesson(data: Lesson): Observable<any> {
-    return this.http.post(`${this.apiUrl}/addLesson`, data);
+  addCourse(data: Course): Observable<any> {
+    return this.http.post(`${this.apiUrl}/addCourse`, data);
   }
 }
