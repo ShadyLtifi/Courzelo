@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Duration;
 import java.util.List;
 
 @Data
@@ -18,6 +19,9 @@ public class Module {
     @Id
     String idmodule;
    int progress;
+   String titleModule;
+   String nbreHeure;
+   String description;
    @DBRef
    List<Course> courses;
    @DBRef

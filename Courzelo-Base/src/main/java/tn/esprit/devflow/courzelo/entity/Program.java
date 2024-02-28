@@ -18,6 +18,9 @@ import java.util.List;
 public class Program {
     @Id
     String idprog;
+    String nomProg;
+    String description;
+
   @Field("speciality")
    Speciality speciality;
   @DBRef
