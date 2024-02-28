@@ -24,9 +24,11 @@
               <td>{{ class.capacity}}</td>
               <td>{{class.level}}</td>
               <td>{{ class.progress }}</td>
-              <td><button type="button" class="btn btn-outline-success" >Update</button> 
-                <button type="button" class="btn btn-outline-danger">Delete</button>
-                <button type="button" class="btn btn-outline-info">Show</button></td>
+              <td>  <button type="button" class="btn btn-outline-success" routerLink="/updateClass/{{ class.idClass }}">Update</button>
+
+                <button type="button" class="btn btn-outline-danger" (click)="deleteClass(class.idClass)">Delete</button>
+
+                <a routerLink="/class-details/{{ class.idClass }}" class="btn btn-outline-info">Show</a>
             </tr>
             
             

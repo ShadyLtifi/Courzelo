@@ -30,7 +30,7 @@ public class ClassController {
 
     }
 
-    @PutMapping("/updateclass")
+    @PutMapping("/updateclass/{idClass}")
 
     @ResponseBody
     public Class modifyClasse(@RequestBody Class c) {
@@ -49,10 +49,10 @@ public class ClassController {
 
     }
 
-    @GetMapping("/retrieveClass/{class-id}")
+    @GetMapping("/retrieveClass/{classid}")
     @ResponseBody
 
-    public Class retrieveClass (@PathVariable ("class-id")String idClass) {
+    public Class retrieveClass (@PathVariable ("classid")String idClass) {
         return classService.retrieveClass(idClass);
     }
 

@@ -14,6 +14,9 @@ import { AddLessonComponent } from './Lesson/add-lesson/add-lesson.component';
 import { AllLessonComponent } from './Lesson/all-lesson/all-lesson.component';
 import { AllModuleComponent } from './Module/all-module/all-module.component';
 import { AddModuleComponent } from './Module/add-module/add-module.component';
+import { UpdateClassComponent } from './Class/update-class/update-class.component';
+import { TesteComponent } from './teste/teste.component';
+import { DetailClassComponent } from './Class/detail-class/detail-class.component';
 
 
 
@@ -32,7 +35,10 @@ const routes: Routes = [
   {path:'allLesson', component:AllLessonComponent},
   {path:'allModule', component:AllModuleComponent},
   {path:'addModule', component:AddModuleComponent},
-  {path:'addComment', component:AddCommentComponent}
+  {path:'addComment', component:AddCommentComponent},
+  { path: 'updateClass/:id', component: UpdateClassComponent },
+  {path:'teste',component:TesteComponent},
+  { path: 'class-details/:id', component: DetailClassComponent },
 
   
 ];

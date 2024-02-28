@@ -29,6 +29,10 @@ import { PublicationComponent } from './Publication/publication/publication.comp
 import { AddPublicationComponent } from './Publication/add-publication/add-publication.component';
 import { AddProgramComponent } from './Program/add-program/add-program.component';
 import { AllProgramComponent } from './Program/all-program/all-program.component';
+import { UpdateClassComponent } from './Class/update-class/update-class.component';
+import { TesteComponent } from './teste/teste.component';
+import { DetailClassComponent } from './Class/detail-class/detail-class.component';
+
 
 
 
@@ -60,7 +64,11 @@ import { AllProgramComponent } from './Program/all-program/all-program.component
      PublicationComponent,
      AddPublicationComponent,
      AddProgramComponent,
-     AllProgramComponent
+     AllProgramComponent,
+     UpdateClassComponent,
+     TesteComponent,
+     DetailClassComponent
+  
  
   ],
   imports: [
