@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Class } from 'src/app/models/Class/class';
+import { User } from '../models/User/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClassService {
+export class UserService {
   private apiUrl = 'http://localhost:6085';
   constructor(private http: HttpClient) { }
 
   getAll() : Observable<any> {
-    return this.http.get<any[]>(`${this.apiUrl}/retrieveallclass`);
+    return this.http.get<any[]>(`${this.apiUrl}/retrievealluser`);
   }
-  addClass(data:Class): Observable<any>{
-    return this.http.post(`${this.apiUrl}`, data);
+  adduser(data:User): Observable<any>{
+    return this.http.post(`${this.apiUrl}/adduser`, data);
     
   }
   

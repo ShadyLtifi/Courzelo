@@ -1,32 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ClassService } from '../Service/Course/Class/class.service';
-
-
+import { UserService } from '../Service/user.service';
+import { User } from '../models/User/user';
 
 @Component({
   selector: 'app-back',
   templateUrl: './back.component.html',
   styleUrls: ['./back.component.css']
 })
-export class BackComponent  {
-
-  classes!: any[];
-
-  constructor(private classService: ClassService) {}
+export class BackComponent implements OnInit {
+  users: User[] = []; 
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.classService.getAll().subscribe(
+    this.userService.getAll().subscribe(
       data => {
-        this.classes = data;
+        this.users = data; 
       },
       error => {
-        console.error('Error fetching classes:', error);
+        console.error('Error fetching users:', error);
       }
     );
   }
-
- 
- 
-  }
-
+}
 

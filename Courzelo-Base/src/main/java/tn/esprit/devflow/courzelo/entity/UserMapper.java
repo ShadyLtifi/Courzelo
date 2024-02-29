@@ -1,10 +1,11 @@
 package tn.esprit.devflow.courzelo.entity;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-    public UserDTO toDTO(User user) {
+    public UserDTO toDTO(@NotNull User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setNom(user.getNom());
         userDTO.setPrenom(user.getPrenom());
@@ -16,7 +17,7 @@ public class UserMapper {
         return userDTO;
     }
 
-    public User toEntity(UserDTO userDTO) {
+    public User toEntity(@NotNull UserDTO userDTO) {
         User user = new User();
         user.setNom(userDTO.getNom());
         user.setPrenom(userDTO.getPrenom());

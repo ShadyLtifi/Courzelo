@@ -1,0 +1,46 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit">
+  <div class="form-group">
+      <label>nom</label>
+      <input type="text" formControlName="nom" class="form-control" placeholder="nom">
+      nom: {{ userForm.get('nom') }}
+  </div>
+  <div class="form-group">
+      <label>prenom</label>
+      <input type="text" formControlName="prenom" class="form-control" placeholder="prenom">
+      prenom: {{ userForm.get('prenom') }}
+  </div>
+  <div class="form-group">
+      <label>CIN</label>
+      <input type="number" formControlName="CIN" class="form-control" placeholder="CIN">
+CIN: {{ userForm.get('CIN') }}    
+</div>
+  <div class="form-group">
+      <label>DateN</label>
+      <input type="Date" formControlName="DateN" class="form-control" placeholder="DateN">
+DateN: {{ userForm.get('DateN') }}
+  </div>
+  <div class="form-group">
+      <label>email</label>
+      <input type="text" formControlName="email" class="form-control" placeholder="email">
+email: {{ userForm.get('email') }}
+  </div>
+  <div class="form-group">
+      <label>password</label>
+      <input type="text" formControlName="password" class="form-control" placeholder="password">
+password: {{ userForm.get('password') }}
+  </div>
+  <div class="form-group">
+      <label>username</label>
+      <input type="text" formControlName="username" class="form-control" placeholder="username">
+username: {{ userForm.get('username') }}
+  </div>
+
+  <div class="mb-4">
+                 <label for="vulnerabilite" class="form-label">Role</label>
+                 <select id="vulnerabilite" name="vulnerabilite" class="form-control" formControlName="Role" required>
+                  <option value="" disabled selected>Choisissez un role</option>
+                  <option *ngFor="let Role of Role" [value]="Role">{{ Role }}</option>
+              </select>
+              </div>
+  <button type="button"  class="btn btn-outline-success" (click)="onSubmit" >Add</button> 
+</form>
