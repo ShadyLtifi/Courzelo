@@ -1,39 +1,55 @@
+<app-back></app-back>
 
-<main id="main" class="main">
-    <section class="section dashboard">
-<form [formGroup]="classForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label>Capacity</label>
-        <input type="text" formControlName="capacity" class="form-control" placeholder="capacity">
-        <div>
-            Capacity: {{ classForm.get('capacity') }}
-        </div>
-    </div>
-  
-    <div class="form-group">
-        <label>Progress</label>
-        <input type="text" formControlName="progress" class="form-control" placeholder="progress">
-        <div>
-            Progress: {{ classForm.get('progress') }}
-        </div>
-    </div>
-
-    <div *ngIf="classForm.controls['capacity'].errors &&
-    classForm.get('capacity')?.touched">
-        <div *ngIf="classForm.controls['capacity'].hasError('required')">
-            required
-        </div>
-        <div *ngIf="classForm.controls['capacity'].hasError('minlength')">
-            Message minLength
-        </div>
-    </div>
-    <div class="mb-4">
-                   <label for="vulnerabilite" class="form-label">Level</label>
-                   <select id="vulnerabilite" name="vulnerabilite" class="form-control" formControlName="level" required>
-                    <option value="" disabled selected>Choisissez une option</option>
-                    <option *ngFor="let level of level" [value]="level">{{ level }}</option>
-                </select>
+<div class="content-wrapper  white-background">
+    
+    <br>
+    <br>
+    <div class="content">
+        <div class="container mt-5 mb-5 d-flex justify-content-center">
+            <div class="card px-1 py-4 turquoise-background">
+               
+          
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <span class="font-weight-bold" style="font-size: 1.5rem; color: rgb(8, 8, 8);">Add Class</span>
+                  </div>
                 </div>
-    <button type="button"  class="btn btn-outline-success" (click)="onSubmit()" >Add</button> 
-</form>
-    </section></main>
+        
+                <div class="card-body d-flex flex-column align-items-center">
+               
+                  <form [formGroup]="classForm" (ngSubmit)="onSubmit()" class="text-center custom-form">
+                    <div class="col-sm-11">
+                    <div class="form-group">
+                      <label>Capacity</label>
+                      <input type="text" formControlName="capacity" class="form-control" placeholder="capacity">
+                    </div>
+                </div>
+                <div class="col-sm-11">
+                    <div class="form-group">
+                      <label>Progress</label>
+                      <input type="text" formControlName="progress" class="form-control" placeholder="progress">
+                    </div>
+                </div>
+                 
+               
+                <div class="col-sm-11">
+                    <div class="mb-4">
+                      <label for="vulnerabilite" class="form-label">Level</label>
+                      <select id="vulnerabilite" name="vulnerabilite" class="form-control" formControlName="level" required>
+                        <option value="" disabled selected>Choisissez une option</option>
+                        <option *ngFor="let level of level" [value]="level">{{ level }}</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a (click)="onSubmit()" class="btn btn-success" routerLink="/classe">
+                        <i class="bi bi-patch-plus-fill" style="font-size: 24px;"></i> Add
+                    </a>
+                </div>
+                  </form>
+         
+                </div>       
+        
+              
+           
+            </div>

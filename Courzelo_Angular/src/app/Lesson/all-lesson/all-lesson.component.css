@@ -6,3 +6,6 @@
     background-color: #dcf5f3e5; /* Couleur des cellules du tableau */
     color: rgb(8, 8, 8); /* Couleur du texte dans les cellules du tableau */
   }
+  .white-background {
+    background-color: #fff; /* blanc */
+}

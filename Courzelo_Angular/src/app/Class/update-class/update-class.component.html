@@ -1,12 +1,26 @@
-<main id="main" class="main">
-    <section class="section dashboard">
+<div class="content-wrapper  white-background">
+    
+  <br>
+  <br>
+  <div class="content">
+      <div class="container mt-5 mb-5 d-flex justify-content-center">
+          <div class="card px-1 py-4 turquoise-background">
+             
+        
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <span class="font-weight-bold" style="font-size: 1.5rem; color: rgb(8, 8, 8);">Add Class</span>
+                </div>
+              </div>
+      
+              <div class="card-body d-flex flex-column align-items-center">
 <div class="update-class">
-    <h2>Update Class</h2>
+  
     <form [formGroup]="updateForm" (submit)="updateClass()">
         
-      <div class="form-group">
+      <div class="mb-4">
         <label for="capacity" class="form-label">Capacity:</label>
-        <input type="text" id="capacity"  class="form-label" formControlName="capacity" required>
+        <input type="text" id="capacity"  class="form-control" formControlName="capacity" required>
       </div>
   
       
@@ -19,7 +33,7 @@
      </div>
       <div class="form-group">
         <label for="progress" class="form-label">Progress:</label>
-        <input type="text" id="progress" class="form-label" formControlName="progress" required>
+        <input type="text" id="progress" class="form-control" formControlName="progress" required>
       </div>
   
       <!-- You can add more fields based on your Class model -->
@@ -27,5 +41,4 @@
       <button type="submit" class="btn btn-primary"(click)="updateClass()">Update</button>
     </form>
   </div>
-    </section>
-</main>  
+ 
