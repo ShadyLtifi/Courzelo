@@ -21,6 +21,10 @@ import { AddProgramComponent } from './Program/add-program/add-program.component
 import { AllProgramComponent } from './Program/all-program/all-program.component';
 import { DetailProgramComponent } from './Program/detail-program/detail-program.component';
 import { UpdateProgramComponent } from './Program/update-program/update-program.component';
+import { DetailCommentComponent } from './Comment/detail-comment/detail-comment.component';
+import { UpdateCommentComponent } from './Comment/update-comment/update-comment.component';
+import { UpdateCourseComponent } from './Course/update-course/update-course.component';
+import { DetailCourseComponent } from './Course/detail-course/detail-course.component';
 
 const routes: Routes = [
     {path:'front', component:FrontComponent},
@@ -43,7 +47,10 @@ const routes: Routes = [
     {path:'addProgram',component:AddProgramComponent},
     { path: 'updateProgram/:id', component: UpdateProgramComponent },
     { path: 'program-details/:id', component: DetailProgramComponent },
-  
+    {path: 'comment-details/:id', component:DetailCommentComponent},
+    { path: 'updateComment/:id', component: UpdateCommentComponent },
+    { path: 'updateCourse/:id', component: UpdateCourseComponent },
+    {path: 'course-details/:id', component:DetailCourseComponent},
     
 
 

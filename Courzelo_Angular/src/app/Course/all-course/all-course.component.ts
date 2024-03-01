@@ -32,4 +32,38 @@ export class AllCourseComponent {
         
         
   }
+
+  deleteCourse(idCourse: string | undefined): void {
+    if (idCourse) {
+      this.courseService.deleteCourse(idCourse).subscribe(
+        () => {
+          console.log(`Course with ID ${idCourse} deleted successfully.`);
+          // Update the class list or perform any necessary actions
+          this.refreshCourseList(); // Reload the updated class list
+        },
+        (error) => {
+          console.error('Error deleting Course:', error);
+          // Handle error scenarios
+        }
+      );
+    } else {
+      console.error('Course ID is undefined. Cannot delete.');
+    }
+  }
+
+  refreshCourseList(): void {
+    // Here, you should fetch the updated list of classes from your service
+    // and update the local variable 'classes'
+    this.courseService.getAll().subscribe(
+      (updatedCourses: any[]) => {
+        this.courses = updatedCourses;
+      },
+      (error) => {
+        console.error('Error refreshing Course list:', error);
+        // Handle error scenarios
+      }
+    );
+  
+  
+}
 }

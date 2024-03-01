@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/Service/Course/Class/class.service';
-import { Level } from 'src/app/models/Class/class';
+import { Class, Level } from 'src/app/models/Class/class';
 
 @Component({
   selector: 'app-update-class',
@@ -13,8 +13,7 @@ export class UpdateClassComponent {
   updateForm: FormGroup;
   updatedClass: any = { capacity: '', level: '', progress: '' };
   level = Object.values(Level);
-  message = '';
-
+  classes?: Class[] ;
   constructor(private fb: FormBuilder, private classService: ClassService, private route: ActivatedRoute,  private router:Router) {
     this.updateForm = this.fb.group({
      
@@ -75,6 +74,40 @@ export class UpdateClassComponent {
       console.error('Form controls are null.');
     }
   }
+
+  deleteClass(idClass: string | undefined): void {
+    if (idClass) {
+      this.classService.deleteClass(idClass).subscribe(
+        () => {
+          console.log(`Class with ID ${idClass} deleted successfully.`);
+          // Update the class list or perform any necessary actions
+          this.refreshClassList(); // Reload the updated class list
+        },
+        (error) => {
+          console.error('Error deleting class:', error);
+          // Handle error scenarios
+        }
+      );
+    } else {
+      console.error('Class ID is undefined. Cannot delete.');
+    }
+  }
+
+  refreshClassList(): void {
+    // Here, you should fetch the updated list of classes from your service
+    // and update the local variable 'classes'
+    this.classService.getAll().subscribe(
+      (updatedClasses: any[]) => {
+        this.classes = updatedClasses;
+      },
+      (error) => {
+        console.error('Error refreshing class list:', error);
+        // Handle error scenarios
+      }
+    );
+  
+  
+}
   }
   
 

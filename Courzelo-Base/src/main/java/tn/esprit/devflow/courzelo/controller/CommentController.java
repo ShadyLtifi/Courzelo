@@ -9,6 +9,7 @@ import tn.esprit.devflow.courzelo.services.ICommentService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CommentController {
 @Autowired
     ICommentService commentService;
