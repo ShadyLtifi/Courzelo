@@ -1,0 +1,31 @@
+<main id="main" class="main">
+    <section class="section dashboard">
+<div class="update-class">
+    <h2>Update Class</h2>
+    <form [formGroup]="updateForm" (submit)="updateProgram()">
+        
+      <div class="form-group">
+        <label for="nomProg" class="form-label">Program Name</label>
+        <input type="text" id="nomProg"  class="form-label" formControlName="nomProg" required>
+      </div>
+  
+      
+      <div class="mb-4">
+        <label for="speciality" class="form-label">Speciality</label>
+        <select id="speciality" name="speciality" class="form-control" formControlName="speciality" required>
+         <option value="" disabled selected>Choisissez une option</option>
+         <option *ngFor="let speciality of speciality" [value]="speciality">{{ speciality }}</option>
+     </select>
+     </div>
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" id="description" class="form-label" formControlName="description" required>
+      </div>
+  
+      <!-- You can add more fields based on your Class model -->
+  
+      <button type="submit" class="btn btn-primary"(click)="updateProgram()">Update</button>
+    </form>
+  </div>
+    </section>
+</main>  

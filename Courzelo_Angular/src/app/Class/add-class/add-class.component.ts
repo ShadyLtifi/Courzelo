@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/Service/Course/Class/class.service';
 import { Class, Level } from 'src/app/models/Class/class';
@@ -52,3 +53,5 @@ export class AddClassComponent {
     }
 }
 }
+
+

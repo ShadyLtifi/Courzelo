@@ -1,5 +1,5 @@
 export class Program {
-    idprog?: String;
+    idprog?: string;
     nomProg?: string;
     description?: string;
     speciality?: Speciality;

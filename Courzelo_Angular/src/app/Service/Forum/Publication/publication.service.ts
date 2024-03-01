@@ -16,4 +16,16 @@ export class PublicationService {
   addModule(data: Publication): Observable<any> {
     return this.http.post(`${this.apiUrl}/addPublication`, data);
   }
+  DeletePublication(idPublication: string): Observable<void> {
+    const url = `${this.apiUrl}/DeletePublication/${idPublication}`;
+    return this.http.delete<void>(url);
+  }
+
+  updatePublication(idPublication: any, updatePublication: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updatePublication/${idPublication}`, updatePublication);
+  }
+  retrievePublication(Publicationid: string): Observable<Publication> {
+    const url = `${this.apiUrl}/retrievePublication/${Publicationid}`;
+    return this.http.get<Publication>(url);
+  }
 }

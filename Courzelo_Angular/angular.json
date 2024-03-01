@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Courzelo": {
+    "dashboard-courzelo": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/courzelo",
+            "outputPath": "dist/dashboard-courzelo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -26,9 +26,23 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css",
+              "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+              "node_modules/admin-lte/dist/css/adminlte.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/admin-lte/plugins/jquery/jquery.min.js",
+              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+              "node_modules/admin-lte/dist/js/adminlte.js",
+              "node_modules/admin-lte/plugins/jquery-mousewheel/jquery.mousewheel.js",
+              "node_modules/admin-lte/plugins/raphael/raphael.min.js",
+              "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.min.js",
+             "node_modules/admin-lte/plugins/jquery-mapael/maps/usa_states.min.js",
+"node_modules/admin-lte/plugins/chart.js/Chart.min.js",
+"node_modules/admin-lte/dist/js/demo.js",
+"node_modules/admin-lte/dist/js/pages/dashboard2.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -36,7 +50,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -61,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Courzelo:build:production"
+              "browserTarget": "dashboard-courzelo:build:production"
             },
             "development": {
-              "browserTarget": "Courzelo:build:development"
+              "browserTarget": "dashboard-courzelo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Courzelo:build"
+            "browserTarget": "dashboard-courzelo:build"
           }
         },
         "test": {
@@ -97,6 +111,6 @@
     }
   },
   "cli": {
-    "analytics": "9ae721d2-cd56-4251-93cb-8ce5657b65fa"
+    "analytics": "f134e27f-01d3-4e86-859a-d2c8f53970d1"
   }
 }

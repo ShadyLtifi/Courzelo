@@ -28,7 +28,7 @@ public class PubController {
         return listPublication ;
 
     }
-    @PutMapping("/updatePublication")
+    @PutMapping("/updatePublication/{idPublication}")
 
     @ResponseBody
     public Publication modifyPublication(@RequestBody Publication publication) {
@@ -46,10 +46,10 @@ public class PubController {
 
     }
 
-    @GetMapping("/retrievePublication/{Publication-id}")
+    @GetMapping("/retrievePublication/{Publicationid}")
     @ResponseBody
 
-    public Publication retrievePublication (@PathVariable ("Publication-id")String idPublication) {
+    public Publication retrievePublication (@PathVariable ("Publicationid")String idPublication) {
         return pubService.retrievePublication(idPublication);
     }
 

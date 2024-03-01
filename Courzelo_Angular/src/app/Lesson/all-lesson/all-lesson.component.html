@@ -1,44 +1,49 @@
 <app-back></app-back>
 
-<main id="main" class="main">
-<section class="section dashboard">
+<div class="content-wrapper">
+  <br> <br> <br>
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center"> <!-- Utiliser 'justify-content-center' pour centrer la colonne -->
 
-  
-  <div class="row">
+        <div class="col-md-8">
+          <div class="card custom-blue">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <span class="font-weight-bold " style="font-size: 1.5rem;color: rgb(8, 8, 8);">Lesson List</span>
+              </div>
+              <div class="ml-auto">
+                <a routerLink="/addLesson"><i class="bi bi-patch-plus-fill text-black" style="font-size: 40px;"></i></a>
+              </div>
+            </div>
 
-    
-      <div class="row">
-        <table  class="table table-hover text-center">
-          <thead>
-            <tr>
-          
-              <th scope="col">Title</th>
-              <th scope="col">Content</th>
-         
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let l of lesson">
-              
-              <td>{{ l.title}}</td>
-              <td>{{ l.content}}</td>
-         
-       
-              <td><button type="button" class="btn btn-outline-success" >Update</button> 
-                <button type="button" class="btn btn-outline-danger">Delete</button>
-                <button type="button" class="btn btn-outline-info" routerLink="/">Show</button></td>
-            </tr>
-            
-            
-          </tbody>
-        </table>
+            <div class="card-body">
+              <table class="table table-hover text-center custom-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="custom-cell">Title</th>
+                    <th scope="col" class="custom-cell">Content</th>
+                    <th scope="col" class="custom-cell">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let l of lesson">
+                    <td class="custom-cell">{{ l.title}}</td>
+                    <td class="custom-cell">{{ l.content}}</td>
+                    <td class="custom-cell">
+                      <a routerLink="/"><i class="bi bi-pencil-square text-success" style="font-size: 15px;margin-left: 15px;"></i></a>
+                      <a> <i class="bi bi-trash text-danger" style="font-size: 15px;margin-left: 15px;"></i></a>
+                      <a routerLink="/"><i class="bi bi-chat-left-text" style="font-size: 15px;margin-left: 15px;"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
-        <button type="button"  class="btn btn-outline-success" routerLink="/addLesson" >Add</button> 
- 
       </div>
     </div>
-
-</section>
-</main>
-
+  </div>
+</div>

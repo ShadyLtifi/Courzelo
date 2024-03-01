@@ -1,34 +1,45 @@
 <app-back></app-back>
 
-<main id="main" class="main">
-<section class="section dashboard">
+<div class="content-wrapper">
+  <br> <br> <br>
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center"> <!-- Utiliser 'justify-content-center' pour centrer la colonne -->
 
-  
-  <div class="row">
+        <div class="col-md-8">
+          <div class="card custom-blue">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <span class="font-weight-bold " style="font-size: 1.5rem;color: rgb(8, 8, 8);">Lesson List</span>
+              </div>
+              <div class="ml-auto">
+                <a routerLink="/addLesson"><i class="bi bi-patch-plus-fill text-black" style="font-size: 40px;"></i></a>
+              </div>
+            </div>
 
-    
-      <div class="row">
-        <table  class="table table-hover text-center">
+            <div class="card-body">
+        <table  class="table table-hover text-center custom-table">
           <thead>
             <tr>
           
-              <th scope="col">Capacity</th>
-              <th scope="col">Level</th>
-              <th scope="col">Progress</th>
-              <th scope="col">Actions</th>
+              <th scope="col" class="custom-cell">Capacity</th>
+              <th scope="col" class="custom-cell">Level</th>
+              <th scope="col" class="custom-cell">Progress</th>
+              <th scope="col" class="custom-cell">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let class of classes">
               
-              <td>{{ class.capacity}}</td>
-              <td>{{class.level}}</td>
-              <td>{{ class.progress }}</td>
-              <td>  <button type="button" class="btn btn-outline-success" routerLink="/updateClass/{{ class.idClass }}">Update</button>
+              <td class="custom-cell">{{ class.capacity}}</td>
+              <td class="custom-cell">{{class.level}}</td>
+              <td class="custom-cell">{{ class.progress }}</td>
+              <td class="custom-cell">  <a routerLink="/updateClass/{{ class.idClass }}"><i class="bi bi-pencil-square text-success" style="font-size: 15px;margin-left: 15px;"></i></a>
 
-                <button type="button" class="btn btn-outline-danger" (click)="deleteClass(class.idClass)">Delete</button>
+                <a (click)="deleteClass(class.idClass)"><i class="bi bi-trash text-danger" style="font-size: 15px;margin-left: 15px;"></i></a>
 
-                <a routerLink="/class-details/{{ class.idClass }}" class="btn btn-outline-info">Show</a>
+                <a routerLink="/class-details/{{ class.idClass }}" ><i class="bi bi-chat-left-text" style="font-size: 15px;margin-left: 15px;"></i></a>
             </tr>
             
             
@@ -40,5 +51,4 @@
       </div>
     </div>
 
-</section>
-</main>
+        </div></div></div></div></div>

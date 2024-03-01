@@ -13,8 +13,20 @@ export class ProgramService {
   getAll() : Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/retrieveallProgram`);
   }
-  addCourse(data: Program): Observable<any> {
+  addProg(data: Program): Observable<any> {
     return this.http.post(`${this.apiUrl}/addProgram`, data);
   }
  
+  deleteProg(idprog: string): Observable<void> {
+    const url = `${this.apiUrl}/DeleteProgram/${idprog}`;
+    return this.http.delete<void>(url);
+  }
+  updateProgram(idprog: any, updateProgram: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateProgram/${idprog}`, updateProgram);
+  }
+  retrieveProgram(Programid: string): Observable<Program> {
+    const url = `${this.apiUrl}/retrieveProgram/${Programid}`;
+    return this.http.get<Program>(url);
+  }
+
 }

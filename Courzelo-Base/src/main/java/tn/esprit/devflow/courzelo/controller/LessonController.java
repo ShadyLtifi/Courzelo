@@ -28,7 +28,7 @@ public class LessonController {
         return listLesson ;
 
     }
-    @PutMapping("/updateLesson")
+    @PutMapping("/updateLesson/{idlesson}")
 
     @ResponseBody
     public Lesson modifyLesson(@RequestBody Lesson l) {
@@ -46,10 +46,10 @@ public class LessonController {
 
     }
 
-    @GetMapping("/retrieveLesson/{Lesson-id}")
+    @GetMapping("/retrieveLesson/{Lessonid}")
     @ResponseBody
 
-    public Lesson retrieveLesson (@PathVariable ("Lesson-id")String idlesson) {
+    public Lesson retrieveLesson (@PathVariable ("Lessonid")String idlesson) {
         return lessonService.retrieveLesson(idlesson);
     }
 }

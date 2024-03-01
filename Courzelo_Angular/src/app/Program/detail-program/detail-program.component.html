@@ -1,0 +1,35 @@
+<app-back></app-back>
+
+<main id="main" class="main">
+  <section class="section dashboard">
+    <div *ngIf="programDetails">
+      
+        <div class="card-header text-center" style="color: black;">
+            Details of Program 
+          </div>
+          
+              </div>
+              <div class="card-body">
+                <div class="table-responsive p-0">
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Program Name:</td>
+                        <td>{{ programDetails.nomProg }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description:</td>
+                        <td>{{ programDetails.description }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Speciality:</td>
+                        <td>{{ programDetails.speciality }}</td>
+                      </tr>
+                      <!-- Add other fields as needed -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        
+  </section>
+</main>

@@ -28,7 +28,7 @@ public class ProgramController {
         return listProgram ;
 
     }
-    @PutMapping("/updateProgram")
+    @PutMapping("/updateProgram/{idprog}")
 
     @ResponseBody
     public Program modifyProgram(@RequestBody Program program) {
@@ -36,20 +36,20 @@ public class ProgramController {
         return progService.updateProgram(program);
 
     }
-    @DeleteMapping("/DeleteProgram/{idProgram}")
+    @DeleteMapping("/DeleteProgram/{idprog}")
 
     @ResponseBody
 
-    public void deleteProgram(@PathVariable String idProgram) {
+    public void deleteProgram(@PathVariable String idprog) {
 
-        progService.deleteProgram(idProgram);
+        progService.deleteProgram(idprog);
 
     }
 
-    @GetMapping("/retrieveProgram/{Program-id}")
+    @GetMapping("/retrieveProgram/{Programid}")
     @ResponseBody
 
-    public Program retrieveProgram (@PathVariable ("Program-id")String idProgram) {
+    public Program retrieveProgram (@PathVariable ("Programid")String idProgram) {
         return progService.retrieveProgram(idProgram);
     }
 

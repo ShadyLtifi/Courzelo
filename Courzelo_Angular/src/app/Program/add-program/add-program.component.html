@@ -1,1 +1,27 @@
-<p>add-program works!</p>
+
+<main id="main" class="main">
+    <section class="section dashboard">
+<form [formGroup]="progForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Program Name</label>
+        <input type="text" formControlName="nomProg" class="form-control" placeholder="nomProg">
+        
+    </div>
+  
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" formControlName="description" class="form-control" placeholder="description">
+        
+    </div>
+
+   
+    <div class="mb-4">
+                   <label for="speciality" class="form-label">Speciality</label>
+                   <select id="speciality" name="speciality" class="form-control" formControlName="speciality" required>
+                    <option value="" disabled selected>Choisissez une option</option>
+                    <option *ngFor="let speciality of speciality" [value]="speciality">{{ speciality }}</option>
+                </select>
+                </div>
+    <button type="button"  class="btn btn-outline-success" (click)="onSubmit()" >Add</button> 
+</form>
+    </section></main>

@@ -1,0 +1,13 @@
+.custom-sidebar {
+    background-color: #d8f4f59d; /* Bleu turquoise */
+  }
+  .expanded {
+    width: 300px; /* Définissez la largeur souhaitée en pixels ou en pourcentage */
+  }
+  .fs-20 {
+  font-size: 13px;
+}
+.text-black-bold {
+  color: black;
+  font-weight: bold;
+}

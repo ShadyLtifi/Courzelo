@@ -27,7 +27,7 @@ public class CommentController {
         return listComment ;
 
     }
-    @PutMapping("/updateComment")
+    @PutMapping("/updateComment/{idComment}")
 
     @ResponseBody
     public Comment modifyComment(@RequestBody Comment c) {
@@ -45,10 +45,10 @@ public class CommentController {
 
     }
 
-    @GetMapping("/retrieveComment/{comment-id}")
+    @GetMapping("/retrieveComment/{commentid}")
     @ResponseBody
 
-    public Comment retrieveComment (@PathVariable ("comment-id")String idComment) {
+    public Comment retrieveComment (@PathVariable ("commentid")String idComment) {
         return commentService.retrieveComm(idComment);
     }
 

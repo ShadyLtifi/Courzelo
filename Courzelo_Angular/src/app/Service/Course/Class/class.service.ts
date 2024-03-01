@@ -21,10 +21,9 @@ export class ClassService {
     const url = `${this.apiUrl}/DeleteClasse/${idClass}`;
     return this.http.delete<void>(url);
   }
-  updateClass(updatedClass: any): Observable<any> {
-    const classid = updatedClass.idClass;
-    const url = `${this.apiUrl}/updateclass/${classid}`;
-    return this.http.put(url, updatedClass);
+
+  updateClass(classid: any, updatedClass: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateclass/${classid}`, updatedClass);
   }
   retrieveClass(classid: string): Observable<Class> {
     const url = `${this.apiUrl}/retrieveClass/${classid}`;

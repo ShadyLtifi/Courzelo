@@ -9,6 +9,7 @@ import tn.esprit.devflow.courzelo.services.ICourseService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CourseController {
     @Autowired
     ICourseService courseService;
@@ -27,7 +28,7 @@ public class CourseController {
         return listComment ;
 
     }
-    @PutMapping("/updateCourse")
+    @PutMapping("/updateCourse/{idCourse}")
 
     @ResponseBody
     public Course modifyCourse(@RequestBody Course c) {
@@ -45,10 +46,10 @@ public class CourseController {
 
     }
 
-    @GetMapping("/retrieveCourse/{course-id}")
+    @GetMapping("/retrieveCourse/{courseid}")
     @ResponseBody
 
-    public Course retrieveCourse (@PathVariable ("course-id")String idCourse) {
+    public Course retrieveCourse (@PathVariable ("courseid")String idCourse) {
         return courseService.retrieveCourse(idCourse);
     }
 

@@ -15,4 +15,16 @@ export class CommentService {
   addComment(data: Comment): Observable<any> {
     return this.http.post(`${this.apiUrl}/addComment`, data);
   }
+  deleteComment(idComment: string): Observable<void> {
+    const url = `${this.apiUrl}/DeleteComment/${idComment}`;
+    return this.http.delete<void>(url);
+  }
+
+  updateComment(idComment: any, updateComment: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateComment/${idComment}`, updateComment);
+  }
+  retrieveComment(commentid: string): Observable<Comment> {
+    const url = `${this.apiUrl}/retrieveComment/${commentid}`;
+    return this.http.get<Comment>(url);
+  }
 }

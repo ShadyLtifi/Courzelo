@@ -17,4 +17,16 @@ export class LessonService {
   addLesson(data: Lesson): Observable<any> {
     return this.http.post(`${this.apiUrl}/addLesson`, data);
   }
+  deleteLesson(idlesson: string): Observable<void> {
+    const url = `${this.apiUrl}/DeleteLesson/${idlesson}`;
+    return this.http.delete<void>(url);
+  }
+
+  updateLesson(idlesson: any, updateLesson: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateLesson/${idlesson}`, updateLesson);
+  }
+  retrieveLesson(Lessonid: string): Observable<Lesson> {
+    const url = `${this.apiUrl}/retrieveLesson/${Lessonid}`;
+    return this.http.get<Lesson>(url);
+  }
 }

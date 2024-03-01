@@ -16,5 +16,17 @@ export class ModuleService {
   addModule(data: Module): Observable<any> {
     return this.http.post(`${this.apiUrl}/addModule`, data);
   }
+  deleteModule(idModule: string): Observable<void> {
+    const url = `${this.apiUrl}/DeleteModule/${idModule}`;
+    return this.http.delete<void>(url);
+  }
+
+  updateModule(idModule: any, updateModule: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateModule/${idModule}`, updateModule);
+  }
+  retrieveModule(Moduleid: string): Observable<Module> {
+    const url = `${this.apiUrl}/retrieveModule/${Moduleid}`;
+    return this.http.get<Module>(url);
+  }
  
 }

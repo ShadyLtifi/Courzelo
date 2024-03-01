@@ -27,7 +27,7 @@ public class ModuleController {
         return listModule ;
 
     }
-    @PutMapping("/updateModule")
+    @PutMapping("/updateModule/{idModule}")
 
     @ResponseBody
     public Module modifyModule(@RequestBody Module module) {
@@ -45,10 +45,10 @@ public class ModuleController {
 
     }
 
-    @GetMapping("/retrieveModule/{Module-id}")
+    @GetMapping("/retrieveModule/{Moduleid}")
     @ResponseBody
 
-    public Module retrieveModule (@PathVariable ("Module-id")String idModule) {
+    public Module retrieveModule (@PathVariable ("Moduleid")String idModule) {
         return moduleService.retrieveModule(idModule);
     }
 
