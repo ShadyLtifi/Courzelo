@@ -24,7 +24,7 @@ public class Course {
     @Size(max = 55)
      String title;
     String content;
-    LocalDate datecomment;
+    LocalDate datecourse;
     @DBRef
     List<Lesson> lessons;
     @DBRef

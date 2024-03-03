@@ -25,6 +25,10 @@ import { DetailCommentComponent } from './Comment/detail-comment/detail-comment.
 import { UpdateCommentComponent } from './Comment/update-comment/update-comment.component';
 import { UpdateCourseComponent } from './Course/update-course/update-course.component';
 import { DetailCourseComponent } from './Course/detail-course/detail-course.component';
+import { DetailLessonComponent } from './Lesson/detail-lesson/detail-lesson.component';
+import { UpdateLessonComponent } from './Lesson/update-lesson/update-lesson.component';
+import { DetailModuleComponent } from './Module/detail-module/detail-module.component';
+import { UpdateModuleComponent } from './Module/update-module/update-module.component';
 
 const routes: Routes = [
     {path:'front', component:FrontComponent},
@@ -51,6 +55,10 @@ const routes: Routes = [
     { path: 'updateComment/:id', component: UpdateCommentComponent },
     { path: 'updateCourse/:id', component: UpdateCourseComponent },
     {path: 'course-details/:id', component:DetailCourseComponent},
+    {path: 'lesson-details/:id', component:DetailLessonComponent},
+    { path: 'updateLesson/:id', component: UpdateLessonComponent },
+    {path: 'module-details/:id', component:DetailModuleComponent},
+    { path: 'updateModule/:id', component: UpdateModuleComponent },
     
 
 

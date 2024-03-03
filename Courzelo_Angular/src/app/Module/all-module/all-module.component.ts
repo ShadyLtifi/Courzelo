@@ -32,5 +32,38 @@ export class AllModuleComponent {
         
         
   }
+  deleteModule(idmodule: string | undefined): void {
+    if (idmodule) {
+      this.moduleService.deleteModule(idmodule).subscribe(
+        () => {
+          console.log(`module with ID ${idmodule} deleted successfully.`);
+          // Update the class list or perform any necessary actions
+          this.refreshModuleList(); // Reload the updated class list
+        },
+        (error) => {
+          console.error('Error deleting module:', error);
+          // Handle error scenarios
+        }
+      );
+    } else {
+      console.error('module ID is undefined. Cannot delete.');
+    }
+  }
+
+  refreshModuleList(): void {
+    // Here, you should fetch the updated list of classes from your service
+    // and update the local variable 'classes'
+    this.moduleService.getAll().subscribe(
+      (updatedM: any[]) => {
+        this.module = updatedM;
+      },
+      (error) => {
+        console.error('Error refreshing module list:', error);
+        // Handle error scenarios
+      }
+    );
+  
+  
+}
 
 }

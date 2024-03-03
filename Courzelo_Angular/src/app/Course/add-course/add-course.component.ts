@@ -11,14 +11,14 @@ import { Course } from 'src/app/models/Course/Course';
 })
 export class AddCourseComponent {
   courseForm: FormGroup <any>;
-  course: any = { title:'' ,content: "", datecomment: "" }; 
+  course: any = { title:'' ,content: "", datecourse: "" }; 
   
  
   constructor(private fb:FormBuilder, private courseService:CourseService, private route: ActivatedRoute, private router:Router){
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', [Validators.required, Validators.minLength(3)]],
-      datecomment: ['', Validators.required],
+      datecourse: ['', Validators.required],
     });
 
   }
@@ -31,11 +31,11 @@ export class AddCourseComponent {
         title: this.courseForm.get('title')?.value,
         content: this.courseForm.get('content')?.value,
         
-        datecomment: this.courseForm.get('datecomment')?.value,
+        datecourse: this.courseForm.get('datecourse')?.value,
       };
       
   
-      if (newCourse.title !== null && newCourse.content !== null && newCourse.datecomment !== null) {
+      if (newCourse.title !== null && newCourse.content !== null && newCourse.datecourse !== null) {
         this.courseService.addCourse(newCourse).subscribe(
           () => {
             console.log('Course added successfully!');

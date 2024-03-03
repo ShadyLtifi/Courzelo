@@ -32,4 +32,38 @@ export class AllLessonComponent {
         
         
   }
+
+  deleteLesson(idlesson: string | undefined): void {
+    if (idlesson) {
+      this.lessonService.deleteLesson(idlesson).subscribe(
+        () => {
+          console.log(`Class with ID ${idlesson} deleted successfully.`);
+          // Update the class list or perform any necessary actions
+          this.refreshLessonList(); // Reload the updated class list
+        },
+        (error) => {
+          console.error('Error deleting class:', error);
+          // Handle error scenarios
+        }
+      );
+    } else {
+      console.error('Class ID is undefined. Cannot delete.');
+    }
+  }
+
+  refreshLessonList(): void {
+    // Here, you should fetch the updated list of classes from your service
+    // and update the local variable 'classes'
+    this.lessonService.getAll().subscribe(
+      (updatedLessons: any[]) => {
+        this.lesson = updatedLessons;
+      },
+      (error) => {
+        console.error('Error refreshing class list:', error);
+        // Handle error scenarios
+      }
+    );
+  
+  
+}
 }

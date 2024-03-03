@@ -23,9 +23,9 @@ public class CourseController {
     @ResponseBody
     public List<Course> getCourse() {
 
-        List<Course> listComment = courseService.retrieveAllCourse();
+        List<Course> listCourse = courseService.retrieveAllCourse();
 
-        return listComment ;
+        return listCourse ;
 
     }
     @PutMapping("/updateCourse/{idCourse}")

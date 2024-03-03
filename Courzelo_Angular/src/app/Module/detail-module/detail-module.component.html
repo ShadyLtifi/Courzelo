@@ -1,1 +1,43 @@
-<p>detail-module works!</p>
+
+<app-back></app-back>
+<div class="content-wrapper white-background">
+  <br>
+  <br>
+  <div class="content">
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+      <div class="card px-1 py-4 turquoise-background">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <span class="font-weight-bold" style="font-size: 1.5rem; color: rgb(8, 8, 8);">Class Details</span>
+          </div>
+        </div>
+        <div class="card-body d-flex flex-column align-items-center">
+          <div *ngIf="moduleDetails">
+            <div class="form-group">
+                <label class="text-uppercase text-uppercase text-xxs font-weight-bolder opacity-7 ">Progress:</label>
+                <span class="ml-5 font-weight-bold">{{ moduleDetails.progress }}</span>
+              </div>
+            <div class="form-group">
+              <label class="text-uppercase text-uppercase text-xxs font-weight-bolder opacity-7">Title Module:</label>
+              <span class="ml-5 font-weight-bold">{{ moduleDetails.titleModule }}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="text-uppercase text-uppercase text-xxs font-weight-bolder opacity-7">Duration:</label>
+                <span class="ml-5 font-weight-bold">{{ moduleDetails.nbreHeure }}</span>
+              </div>
+
+              <div class="form-group">
+                <label class="text-uppercase text-uppercase text-xxs font-weight-bolder opacity-7">Description:</label>
+                <span class="ml-5 font-weight-bold">{{ moduleDetails.description }}</span>
+              </div>
+
+            <a routerLink="/updateModule/{{ moduleDetails.Publicationid }}" class="btn btn-success mr-5"><i class="bi bi-pencil-square " style="font-size: 24px;"></i></a>
+            <!-- Add other fields as needed -->
+            <a routerLink="/allModule" class="btn btn-danger"><i class="fas fa-times" style="font-size: 35px;"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
