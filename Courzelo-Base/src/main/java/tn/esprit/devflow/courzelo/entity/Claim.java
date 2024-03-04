@@ -1,6 +1,5 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -9,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -20,7 +20,7 @@ public class Claim {
     @Size(max = 55)
     String titre;
     LocalDate dateclaim;
-    @Field("typeRec")
+    @Field("typeclaim")
      TypeClaim typeclaim;
     @Field("status")
     Status status;

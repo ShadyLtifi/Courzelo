@@ -10,4 +10,5 @@ public interface IUserService {
     List<UserDTO> getAllUsers();
     void updateUser(String email, UserDTO userDTO);
     void deleteUser(String email);
+    UserDTO FindByUsername(String username);
 }

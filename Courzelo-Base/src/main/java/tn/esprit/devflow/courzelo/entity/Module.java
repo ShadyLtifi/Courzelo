@@ -1,6 +1,5 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -17,9 +16,9 @@ import java.util.List;
 public class Module {
     @Id
     String idmodule;
-   int progress;
-   @DBRef
-   List<Course> courses;
-   @DBRef
+    int progress;
+    @DBRef
+    List<Course> courses;
+    @DBRef
     Program program;
 }
