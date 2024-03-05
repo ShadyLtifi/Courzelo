@@ -10,7 +10,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import tn.esprit.devflow.courzelo.entity.SecurityConstants;
-import tn.esprit.devflow.courzelo.entity.User;
 import tn.esprit.devflow.courzelo.entity.UserCredentials;
 import tn.esprit.devflow.courzelo.entity.UserDTO;
 import tn.esprit.devflow.courzelo.services.UserService;
@@ -28,7 +27,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
-        setFilterProcessesUrl("/api/login"); // L'URL à surveiller pour les tentatives de connexion
+        setFilterProcessesUrl("/api/login");
     }
 
     @Override
