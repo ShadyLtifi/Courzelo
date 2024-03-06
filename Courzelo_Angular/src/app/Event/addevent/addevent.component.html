@@ -1,0 +1,92 @@
+<app-back></app-back>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<main id="main" class="main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-container">
+          <h2 class="text-center" style="color: black; font-weight: bold;">Add Event</h2>
+       
+          <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" formControlName="title" class="form-control" placeholder="Title">
+              <div *ngIf="isFieldInvalid('title')" class="alert alert-danger">Title is required.</div>
+              </div>
+              <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" id="photo" (change)="onFileSelected($event)" accept="image/*">
+              </div>
+              
+              <div *ngIf="selectedFile">
+                <label>Selected Image Preview:</label>
+                <img [src]="getSelectedFilePreview()" alt="Selected Image Preview" style="max-width: 200px;">
+              </div>
+                <div *ngIf="currentFile" class="progress my-3">
+                    <div class="progress-bar progress-bar-info progress-bar-striped"
+                        role="progressbar"
+                        [style.width.%]="progress"
+                        aria-valuemin="0"
+                        aria-valuemax="100">
+                        {{ progress }}%
+                    </div>
+                </div>
+                {{ selectedFiles | json }} <!-- Vérifiez la valeur de selectedFiles -->
+            
+              
+              
+              
+            
+            <div class="form-group">
+              <label for="duration">Duration</label>
+              <input type="text" id="duration" formControlName="duration" class="form-control" placeholder="Duration">
+              <div *ngIf="isFieldInvalid('duration')" class="alert alert-danger">Duration is required.</div>
+              </div>
+          
+
+            <div class="form-group">
+              <label for="debutdate">Debut Date</label>
+              <input type="date" id="debutdate" formControlName="debutdate" class="form-control" placeholder="Debut Date">
+              <div *ngIf="isFieldInvalid('debutdate')" class="alert alert-danger">Debut Date is required.</div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="price">Price</label>
+              <select id="price" formControlName="price" class="form-control">
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+              <div *ngIf="isFieldInvalid('price')" class="alert alert-danger">Price is required.</div>
+
+            </div>
+            
+            <div class="form-group">
+              <label for="maxcapacity">Max Capacity</label>
+              <input type="text" id="maxcapacity" formControlName="maxcapacity" class="form-control" placeholder="Max Capacity">
+              <div *ngIf="isFieldInvalid('maxcapacity')" class="alert alert-danger"> Max Capacity is required.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" formControlName="category" class="form-control" required>
+                <option value="" disabled selected>Choose an option</option>
+                <option *ngFor="let category of category" [value]="category">{{ category }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('category')" class="alert alert-danger">Category is required.</div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-outline-success">
+                <i class="fas fa-check"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary"routerLink="/allevents">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

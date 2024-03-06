@@ -1,0 +1,31 @@
+<app-back></app-back>
+<main id="main" class="main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-container">
+          <h2 class="text-center" style="color: black; font-weight: bold;">ID : {{eventDetails.idevent}}</h2>
+          <style>
+            .form-group label {
+              color: black;
+              font-weight: bold;
+            }
+            .form-container {
+              background-color: #049e8e6e; /* Couleur d'arrière-plan plus claire */
+              border: 1px solid #067b62; /* Couleur de bordure */
+              border-radius: 8px;
+              padding: 20px;}
+          </style>
+<div *ngIf="eventDetails">
+   
+  <p> Photo : <img [src]="eventDetails.photo" alt="Event Photo"></p>
+    <p> Max Capacity: {{ eventDetails.maxcapacity }}</p>
+    <p>Duration: {{ eventDetails.duration }}</p>
+    <p>Debut Date: {{ eventDetails.debutdate }}</p>
+    <p>Price: {{ eventDetails.price }}</p>
+  </div>
+  
+  <div *ngIf="!eventDetails">
+    <p>Loading event details...</p>
+  </div>
+        </div></div></div></div></main>
