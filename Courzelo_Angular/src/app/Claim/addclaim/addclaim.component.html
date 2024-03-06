@@ -1,0 +1,65 @@
+<app-back></app-back>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<main id="main" class="main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-container">
+          <h2 class="text-center" style="color: black; font-weight: bold;">Add Claim</h2>
+          <style>
+            .form-group label {
+              color: black;
+              font-weight: bold;
+            }
+            .form-container {
+              background-color: #049e8e6e; /* Couleur d'arrière-plan plus claire */
+              border: 1px solid #067b62; /* Couleur de bordure */
+              border-radius: 8px;
+              padding: 20px;
+            }
+          </style>
+          <form [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" formControlName="title" class="form-control" placeholder="Title">
+              <div *ngIf="isFieldInvalid('title')" class="alert alert-danger">Title is required.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="dateclaim">Date Claim</label>
+              <input type="date" id="dateclaim" formControlName="dateclaim" class="form-control" placeholder="Date Claim">
+              <div *ngIf="isFieldInvalid('dateclaim')" class="alert alert-danger">Date Claim is required.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="typeclaim">Type Claim</label>
+              <select id="typeclaim" formControlName="typeclaim" class="form-control">
+                <option value="" disabled selected>Choose an option</option>
+                <option *ngFor="let type of typeClaim" [value]="type">{{ type }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('typeclaim')" class="alert alert-danger">Type Claim is required.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" formControlName="status" class="form-control">
+                <option value="" disabled selected>Choose an option</option>
+                <option *ngFor="let stat of status" [value]="stat">{{ stat }}</option>
+              </select>
+              <div *ngIf="isFieldInvalid('status')" class="alert alert-danger">Status is required.</div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-outline-success">
+                <i class="fas fa-check"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary" routerLink="/allclaims">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
