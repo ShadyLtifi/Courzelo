@@ -16,7 +16,7 @@ export class UpdateClassComponent {
   classes?: Class[] ;
   constructor(private fb: FormBuilder, private classService: ClassService, private route: ActivatedRoute,  private router:Router) {
     this.updateForm = this.fb.group({
-     
+      
       capacity: ['', Validators.required],
       level: ['', Validators.required],
       progress: ['', Validators.required],

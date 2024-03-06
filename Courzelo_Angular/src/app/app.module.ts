@@ -41,6 +41,8 @@ import { PublicationComponent } from './Publication/publication/publication.comp
 import { UpdatePublicationComponent } from './Publication/update-publication/update-publication.component';
 import { HeadderrComponent } from './headderr/headderr.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnseignantComponent } from './Enseignant/enseignant/enseignant.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -84,7 +86,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
      DetailCourseComponent,
      UpdateCourseComponent,
      DetailCommentComponent,
-     UpdateCommentComponent
+     UpdateCommentComponent,
+     EnseignantComponent
   
 
   ],
@@ -93,6 +96,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     
   ],
   providers: [],

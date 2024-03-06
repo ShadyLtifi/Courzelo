@@ -12,6 +12,8 @@ import { Lesson } from 'src/app/models/Lesson/lesson';
 export class AddLessonComponent {
   lessonForm: FormGroup <any>;
   lesson: any = { title:'' ,content: "" }; 
+  uploadedFileUrl!: string;
+  fileType!: string;
   
  
   constructor(private fb:FormBuilder, private lessonService:LessonService, private route: ActivatedRoute, private router:Router){
@@ -53,4 +55,43 @@ export class AddLessonComponent {
       console.log('Form is invalid. Cannot add Lesson.');
     }
   }
+// add-lesson.component.ts
+// ...
+
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  this.fileType = this.getFileType(file);
+  this.uploadedFileUrl = URL.createObjectURL(file);
+
+  // Récupérez le titre depuis le formulaire
+  const title = this.lessonForm.get('title')?.value;
+
+  // Appel au service d'upload pour envoyer le fichier au backend
+  this.lessonService.uploadFile(file, title).subscribe(
+    (response) => {
+      console.log('File uploaded successfully:', response);
+      // Mettez à jour votre modèle avec les données renvoyées par le backend si nécessaire
+    },
+    (error) => {
+      console.error('Error uploading file:', error);
+    }
+  );
+}
+
+
+  getFileType(file: File): string {
+    const fileName = file.name.toLowerCase();
+    if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
+      return 'image';
+    } else if (fileName.endsWith('.mp4') || fileName.endsWith('.avi')) {
+      return 'video';
+    } else if (fileName.endsWith('.pdf') || fileName.endsWith('.doc') || fileName.endsWith('.docx')) {
+      return 'document';
+    } else {
+      return 'other';
+    }
+  }
+
+
+  
 }

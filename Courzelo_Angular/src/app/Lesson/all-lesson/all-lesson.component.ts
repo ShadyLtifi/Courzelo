@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { LessonService } from 'src/app/Service/Course/Lesson/lesson.service';
 import { Lesson } from 'src/app/models/Lesson/lesson';
 
@@ -19,19 +20,83 @@ export class AllLessonComponent {
     this.currentLesson = c;
     this.currentIndex = index;
   }
-  retrieveAllLesson(): void {
-    this.lessonService.getAll()
-      .subscribe(
-        (data: Lesson[]) => {
-          this.lesson = data;
-          console.log(data);
+ // ...
+
+// retrieveAllLesson(): void {
+//   this.lessonService.getAll().subscribe(
+//     (data: Lesson[]) => {
+//       this.lesson = data;
+
+//       // Check if 'lesson' is not undefined and has elements
+//       if (this.lesson && this.lesson.length > 0) {
+
+//         // Create an array of observables for each file content request
+//         const contentRequests = this.lesson.map((lesson: any) =>
+//           this.lessonService.getFileContent(lesson.content)
+//         );
+
+//         // Use forkJoin to wait for all observables to complete
+//         forkJoin(contentRequests).subscribe(
+//           (contents: string[]) => {
+//             // Update each lesson with its corresponding content
+//             if (this.lesson) {
+//               this.lesson.forEach((lesson, index) => {
+//                 // Check if 'contents' is not undefined
+//                 if (contents && contents[index] !== undefined) {
+//                   lesson.content = contents[index];
+//                 }
+//               });
+//             }
+//           },
+//           (error) => {
+//             console.error('Error fetching file content:', error);
+//           }
+//         );
+//       }
+//     },
+//     (error) => {
+//       console.log(error);
+//     }
+//   );
+// }
+
+// all-lesson.component.ts
+retrieveAllLesson(): void {
+  this.lessonService.getAll().subscribe(
+    (data: Lesson[]) => {
+      console.log('Lesson data from backend:', data);
+      this.lesson = data;
+
+      // Récupérer le contenu de chaque fichier
+      const contentRequests = this.lesson.map((lesson: any) =>
+        this.lessonService.getFileContent(lesson.content)
+      );
+
+      forkJoin(contentRequests).subscribe(
+        (contents: string[]) => {
+          // Update each lesson with its corresponding content
+          if (this.lesson) {
+            this.lesson.forEach((lesson, index) => {
+              // Check if 'contents' is not undefined
+              if (contents && contents[index] !== undefined) {
+                lesson.content = contents[index];
+              }
+            });
+          }
         },
-        error => {
-          console.log(error);
-        });
-        
-        
-  }
+        (error) => {
+          console.error('Error fetching file content:', error);
+        }
+      );
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+}
+
+
+
 
   deleteLesson(idlesson: string | undefined): void {
     if (idlesson) {
@@ -66,4 +131,29 @@ export class AllLessonComponent {
   
   
 }
+getFileExtension(fileName: string): string {
+  return fileName.split('.').pop()?.toLowerCase() || '';
+}
+
+isImage(content: Lesson): boolean {
+  const extension = this.getFileExtension(content.content);
+  return extension === 'jpg' || extension === 'png' || extension === 'gif' || extension === 'webp';
+}
+
+isVideo(content: Lesson): boolean {
+  const extension = this.getFileExtension(content.content);
+  return extension === 'mp4' || extension === 'avi';
+}
+
+isDocument(content: Lesson): boolean {
+  const extension = this.getFileExtension(content.content);
+  return extension === 'pdf' || extension === 'txt' || extension === 'docx';
+}
+
+isSupported(content: Lesson): boolean {
+  const extension = this.getFileExtension(content.content);
+  return this.isImage(content) || this.isVideo(content) || this.isDocument(content);
+}
+
+
 }

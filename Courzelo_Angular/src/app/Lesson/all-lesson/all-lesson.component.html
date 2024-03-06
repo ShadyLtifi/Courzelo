@@ -30,7 +30,25 @@
                 <tbody>
                   <tr *ngFor="let l of lesson">
                     <td class="custom-cell">{{ l.title}}</td>
-                    <td class="custom-cell">{{ l.content}}</td>
+                    <td class="custom-cell">
+                      <ng-container [ngSwitch]="true">
+                        <div *ngSwitchCase="isImage(l)">
+                          <img [src]="l.content" alt="Image" style="max-width: 100%; max-height: 100px;">
+                        </div>
+                        <div *ngSwitchCase="isVideo(l)">
+                          <video width="320" height="240" controls>
+                            <source [src]="l.content" type="video/mp4">
+                            Votre navigateur ne prend pas en charge la balise vidéo.
+                          </video>
+                        </div>
+                        <div *ngSwitchCase="isDocument(l)">
+                          <a [href]="l.content" target="_blank">Lesson</a>
+                        </div>
+                        <div *ngSwitchDefault>
+                          {{ l.content }}
+                        </div>
+                      </ng-container>
+                    </td>
                     <td class="custom-cell">
                       <a routerLink="/updateLesson/{{ l.idlesson }}"><i class="bi bi-pencil-square text-success" style="font-size: 15px;margin-left: 15px;"></i></a>
                       <a (click)="deleteLesson(l.idlesson)"> <i class="bi bi-trash text-danger" style="font-size: 15px;margin-left: 15px;"></i></a>

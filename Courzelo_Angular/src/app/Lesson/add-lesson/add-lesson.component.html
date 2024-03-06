@@ -28,10 +28,34 @@
     <div class="col-sm-11">
     <div class="form-group">
         <label>Content</label>
-        <input type="file" formControlName="content" class="form-control" placeholder="content">
+        <input type="file" (change)="onFileSelected($event)" formControlName="content" class="form-control" placeholder="content">
        
         </div>
     </div>
+
+
+
+    <div *ngIf="fileType === 'image'">
+        <!-- Afficher une image -->
+        <img width="320" height="240" controls [src]="uploadedFileUrl" alt="Uploaded Image">
+      </div>
+      <div *ngIf="fileType === 'video'">
+        <!-- Afficher une vidéo -->
+        <video width="320" height="240" controls>
+          <source [src]="uploadedFileUrl" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div *ngIf="fileType === 'document'">
+        <!-- Ajouter le code pour afficher un document ici -->
+        <p>Document uploaded. Add your display logic here.</p>
+      </div>
+      <div *ngIf="fileType === 'other'">
+        <!-- Ajouter le code pour afficher d'autres types de fichiers ici -->
+        <p>File uploaded. Add your display logic here.</p>
+      </div>
+    
+
 
 
     

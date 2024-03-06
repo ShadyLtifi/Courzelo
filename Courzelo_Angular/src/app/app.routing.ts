@@ -29,6 +29,7 @@ import { DetailLessonComponent } from './Lesson/detail-lesson/detail-lesson.comp
 import { UpdateLessonComponent } from './Lesson/update-lesson/update-lesson.component';
 import { DetailModuleComponent } from './Module/detail-module/detail-module.component';
 import { UpdateModuleComponent } from './Module/update-module/update-module.component';
+import { EnseignantComponent } from './Enseignant/enseignant/enseignant.component';
 
 const routes: Routes = [
     {path:'front', component:FrontComponent},
@@ -59,6 +60,7 @@ const routes: Routes = [
     { path: 'updateLesson/:id', component: UpdateLessonComponent },
     {path: 'module-details/:id', component:DetailModuleComponent},
     { path: 'updateModule/:id', component: UpdateModuleComponent },
+    {path: 'Users/Enseignant', component:EnseignantComponent}
     
 
 
