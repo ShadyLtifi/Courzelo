@@ -96,6 +96,87 @@ retrieveAllLesson(): void {
 }
 
 
+// downloadFile(content: string, fileName: string): void {
+//   // Créer un Blob avec le contenu
+//   const blob = new Blob([content], { type: this.getMimeType(this.getFileExtension(fileName)) });
+
+//   // Créer un objet URL à partir du Blob
+//   const url = window.URL.createObjectURL(blob);
+
+//   // Créer un élément d'ancrage pour déclencher le téléchargement
+//   const link = document.createElement('a');
+//   link.href = url;
+
+//   // Définir l'attribut de téléchargement avec le nom du fichier
+//   link.download = fileName;
+
+//   // Ajouter l'élément d'ancrage au document
+//   document.body.appendChild(link);
+
+//   // Simuler un clic sur l'élément d'ancrage pour déclencher le téléchargement
+//   link.click();
+
+//   // Retirer l'élément d'ancrage du document
+//   document.body.removeChild(link);
+
+//   // Libérer l'URL de l'objet Blob
+//   window.URL.revokeObjectURL(url);
+// }
+downloadFile(content: string, fileName: string): void {
+  // Créer un Blob avec le contenu
+  const blob = new Blob([content], { type: this.getMimeType(this.getFileExtension(fileName)) });
+
+  // Créer un objet URL à partir du Blob
+  const url = window.URL.createObjectURL(blob);
+
+  // Créer un élément d'ancrage pour déclencher le téléchargement
+  const link = document.createElement('a');
+  link.href = url;
+
+  // Définir l'attribut de téléchargement avec le nom du fichier
+  link.download = fileName;
+
+  // Ajouter l'élément d'ancrage au document
+  document.body.appendChild(link);
+
+  // Simuler un clic sur l'élément d'ancrage pour déclencher le téléchargement
+  link.click();
+
+  // Retirer l'élément d'ancrage du document
+  document.body.removeChild(link);
+
+  // Libérer l'URL de l'objet Blob
+  window.URL.revokeObjectURL(url);
+}
+
+
+getMimeType(fileExtension: string | undefined): string {
+  switch (fileExtension) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    case 'gif':
+      return 'image/gif';
+    case 'webp':
+      return 'image/webp';
+    case 'mp4':
+      return 'video/mp4';
+    case 'avi':
+      return 'video/x-msvideo';
+    case 'pdf':
+      return 'application/pdf';
+    case 'txt':
+      return 'text/plain';
+    case 'docx':
+      return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    // Ajoutez d'autres cas au besoin pour d'autres extensions de fichier
+    default:
+      return 'application/octet-stream';
+  }
+}
+
 
 
   deleteLesson(idlesson: string | undefined): void {
@@ -131,6 +212,19 @@ retrieveAllLesson(): void {
   
   
 }
+getFileContent(content: string): void {
+    this.lessonService.getFileContent(content).subscribe(
+      (fileContent: string) => {
+        console.log('File Content:', fileContent);
+        // Faites ce que vous voulez avec le contenu du fichier ici
+      },
+      (error) => {
+        console.error('Error fetching file content:', error);
+      }
+    );
+  }
+
+
 getFileExtension(fileName: string): string {
   return fileName.split('.').pop()?.toLowerCase() || '';
 }

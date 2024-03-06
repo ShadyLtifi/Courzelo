@@ -48,9 +48,14 @@ export class LessonService {
   // getFileContent(content: string): Observable<any> {
   //   return this.http.get<any>(`${this.apiUrl}/getFileContent/${content}`);
   // }
-  getFileContent(content: string): Observable<string> {
+  // getFileContent(content: string): Observable<string> {
+  //   const url = `${this.apiUrl}/content/${content}`;
+  //   return this.http.get<string>(url);
+  // }
+  getFileContent(content: string): Observable<any> {
     const url = `${this.apiUrl}/content/${content}`;
-    return this.http.get(url, { responseType: 'text' });
-  }
+    return this.http.get(url, { responseType: 'arraybuffer' });
+}
+
 
 }

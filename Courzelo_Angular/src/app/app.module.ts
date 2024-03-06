@@ -43,6 +43,7 @@ import { HeadderrComponent } from './headderr/headderr.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnseignantComponent } from './Enseignant/enseignant/enseignant.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddLessonEnseigComponent } from './Enseignant/add-lesson-enseig/add-lesson-enseig.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
      UpdateCourseComponent,
      DetailCommentComponent,
      UpdateCommentComponent,
-     EnseignantComponent
+     EnseignantComponent,
+     AddLessonEnseigComponent
   
 
   ],

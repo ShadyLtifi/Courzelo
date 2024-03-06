@@ -1,10 +1,12 @@
 package tn.esprit.devflow.courzelo.controller;
 
+import groovy.util.logging.Slf4j;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -26,12 +28,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class LessonController {
     private static final Logger logger = LoggerFactory.getLogger(LessonController.class);
-
+    private static final Logger log = LoggerFactory.getLogger(LessonController.class);
+    @Autowired
+    private Environment env;
     @Autowired
     ILessonService lessonService;
     @Autowired
@@ -121,18 +125,32 @@ public class LessonController {
     }
 
 //    @GetMapping("/content/{content}")
-//    public ResponseEntity<byte[]> getFileContent(@PathVariable String content) {
-//        byte[] fileContent = lessonServ.getFileContent(content);
+//    public ResponseEntity<String> getFileContent(@PathVariable String content) {
+//        String fileContent = lessonServ.getFileContent(content);
 //
 //        if (fileContent != null) {
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-//            headers.setContentDispositionFormData("attachment", content);
-//            return new ResponseEntity<>(fileContent, headers, HttpStatus.OK);
+//            return ResponseEntity.ok().body(fileContent);
 //        } else {
 //            return ResponseEntity.notFound().build();
 //        }
 //    }
 
+
+    @GetMapping("/content/{content}")
+    public ResponseEntity<byte[]> getFileContent(@PathVariable String content) {
+        try {
+            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(content);
+            byte[] fileContent = Files.readAllBytes(filePath);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("inline", content);
+
+            return new ResponseEntity<>(fileContent, headers, HttpStatus.OK);
+        } catch (IOException e) {
+            log.error("Error reading file content for {}.", content, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
 }
