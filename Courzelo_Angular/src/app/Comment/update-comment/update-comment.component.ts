@@ -75,6 +75,9 @@ export class UpdateCommentComponent {
       console.error('Form controls are null.');
     }
   }
-
+  isFieldInvalid(field: string) {
+    const control = this.updateForm.get(field);
+    return control && control.touched && control.invalid;
+  }
   
 }

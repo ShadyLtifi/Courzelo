@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Event {
     String title;
     String photo;
     int maxcapacity;
-    Duration duration;
+    String duration;
    LocalDate debutdate;
    Boolean price;
     @Field("category")
@@ -37,5 +38,7 @@ public class Event {
     List<EventRegistration> eventRegs;
     @DBRef
     Speaker speaker;
+
+
 
 }

@@ -52,6 +52,11 @@ export class AddClassComponent {
       console.log('Form is invalid. Cannot add class.');
     }
 }
+
+isFieldInvalid(field: string) {
+  const control = this.classForm.get(field);
+  return control && control.touched && control.invalid;
 }
+} 
 
 

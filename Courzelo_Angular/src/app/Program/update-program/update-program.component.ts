@@ -37,7 +37,10 @@ export class UpdateProgramComponent {
       );
   }});
   }
-  
+  isFieldInvalid(field: string) {
+    const control = this.updateForm.get(field);
+    return control && control.touched && control.invalid;
+  }
 
 
   updateProgram() {

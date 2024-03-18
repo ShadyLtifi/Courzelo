@@ -56,4 +56,8 @@ export class AddModuleComponent {
       console.log('Form is invalid. Cannot add Module.');
     }
   }
+  isFieldInvalid(field: string) {
+    const control = this.moduleForm.get(field);
+    return control && control.touched && control.invalid;
+  }
 }

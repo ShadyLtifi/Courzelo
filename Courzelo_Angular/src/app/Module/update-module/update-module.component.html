@@ -1,6 +1,6 @@
 
 
-<app-back></app-back>
+<app-sidebar></app-sidebar>
 
 <div class="content-wrapper  white-background">
     
@@ -24,36 +24,47 @@
                     <div class="form-group">
                       <label>Title Module</label>
                       <input type="text" formControlName="titleModule" class="form-control" placeholder="titleModule">
+                      <div *ngIf="isFieldInvalid('titleModule')" class="alert alert-danger">titleModule is required.</div>
+
                     </div>
                 </div>
                 <div class="col-sm-11">
                     <div class="form-group">
                       <label>Duration</label>
                       <input type="text" formControlName="nbreHeure" class="form-control" placeholder="nbreHeure">
+                      <div *ngIf="isFieldInvalid('nbreHeure')" class="alert alert-danger">nbreHeure is required.</div>
+
                     </div>
                 </div>
                 <div class="col-sm-11">
                     <div class="form-group">
                       <label>Description</label>
                       <input type="text" formControlName="description" class="form-control" placeholder="description">
+                      <div *ngIf="isFieldInvalid('description')" class="alert alert-danger">Description is required.</div>
+
                     </div>
                 </div>
                 <div class="col-sm-11">
                     <div class="form-group">
                       <label>Progress</label>
                       <input type="text" formControlName="progress" class="form-control" placeholder="progress">
+                      <div *ngIf="isFieldInvalid('progress')" class="alert alert-danger">Progress is required.</div>
+
                     </div>
                 </div>
                  
                
-               
-                <div class="mt-3">
-                    <a (click)="updateModule()" class="btn btn-success mr-5" routerLink="/allModule">
-                        <i class="bi bi-pencil-square " style="font-size: 24px;"></i> 
-                    </a>
-                    <a routerLink="/allModule" class="btn btn-danger"><i class="fas fa-times" style="font-size: 35px;"></i></a>
-                </div>
-           
+              
+                <div class="form-group">
+                  <a (click)="updateModule()" class="btn btn-outline-success" routerLink="/allModule">
+                      <i class="fas fa-check" style="font-size: 15px;"></i> 
+                  </a>
+                 
+                  <a class="btn btn-outline-danger"routerLink="/allModule">
+                    <i class="fas fa-times" style="font-size: 15px;"></i>
+                  </a>
+              </div>
+
                   </form>
          
                 </div>       

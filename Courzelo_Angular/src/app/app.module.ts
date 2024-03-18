@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import routes from './app.routing';
 import { BackComponent } from './back/back.component';
 import { FrontComponent } from './front/front.component';
-
-import { FooterComponent } from './footer/footer.component';
+import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
+import { FooterrComponent } from './footerr/footerr.component';
+import { HeaderrComponent } from './headerr/headerr.component';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AddclaimComponent } from './Claim/addclaim/addclaim.component';
+import { AllclaimsComponent } from './Claim/allclaims/allclaims.component';
+import { ShowclaimComponent } from './Claim/showclaim/showclaim.component';
+import { UpdateclaimComponent } from './Claim/updateclaim/updateclaim.component';
 import { AddClassComponent } from './Class/add-class/add-class.component';
 import { AllClassComponent } from './Class/all-class/all-class.component';
 import { DetailClassComponent } from './Class/detail-class/detail-class.component';
@@ -23,6 +25,10 @@ import { AddCourseComponent } from './Course/add-course/add-course.component';
 import { AllCourseComponent } from './Course/all-course/all-course.component';
 import { DetailCourseComponent } from './Course/detail-course/detail-course.component';
 import { UpdateCourseComponent } from './Course/update-course/update-course.component';
+import { AddEventComponent } from './Event/addevent/addevent.component';
+import { AlleventsComponent } from './Event/allevents/allevents.component';
+import { ShoweventComponent } from './Event/showevent/showevent.component';
+import { UpdateeventComponent } from './Event/updateevent/updateevent.component';
 import { AddLessonComponent } from './Lesson/add-lesson/add-lesson.component';
 import { AllLessonComponent } from './Lesson/all-lesson/all-lesson.component';
 import { DetailLessonComponent } from './Lesson/detail-lesson/detail-lesson.component';
@@ -39,67 +45,108 @@ import { AddPublicationComponent } from './Publication/add-publication/add-publi
 import { DetailPublicationComponent } from './Publication/detail-publication/detail-publication.component';
 import { PublicationComponent } from './Publication/publication/publication.component';
 import { UpdatePublicationComponent } from './Publication/update-publication/update-publication.component';
-import { HeadderrComponent } from './headderr/headderr.component';
+import { AddquestionComponent } from './Question/addquestion/addquestion.component';
+import { AllquestionsComponent } from './Question/allquestions/allquestions.component';
+import { ShowquestionComponent } from './Question/showquestion/showquestion.component';
+import { UpdatequestionComponent } from './Question/updatequestion/updatequestion.component';
+import { AddquizComponent } from './Quiz/addquiz/addquiz.component';
+import { AllquizzesComponent } from './Quiz/allquizzes/allquizzes.component';
+import { ShowquizComponent } from './Quiz/showquiz/showquiz.component';
+import { UpdatequizComponent } from './Quiz/updatequiz/updatequiz.component';
+import { AddspeakerComponent } from './Speaker/addspeaker/addspeaker.component';
+import { AllspeakersComponent } from './Speaker/allspeakers/allspeakers.component';
+import { ShowspeakerComponent } from './Speaker/showspeaker/showspeaker.component';
+import { UpdatespeakerComponent } from './Speaker/updatespeaker/updatespeaker.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EnseignantComponent } from './Enseignant/enseignant/enseignant.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AddLessonEnseigComponent } from './Enseignant/add-lesson-enseig/add-lesson-enseig.component';
-
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { CourseManagementComponent } from './course-management/course-management.component';
+import { EventManagementComponent } from './event-management/event-management.component';
+import { EvaluationManagementComponent } from './evaluation-management/evaluation-management.component';
+import { ForumManagementComponent } from './forum-management/forum-management.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BackComponent,
     FrontComponent,
- 
-    FooterComponent,
+    TeacherDashboardComponent,
+    FooterrComponent,
+    HeaderrComponent,
     LoginComponent,
-    HeadderrComponent,
+    
+  AllClassComponent,
+  AddClassComponent,
+  AddCommentComponent,
+  AllCommentComponent,
 
   AllClassComponent,
-   AddClassComponent,
-   AddCommentComponent,
-   AllCommentComponent,
+    AllCourseComponent,
+    AddCourseComponent,
 
-   AllClassComponent,
-     AllCourseComponent,
-     AddCourseComponent,
-
-     AllLessonComponent,
-     AddLessonComponent,
-     AddModuleComponent,
-     AllModuleComponent,
-     PublicationComponent,
-     AddPublicationComponent,
-     AddProgramComponent,
-     AllProgramComponent,
-     UpdateClassComponent,
-     
-     DetailClassComponent,
-     UpdateProgramComponent,
-     DetailProgramComponent,
-     DetailPublicationComponent,
-     UpdatePublicationComponent,
-     DetailModuleComponent,
-     UpdateModuleComponent,
-     UpdateLessonComponent,
-     DetailLessonComponent,
-     DetailCourseComponent,
-     UpdateCourseComponent,
-     DetailCommentComponent,
-     UpdateCommentComponent,
-     EnseignantComponent,
-     AddLessonEnseigComponent
+    AllLessonComponent,
+    AddLessonComponent,
+    AddModuleComponent,
+    AllModuleComponent,
+    PublicationComponent,
+    AddPublicationComponent,
+    AddProgramComponent,
+    AllProgramComponent,
+    UpdateClassComponent,
+    
+    DetailClassComponent,
+    UpdateProgramComponent,
+    DetailProgramComponent,
+    DetailPublicationComponent,
+    UpdatePublicationComponent,
+    DetailModuleComponent,
+    UpdateModuleComponent,
+    UpdateLessonComponent,
+    DetailLessonComponent,
+    DetailCourseComponent,
+    UpdateCourseComponent,
+    DetailCommentComponent,
+    UpdateCommentComponent,
+    
+    AddEventComponent, 
+    AlleventsComponent ,
+    ShoweventComponent,
+    AddspeakerComponent,
+    AllspeakersComponent,
+    AddquizComponent,
+    AddquestionComponent,
+    AllquestionsComponent,
+    AllquizzesComponent,
+    ShowspeakerComponent,
+    ShowquizComponent,
+    NotfoundComponent,
+    ShowquestionComponent,
+    UpdatespeakerComponent,
+    UpdatequizComponent,
+    UpdatequestionComponent,
+    UpdateeventComponent,
+    AddclaimComponent,
+    ShowclaimComponent,
+    AllclaimsComponent,
+    UpdateclaimComponent,
+    SidebarComponent,
+    UserManagementComponent,
+    CourseManagementComponent,
+    EventManagementComponent,
+    EvaluationManagementComponent,
+    ForumManagementComponent
+   
   
-
   ],
   imports: [
-    BrowserModule,[RouterModule.forRoot(routes),],
+    BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatSnackBarModule,
-    
+    ReactiveFormsModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

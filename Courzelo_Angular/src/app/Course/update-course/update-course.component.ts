@@ -40,7 +40,10 @@ export class UpdateCourseComponent {
       );
   }});
   }
-  
+  isFieldInvalid(field: string) {
+    const control = this.updateForm.get(field);
+    return control && control.touched && control.invalid;
+  }
 
 
   updateCourse() {

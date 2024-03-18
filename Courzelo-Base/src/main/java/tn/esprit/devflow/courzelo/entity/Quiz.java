@@ -1,5 +1,7 @@
 package tn.esprit.devflow.courzelo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -15,13 +17,16 @@ import java.util.List;
 @Document
 @FieldDefaults(level= AccessLevel.PRIVATE)
 
+
 public class Quiz {
     @Id
     String idquiz;
     @Size(max = 55)
     String description;
-    Duration duration;
-    double maxScore ;
+    int  duration;
+    int maxScore ;
+
+
     @DBRef
     List<Question> questions ;
 

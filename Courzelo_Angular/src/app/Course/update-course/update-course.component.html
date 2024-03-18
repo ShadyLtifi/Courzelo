@@ -1,4 +1,4 @@
-<app-back></app-back>
+<app-sidebar></app-sidebar>
 
 <div class="content-wrapper white-background">
     <br>
@@ -17,11 +17,15 @@
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" formControlName="title" class="form-control" placeholder="title">
+                            <div *ngIf="isFieldInvalid('title')" class="alert alert-danger">title  is required.</div>
+
                         </div>
 
                         <div class="form-group">
                             <label>Content:</label>
                             <input type="file" formControlName="content" class="form-control" placeholder="content">
+                            <div *ngIf="isFieldInvalid('content')" class="alert alert-danger">content  is required.</div>
+
                         </div>
 
                         <div class="form-group">
@@ -29,13 +33,16 @@
                             <input type="date" formControlName="datecourse" class="form-control" placeholder="datecourse">
                         </div>
 
-                        <div class="mt-3">
-                            <a (click)="updateCourse()" class="btn btn-success mr-5" routerLink="/allCourse">
-                                <i class="bi bi-pencil-square " style="font-size: 24px;"></i>
+                        <div class="form-group">
+                            <a (click)="updateCourse()" class="btn btn-outline-success" routerLink="/allCourse">
+                                <i class="fas fa-check" style="font-size: 15px;"></i> 
                             </a>
-                            <a routerLink="/allCourse" class="btn btn-danger"><i class="fas fa-times"
-                                    style="font-size: 35px;"></i></a>
+                           
+                            <a class="btn btn-outline-danger"routerLink="/allCourse">
+                              <i class="fas fa-times" style="font-size: 15px;"></i>
+                            </a>
                         </div>
+          
                     </form>
                 </div>
             </div>

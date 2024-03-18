@@ -23,7 +23,10 @@ export class AddCommentComponent {
   }
   ngOnInit(): void {}
 
- 
+  isFieldInvalid(field: string) {
+    const control = this.commentForm.get(field);
+    return control && control.touched && control.invalid;
+  }
   onSubmit() {
     if (this.commentForm.valid) {
       const newComment: Comment = {

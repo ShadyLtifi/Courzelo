@@ -1,4 +1,4 @@
-<app-back></app-back>
+<app-sidebar></app-sidebar>
 
 <div class="content-wrapper  white-background">
     
@@ -22,12 +22,14 @@
                     <div class="form-group">
                       <label>Capacity</label>
                       <input type="text" formControlName="capacity" class="form-control" placeholder="capacity">
+                      <div *ngIf="isFieldInvalid('capacity')" class="alert alert-danger">Capacity is required.</div>
                     </div>
                 </div>
                 <div class="col-sm-11">
                     <div class="form-group">
                       <label>Progress</label>
                       <input type="text" formControlName="progress" class="form-control" placeholder="progress">
+                      <div *ngIf="isFieldInvalid('progress')" class="alert alert-danger">Progress is required.</div>
                     </div>
                 </div>
                  
@@ -39,13 +41,18 @@
                         <option value="" disabled selected>Choisissez une option</option>
                         <option *ngFor="let level of level" [value]="level">{{ level }}</option>
                       </select>
+                      <div *ngIf="isFieldInvalid('level')" class="alert alert-danger">Level is required.</div>
                     </div>
                 </div>
-                <div class="mt-3">
-                    <a (click)="onSubmit()" class="btn btn-success" routerLink="/classe">
-                        <i class="bi bi-patch-plus-fill" style="font-size: 24px;"></i> Add
-                    </a>
-                </div>
+                <div class="form-group">
+                  <a (click)="onSubmit()" class="btn btn-outline-success" routerLink="/classe">
+                      <i class="fas fa-check" style="font-size: 15px;"></i> 
+                  </a>
+                 
+                  <a class="btn btn-outline-danger"routerLink="/classe">
+                    <i class="fas fa-times" style="font-size: 15px;"></i>
+                  </a>
+              </div>
                   </form>
          
                 </div>       

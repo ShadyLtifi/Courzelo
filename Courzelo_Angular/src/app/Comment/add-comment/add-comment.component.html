@@ -1,4 +1,4 @@
-<app-back></app-back>
+<app-sidebar></app-sidebar>
 
 <div class="content-wrapper  white-background">
 
@@ -21,6 +21,7 @@
     <div class="form-group">
         <label>Message</label>
         <input type="text" formControlName="message" class="form-control" placeholder="message">
+        <div *ngIf="isFieldInvalid('message')" class="alert alert-danger">Please entre your comment.</div>
     </div>
     </div>
    
@@ -31,11 +32,18 @@
   <input type="date" id="datecomment" class="form-control" formControlName="datecomment">
     </div>
     </div>
-   <div class="mt-3">
-    <a (click)="onSubmit()" class="btn btn-success" routerLink="/allComment">
-        <i class="bi bi-patch-plus-fill" style="font-size: 24px;"></i> Add
-    </a>
-                        </div>
+
+    <div class="form-group">
+        <a (click)="onSubmit()" class="btn btn-outline-success" routerLink="/allComment">
+            <i class="fas fa-check" style="font-size: 15px;"></i> 
+        </a>
+       
+        <a class="btn btn-outline-danger"routerLink="/allComment">
+          <i class="fas fa-times" style="font-size: 15px;"></i>
+        </a>
+    </div>
+
     
+
 </form>
  

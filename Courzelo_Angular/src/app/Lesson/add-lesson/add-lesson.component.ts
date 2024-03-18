@@ -92,6 +92,9 @@ onFileSelected(event: any) {
     }
   }
 
-
+  isFieldInvalid(field: string) {
+    const control = this.lessonForm.get(field);
+    return control && control.touched && control.invalid;
+  }
   
 }

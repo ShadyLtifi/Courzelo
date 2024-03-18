@@ -13,7 +13,10 @@ export class AddCourseComponent {
   courseForm: FormGroup <any>;
   course: any = { title:'' ,content: "", datecourse: "" }; 
   
- 
+  isFieldInvalid(field: string) {
+    const control = this.courseForm.get(field);
+    return control && control.touched && control.invalid;
+  }
   constructor(private fb:FormBuilder, private courseService:CourseService, private route: ActivatedRoute, private router:Router){
     this.courseForm = this.fb.group({
       title: ['', Validators.required],

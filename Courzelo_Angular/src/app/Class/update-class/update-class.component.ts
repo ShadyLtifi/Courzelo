@@ -108,6 +108,11 @@ export class UpdateClassComponent {
   
   
 }
+
+isFieldInvalid(field: string) {
+  const control = this.updateForm.get(field);
+  return control && control.touched && control.invalid;
+}
   }
   
 

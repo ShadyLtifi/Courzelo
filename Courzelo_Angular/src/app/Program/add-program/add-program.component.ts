@@ -52,4 +52,8 @@ export class AddProgramComponent {
       console.log('Form is invalid. Cannot add Module.');
     }
   }
+  isFieldInvalid(field: string) {
+    const control = this.progForm.get(field);
+    return control && control.touched && control.invalid;
+  }
 }

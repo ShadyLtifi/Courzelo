@@ -1,4 +1,4 @@
-<app-back></app-back>
+<app-sidebar></app-sidebar>
 
 <div class="content-wrapper  white-background">
     
@@ -22,6 +22,8 @@
       <div class="form-group">
         <label for="nomProg" class="form-label">Program Name</label>
         <input type="text" id="nomProg"   class="form-control" formControlName="nomProg" required>
+        <div *ngIf="isFieldInvalid('nomProg')" class="alert alert-danger">Program Name  is required.</div>
+
       </div>
       </div>
       <div class="col-sm-11">
@@ -31,19 +33,27 @@
          <option value="" disabled selected>Choisissez une option</option>
          <option *ngFor="let speciality of speciality" [value]="speciality">{{ speciality }}</option>
      </select>
-     </div>
+     <div *ngIf="isFieldInvalid('speciality')" class="alert alert-danger">Speciality is required.</div>
+ 
+    </div>
       </div>
       <div class="col-sm-11">
       <div class="form-group">
         <label for="description" class="form-label">Description</label>
         <input type="text" id="description" class="form-control" formControlName="description" required>
+        <div *ngIf="isFieldInvalid('description')" class="alert alert-danger">Description is required.</div>
+
       </div>
       </div>
-      <div class="mt-3">
-        <a (click)="updateProgram()"  routerLink="/allProgram">
-          <i class="bi bi-pencil-square text-success mr-5" style="font-size: 24px;"></i> 
+      <div class="form-group">
+        <a (click)="updateProgram()" class="btn btn-outline-success" routerLink="/allProgram">
+            <i class="fas fa-check" style="font-size: 15px;"></i> 
         </a>
-        <a routerLink="/allProgram" ><i class="fas fa-times text-danger" style="font-size: 35px;"></i></a>
+       
+        <a class="btn btn-outline-danger"routerLink="/allProgram">
+          <i class="fas fa-times" style="font-size: 15px;"></i>
+        </a>
     </div>
+
     </form>
   </div>
