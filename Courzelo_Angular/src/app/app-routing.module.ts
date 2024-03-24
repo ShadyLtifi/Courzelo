@@ -53,6 +53,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
 import { EvaluationManagementComponent } from './evaluation-management/evaluation-management.component';
 import { EventManagementComponent } from './event-management/event-management.component';
+import { ForumManagementComponent } from './forum-management/forum-management.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {path:"back",component:BackComponent},
@@ -108,7 +110,9 @@ const routes: Routes = [
   { path: 'courses', component:CourseManagementComponent},
   { path: 'evaluations', component:EvaluationManagementComponent},
   { path: 'events', component:EventManagementComponent},
-
+  { path: 'forums', component:ForumManagementComponent},
+  { path: 'tt', component:TestComponent},
+  { path: 'content/:fileName', component: TestComponent },
   { path: 'dashboars', component:SidebarComponent},
   
 

@@ -66,6 +66,7 @@ import { CourseManagementComponent } from './course-management/course-management
 import { EventManagementComponent } from './event-management/event-management.component';
 import { EvaluationManagementComponent } from './evaluation-management/evaluation-management.component';
 import { ForumManagementComponent } from './forum-management/forum-management.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,9 @@ import { ForumManagementComponent } from './forum-management/forum-management.co
     CourseManagementComponent,
     EventManagementComponent,
     EvaluationManagementComponent,
-    ForumManagementComponent
+    ForumManagementComponent,
+    TestComponent,
+    
    
   
   ],

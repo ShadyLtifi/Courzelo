@@ -3,6 +3,7 @@ package tn.esprit.devflow.courzelo.services;
 
 
 
+import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -90,27 +91,16 @@ lessonRepository.deleteById(idlesson);
         }
     }
 
-//    public String getFileContent(String content) {
-//        try {
-//            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(content);
-//            return new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8);
-//        } catch (IOException e) {
-//            log.error("Error reading file content for {}.", content, e);
-//            return null;
-//        }
-//    }
+    public String getFileContent(String content) {
+        try {
+            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(content);
+            return new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            log.error("Error reading file content for {}.", content, e);
+            return null;
+        }
+    }
 
-
-
-//    public byte[] getFileContent(String content) {
-//        try {
-//            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(content);
-//            return Files.readAllBytes(filePath);
-//        } catch (IOException e) {
-//            log.error("Error reading file content for {}.", content, e);
-//            return null;
-//        }
-//    }
 
     public List<String> getFiles() throws IOException {
 
@@ -136,20 +126,6 @@ lessonRepository.deleteById(idlesson);
 
 
 
-    public ResponseEntity<byte[]> getFileContent(String content) {
-        try {
-            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(content);
-            byte[] fileContent = Files.readAllBytes(filePath);
-
-            return ResponseEntity.ok()
-                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + content + "\"")
-                    .body(fileContent);
-        } catch (IOException e) {
-            log.error("Error reading file content for {}.", content, e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
 }
 

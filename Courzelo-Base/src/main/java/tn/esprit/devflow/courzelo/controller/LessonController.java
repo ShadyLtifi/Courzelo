@@ -2,9 +2,12 @@ package tn.esprit.devflow.courzelo.controller;
 
 import groovy.util.logging.Slf4j;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.InputStreamResource;
@@ -16,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import tn.esprit.devflow.courzelo.entity.Lesson;
 import tn.esprit.devflow.courzelo.services.ILessonService;
 import tn.esprit.devflow.courzelo.services.LessonService;
@@ -80,11 +84,11 @@ public class LessonController {
         return lessonService.retrieveLesson(idlesson);
     }
 
+
     @PostMapping(value = "/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Lesson> uploadFile(@RequestParam("file") MultipartFile file,
                                              @RequestParam("title") String title) {
         Lesson uploadedLesson = lessonServ.uploadFile(file, title);
-
         if (uploadedLesson != null) {
             return ResponseEntity.ok(uploadedLesson);
         } else {
@@ -97,11 +101,6 @@ public class LessonController {
     public List<String> getFiles() throws IOException {
         return lessonServ.getFiles();
     }
-    // Displays the list of uploaded files.
-//    @GetMapping("/getFilesWithInfo")
-//    public List<Lesson> getFilesWithInfo() throws IOException {
-//        return lessonServ.getFilesWithInfo();
-//    }
 
 
     @GetMapping("/downloadFile/{content}")
@@ -123,19 +122,6 @@ public class LessonController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; content=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
-
-//    @GetMapping("/content/{content}")
-//    public ResponseEntity<String> getFileContent(@PathVariable String content) {
-//        String fileContent = lessonServ.getFileContent(content);
-//
-//        if (fileContent != null) {
-//            return ResponseEntity.ok().body(fileContent);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-
-
     @GetMapping("/content/{content}")
     public ResponseEntity<byte[]> getFileContent(@PathVariable String content) {
         try {
@@ -143,13 +129,39 @@ public class LessonController {
             byte[] fileContent = Files.readAllBytes(filePath);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("inline", content);
+            // Déterminez le type MIME du fichier
+            String mimeType = Files.probeContentType(filePath);
+            // Si le type MIME ne peut pas être déterminé, utilisez un type MIME par défaut
+            if (mimeType == null) {
+                mimeType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+            }
+            headers.setContentType(MediaType.parseMediaType(mimeType));
 
-            return new ResponseEntity<>(fileContent, headers, HttpStatus.OK);
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(fileContent);
         } catch (IOException e) {
             log.error("Error reading file content for {}.", content, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+
+
+    // Méthode pour déterminer le type MIME en fonction de l'extension du fichier
+    private String determineMimeType(String fileName) {
+        if (fileName.endsWith(".png")) {
+            return "image/png";
+        } else if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+            return "image/jpeg";
+        } else if (fileName.endsWith(".mp4")) {
+            return "video/mp4";
+        } else if (fileName.endsWith(".pdf")) {
+            return "application/pdf";
+        } else {
+            // Si le type de fichier n'est pas reconnu, retournez un type MIME générique
+            return "application/octet-stream";
         }
     }
 
