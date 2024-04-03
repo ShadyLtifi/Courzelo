@@ -12,14 +12,7 @@ export class BackComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getAll().subscribe(
-      data => {
-        this.users = data; 
-      },
-      error => {
-        console.error('Error fetching users:', error);
-      }
-    );
+    
   }
 }
 

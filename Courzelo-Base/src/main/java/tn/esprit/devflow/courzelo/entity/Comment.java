@@ -1,6 +1,5 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;

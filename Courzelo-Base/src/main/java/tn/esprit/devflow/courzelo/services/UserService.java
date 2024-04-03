@@ -1,88 +1,122 @@
 package tn.esprit.devflow.courzelo.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import tn.esprit.devflow.courzelo.entity.TypeRole;
+import org.webjars.NotFoundException;
 import tn.esprit.devflow.courzelo.entity.User;
-import tn.esprit.devflow.courzelo.entity.UserDTO;
-import tn.esprit.devflow.courzelo.entity.UserMapper;
 import tn.esprit.devflow.courzelo.repository.UserRepository;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.LocalDate;
+import java.util.*;
+
 
 @Service
-public class UserService implements IUserService, UserDetailsService {
+public class UserService implements IUserService {
+    private final UserRepository userRepo;
+    private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserMapper userMapper;
-
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("Utilisateur non trouvé avec le nom d'utilisateur: " + username);
-        }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                getAuthorities(user.getRole()));
-    }
-
-    private Collection<? extends GrantedAuthority> getAuthorities(TypeRole role) {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.name()));
-
+    public UserService(UserRepository userRepo) {
+        this.userRepo = userRepo;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
 
-    @Override
-    public UserDTO createUser(UserDTO userDTO) {
-        User user = userMapper.toEntity(userDTO);
-        userRepository.save(user);
-        return userMapper.toDTO(user);
-    }
+    public User findByEmail(String email) {
+        if(this.userRepo.findByEmail(email) != null){
 
-    @Override
-    public UserDTO getUserByEmail(String email) {
-        User user = userRepository.findByEmail(email);
-        return userMapper.toDTO(user);
-    }
-
-    @Override
-    public List<UserDTO> getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
-    }
-
-    @Override
-    public void updateUser(String email, UserDTO userDTO) {
-        User existingUser = userRepository.findByEmail(email);
-        if (existingUser != null) {
-            User updatedUser = userMapper.toEntity(userDTO);
-            updatedUser.setIduser(existingUser.getIduser());
-            userRepository.save(updatedUser);
+            return this.userRepo.findByEmail(email);
+        }else{
+            User user = new User();
+            user.setId(String.valueOf(0L));
+            return user ;
         }
     }
 
+    @JsonIgnore
     @Override
-    public void deleteUser(String email) {
-        User existingUser = userRepository.findByEmail(email);
-        if (existingUser != null) {
-            userRepository.delete(existingUser);
+    public User updateUser(User user) {
+        System.out.println("test");
+        if (userRepo.existsById(user.getId())) {
+            System.out.println("test");
+            User existing = userRepo.findUserById(user.getId());
+            user.setPassword(existing.getPassword());
+            user.setEmail(existing.getEmail());
+            user.setRole(existing.getRole());
+            user.setUpdatedAt(new Date());
+
+            System.out.println(user.toString());
+            System.out.println("USER is = "+user);
+            return userRepo.save(user);
+        } else {
+            System.out.println("exeption");
+            throw new RuntimeException("User not found with id: " + user.getId());
         }
     }
+
+
+
+
     @Override
-    public UserDTO FindByUsername(String username){
-        User user = userRepository.findByUsername(username);
-        return userMapper.toDTO(user);
+    public void saveVerificationToken(String id, String verfi) {
+        User u = userRepo.findUserById( id);
+        u.setVerificationToken(verfi);
+        userRepo.save(u);
+    }
+
+    @Override
+    public User findByVerificationToken(String verificationToken) {
+        return userRepo.findByVerificationToken(verificationToken);
+    }
+
+
+
+
+
+    @Override
+    public User enableOrDisable(String email) {
+        User u = userRepo.findByEmail(email);
+        if (u != null) {
+            boolean isEnabled = u.getEnabled();
+            u.setEnabled(!isEnabled);
+            userRepo.save(u);
+            return u;
+        } else {
+            throw new NotFoundException("User not found with email: " + email);
+        }
+    }
+
+    @Override
+    public void changePassword(String email, String oldPassword, String newPassword) {
+        if(userRepo.existsByEmail(email)) {
+            User user = userRepo.findByEmail(email);
+            if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+                user.setPassword(passwordEncoder.encode(newPassword));
+                userRepo.save(user);
+            } else {
+                throw new BadCredentialsException("Incorrect old password");
+            }
+        }
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?") // Run every day at midnight
+    @Override
+    public void disableInactiveAccounts() {
+        List<User> inactiveUsers = userRepo.findByLastLoginBefore(LocalDate.now().minusDays(90));
+        for (User user : inactiveUsers) {
+            user.setEnabled(false);
+            userRepo.save(user);
+        }
+    }
+
+    @Override
+    public User findbyUsername(String username) {
+        return userRepo.findUserByUsername(username);
     }
 
 

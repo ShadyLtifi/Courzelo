@@ -1,7 +1,8 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class ClaimMapper {

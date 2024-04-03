@@ -1,46 +1,79 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit">
-  <div class="form-group">
-      <label>nom</label>
-      <input type="text" formControlName="nom" class="form-control" placeholder="nom">
-      nom: {{ userForm.get('nom') }}
-  </div>
-  <div class="form-group">
-      <label>prenom</label>
-      <input type="text" formControlName="prenom" class="form-control" placeholder="prenom">
-      prenom: {{ userForm.get('prenom') }}
-  </div>
-  <div class="form-group">
-      <label>CIN</label>
-      <input type="number" formControlName="CIN" class="form-control" placeholder="CIN">
-CIN: {{ userForm.get('CIN') }}    
-</div>
-  <div class="form-group">
-      <label>DateN</label>
-      <input type="Date" formControlName="DateN" class="form-control" placeholder="DateN">
-DateN: {{ userForm.get('DateN') }}
-  </div>
-  <div class="form-group">
-      <label>email</label>
-      <input type="text" formControlName="email" class="form-control" placeholder="email">
-email: {{ userForm.get('email') }}
-  </div>
-  <div class="form-group">
-      <label>password</label>
-      <input type="text" formControlName="password" class="form-control" placeholder="password">
-password: {{ userForm.get('password') }}
-  </div>
-  <div class="form-group">
-      <label>username</label>
-      <input type="text" formControlName="username" class="form-control" placeholder="username">
-username: {{ userForm.get('username') }}
-  </div>
+<app-headderr></app-headderr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="vh-100 bg-image" style="background-image: url('assets/img/cover4.jpg');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100 transparent-scrollbar" style="overflow-y: auto;">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.3);">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-  <div class="mb-4">
-                 <label for="vulnerabilite" class="form-label">Role</label>
-                 <select id="vulnerabilite" name="vulnerabilite" class="form-control" formControlName="Role" required>
-                  <option value="" disabled selected>Choisissez un role</option>
-                  <option *ngFor="let Role of Role" [value]="Role">{{ Role }}</option>
-              </select>
+              <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-outline mb-4" >
+                  <input type="text" id="nom" class="form-control form-control-lg" formControlName="nom">
+                  <label class="form-label" for="nom">Your Name</label>
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <input type="text" id="prenom" class="form-control form-control-lg" formControlName="prenom">
+                  <label class="form-label" for="prenom">Your Lastname</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="CIN" class="form-control form-control-lg" formControlName="CIN">
+                  <label class="form-label" for="CIN">Your CIN</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="date" id="DateN" class="form-control form-control-lg" formControlName="DateN">
+                  <label class="form-label" for="DateN">Your Birthday</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="username" class="form-control form-control-lg" formControlName="username">
+                  <label class="form-label" for="username">Your Username</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" class="form-control form-control-lg" formControlName="email">
+                  <label class="form-label" for="email">Your Email</label>
+                </div>
+
+                <div class="mb-4">
+                  <select id="Role" name="Role" class="form-control" formControlName="Role" required>
+                   <option value="" disabled selected>Choose a role</option>
+                   <option *ngFor="let role of Role" [value]="role">{{ role }}</option>
+                 </select>
+                 <label class="form-label" for="Role">Your Role</label>
+               </div>
+
+               <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control form-control-lg" formControlName="password">
+                <label class="form-label" for="password">Password</label>
               </div>
-  <button type="button"  class="btn btn-outline-success" (click)="onSubmit" >Add</button> 
-</form>
+
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-success">Add</button>
+              </div>
+
+              <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#" class="fw-bold text-body"><u>Login here</u></a></p>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+

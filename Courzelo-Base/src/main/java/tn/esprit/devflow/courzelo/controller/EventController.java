@@ -1,6 +1,5 @@
 package tn.esprit.devflow.courzelo.controller;
 
-import groovy.transform.AutoClone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

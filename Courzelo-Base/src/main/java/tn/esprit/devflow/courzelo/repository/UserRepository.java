@@ -1,13 +1,18 @@
 package tn.esprit.devflow.courzelo.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
 import tn.esprit.devflow.courzelo.entity.User;
 
-@Repository
-public interface UserRepository extends MongoRepository<User, String> {
+import java.time.LocalDate;
+import java.util.List;
 
-    User findByIduser(String iduser);
+public interface UserRepository extends MongoRepository<User,String> {
+
+    User findUserById(String id);
+    User findUserByUsername(String username);
     User findByEmail(String email);
-    User findByUsername(String username);
+    boolean existsByEmail(String email);
+    User findByVerificationToken(String verificationToken);
+    List<User> findByLastLoginBefore(LocalDate date);
+
 }

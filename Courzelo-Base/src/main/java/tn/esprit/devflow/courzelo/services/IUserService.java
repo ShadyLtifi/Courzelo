@@ -1,14 +1,17 @@
 package tn.esprit.devflow.courzelo.services;
 
-import tn.esprit.devflow.courzelo.entity.UserDTO;
+
+import tn.esprit.devflow.courzelo.entity.User;
 
 import java.util.List;
 
 public interface IUserService {
-    UserDTO createUser(UserDTO userDTO);
-    UserDTO getUserByEmail(String email);
-    List<UserDTO> getAllUsers();
-    void updateUser(String email, UserDTO userDTO);
-    void deleteUser(String email);
-    UserDTO FindByUsername(String username);
+     User findByEmail(String email);
+     User updateUser (User user);
+     void changePassword(String email, String newPassword, String oldPssword);
+     User enableOrDisable(String id);
+     void saveVerificationToken(String id,String verfi);
+     User findByVerificationToken(String verificationToken);
+     void disableInactiveAccounts();
+     User findbyUsername(String username);
 }

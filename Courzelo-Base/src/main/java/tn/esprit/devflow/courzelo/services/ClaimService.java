@@ -64,7 +64,7 @@ public class ClaimService implements IClaimService{
 
     @Override
     public void assignClaim(String idClaim, String userId) {
-        User user = userRepository.findByIduser(userId);
+        User user = userRepository.findUserById(userId);
         Claim claim = claimRepository.findClaimByIdclaim(idClaim);
         if (user != null && claim != null) {
             claim.setUser(user);

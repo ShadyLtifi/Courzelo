@@ -1,55 +1,73 @@
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Claim.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Category.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Status.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\ClaimMapper.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Lesson.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IUserService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Quiz.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IClaimService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\config\JwtAuthenticationFilter.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IEventService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\CommentService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IClassService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\UserMapper.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\ClassRepository.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\CourseService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ICourseService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Comment.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\CommentRepository.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Program.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\UserRepository.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\CourzeloApplication.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\config\SecurityConfig.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Level.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\config\LocalDevConfig.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\UserDTO.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\UserService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\ClaimRepository.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Question.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\User.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Class.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\ClassController.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\TypeClaim.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\ClaimDTO.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Certification.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Speciality.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\CourseRepository.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\CommentController.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\EventController.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Course.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\EventRepository.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ICommentService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Event.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ClaimService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ClassService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\EventService.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\UserController.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\config\MongoConfig.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\UserCredentials.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Module.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\TypeRole.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Publication.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\CourseController.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\EventRegistration.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Speaker.java
-C:\Users\PC\Downloads\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\config\ControllerConfig.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\ClassController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ICourseService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Lesson.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Certification.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\CustumUserDetailService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\CommentService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\PasswordDoesNotMatchTheOld.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\JwtToPrincipalConverter.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\CourseController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\model\LoginRequest.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\EventRepository.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\TypeRole.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Status.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\UserNotEnabled.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Category.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\UserPrincipalAuthenticationToken.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Roles.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\UserNotFoundException.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\JwtTokenUtil.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\CommentRepository.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\JwtIssuer.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IUserService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IClassService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\JwtAuthenticationFilter.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\JwtProperties.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Quiz.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\UserRepository.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\model\LoginResponce.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\ClassRepository.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\CourseService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\CourzeloApplication.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Speaker.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IClaimService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Event.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\ErrorObject.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\InvalidCredentials.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Level.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ClaimService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ClassService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\UserRestController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\TypeClaim.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\CommentController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\EventRegistration.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\UserExistsException.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\ClaimRepository.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\EventService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\CourseRepository.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Program.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Comment.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\WebSecurityConfig.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\AuthController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Question.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Claim.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\AuthService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\CorsConfig.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ICommentService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Class.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Speciality.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\ClaimController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\UserService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\errors\GlobalExceptionHandler.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\ClaimDTO.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\UserPrincipal.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\ClaimMapper.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\User.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\model\ChangePasswordRequest.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IEventService.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\security\JwtDecoder.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Module.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Publication.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\model\RegisterDto.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\EventController.java
+C:\Users\PC\Desktop\Nouveau dossier (2)\Courzelo-main\Courzelo-main\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Course.java

@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContenuComponent } from './contenu/contenu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './User/add-user/add-user.component';
-import { RetrievealluserComponent } from './User/retrievealluser/retrievealluser.component';
+import { UserService } from './Service/user.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +22,7 @@ import { RetrievealluserComponent } from './User/retrievealluser/retrievealluser
     LoginComponent,
     HeadderrComponent,
     ContenuComponent,
-    AddUserComponent,
-    RetrievealluserComponent
-  ],
+    AddUserComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,7 +30,7 @@ import { RetrievealluserComponent } from './User/retrievealluser/retrievealluser
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

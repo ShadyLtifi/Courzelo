@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Service/user.service';
+import { RegisterDto } from 'src/app/models/Registerdto/registerDto';
 import { TypeRole, User } from 'src/app/models/User/user';
 
 
@@ -12,53 +13,42 @@ import { TypeRole, User } from 'src/app/models/User/user';
 })
 export class AddUserComponent {
   userForm: FormGroup;
-  user: any = { nom: '', prenom: "",CIN: "",  DateN: '', email: "",password: "" , username: '', Role: ""  }; 
   Role = Object.values(TypeRole);
  
-  constructor(private fb:FormBuilder, private userService: UserService, private route: ActivatedRoute, private router:Router){
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.userForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       CIN: ['', Validators.required],
       DateN: ['', Validators.required],
-      email: ['', Validators.required],
-      passwword: ['', Validators.required],
       username: ['', Validators.required],
+      email: ['', Validators.required],
       Role: ['', Validators.required],
+      password: ['', Validators.required],
+     
     });
-
   }
-  ngOnInit(): void {}
-
- 
   onSubmit() {
     if (this.userForm.valid) {
-      const newUser: User = {
-        nom: this.userForm.get('nom')?.value,
-        prenom: this.userForm.get('prenom')?.value,
-        CIN: this.userForm.get('CIN')?.value,
-        DateN: this.userForm.get('DateN')?.value,
-        email: this.userForm.get('email')?.value,
-        password: this.userForm.get('password')?.value,
-        username: this.userForm.get('username')?.value,
-        Role: this.userForm.get('Role')?.value,
-      };
-  
-      if (newUser.nom !== null && newUser.prenom !== null && newUser.CIN !== null && newUser.DateN !== null && newUser.email !== null && newUser.password !== null && newUser.username !== null && newUser.Role !== null) {
-        this.userService.adduser(newUser).subscribe(
-          () => {
-            console.log('User added successfully!');
-            this.router.navigate(['/user']);
-          },
-          (error) => {
-            console.error('Error adding user', error);
-          }
-        );
-      } else {
-        console.log('Form values are null. Cannot add user.');
-      }
+      const registerDto: RegisterDto = new RegisterDto(
+        this.userForm.get('nom')!.value,
+        this.userForm.get('prenom')!.value,
+        this.userForm.get('CIN')!.value,
+        this.userForm.get('DateN')!.value,
+        this.userForm.get('username')!.value,
+        this.userForm.get('email')!.value,
+        this.userForm.get('Role')!.value,
+        this.userForm.get('password')!.value
+      );
+      this.userService.registerUser(registerDto).subscribe(
+        () => {
+          console.log('User registered successfully!');
+        },
+        error => {
+          console.error('Error registering user:', error);
+        }
+      );
     } else {
-      console.log('Form is invalid. Cannot add user.');
+      console.log('Form is invalid. Cannot register user.');
     }
-}
-}
+  }}
