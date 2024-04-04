@@ -12,4 +12,6 @@ public interface ICommentService {
     public Comment updateComment(Comment Comment);
     public void deleteComment(String idComment);
     public Comment retrieveComm (String idComment);
+    public Comment addCommentToPublication(String publicationId, Comment comment);
+    public Comment addReplyToComment(String idComment, Comment reply);
 }

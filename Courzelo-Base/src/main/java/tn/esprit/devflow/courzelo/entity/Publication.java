@@ -1,5 +1,6 @@
 package tn.esprit.devflow.courzelo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -18,11 +19,13 @@ import java.util.List;
 public class Publication {
     @Id
     String idpub;
-    @Size(max = 55)
+
     String message;
    LocalDate datepub;
    @DBRef
+
    List<Comment> comments;
    @DBRef
-    User user;
+
+   private Lesson lesson;
 }

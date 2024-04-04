@@ -45,3 +45,45 @@ a{
 .font-weight-bold {
     font-weight: 700 !important;
 }
+.publication-form {
+  border: 1px solid #ccc; /* Ajoute une bordure de 1px solide avec couleur #ccc */
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.publication-form .publication-textarea {
+  border: none;
+  resize: none;
+  font-size: 16px;
+  margin-bottom: 12px;
+  width: 100%;
+  min-height: 100px;
+}
+
+.publication-form .upload-file-button i {
+  margin-right: 8px; /* Ajoute un espace entre l'icône et le texte */
+}
+
+.publication-form .upload-file-button:hover {
+  background-color: #166fe5;
+}
+  .publication-form textarea {
+    border: none;
+    resize: none;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .publication-form button {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .publication-form button:hover {
+    background-color: #166fe5;
+  }
+  

@@ -1,10 +1,14 @@
 package tn.esprit.devflow.courzelo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.devflow.courzelo.entity.Lesson;
 import tn.esprit.devflow.courzelo.entity.Module;
 import tn.esprit.devflow.courzelo.entity.Publication;
 import tn.esprit.devflow.courzelo.services.IPubService;
+import tn.esprit.devflow.courzelo.services.PubService;
 
 import java.util.List;
 
@@ -13,6 +17,8 @@ import java.util.List;
 public class PubController {
     @Autowired
     IPubService pubService;
+    @Autowired
+    PubService pubServices;
 
     @PostMapping("/addPublication")
     public Publication addPublication(@RequestBody Publication pub) {
@@ -52,5 +58,24 @@ public class PubController {
     public Publication retrievePublication (@PathVariable ("Publicationid")String idPublication) {
         return pubService.retrievePublication(idPublication);
     }
+
+    @PostMapping("/publications/add")
+    public ResponseEntity<Publication> createPublication(@PathVariable String lessonId, @RequestBody String message) {
+        Publication publication = pubService.createPublication(lessonId, message);
+        return ResponseEntity.status(HttpStatus.CREATED).body(publication);
+    }
+    @PostMapping("/with-lesson")
+    public ResponseEntity<Publication> addPublicationWithLesson(@RequestBody Publication publication, @RequestBody Lesson lesson) {
+        Publication savedPublication = pubServices.addPublicationWithLesson(publication, lesson);
+        return ResponseEntity.ok(savedPublication);
+    }
+
+    @PostMapping("/add-lesson-as-publication")
+    public ResponseEntity<Publication> addLessonAsPublication(@RequestBody Lesson lesson) {
+        Publication savedPublication = pubServices.addLessonAsPublication(lesson);
+        return ResponseEntity.ok(savedPublication);
+    }
+
+
 
 }

@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { LessonService } from '../Service/Course/Lesson/lesson.service';
 import { Lesson } from '../models/Lesson/lesson';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Publication } from '../models/Publication/pub';
+import { PublicationService } from '../Service/Forum/Publication/publication.service';
 
 @Component({
   selector: 'app-test',
@@ -10,58 +13,91 @@ import { Router } from '@angular/router';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent {
-  lessons: any[] = [];
-  fileContent: string | SafeResourceUrl | ArrayBuffer | null = null;
+  pubForm: FormGroup <any>;
+  publicaton: any = { message:'' ,datepub: "" }; 
+  lesson?: any[] =[];
+  currentLesson?: Lesson;
+  currentIndex = -1;
+  lessonForm: FormGroup <any>;
+  uploadedFileUrl!: string;
+  fileType!: string;
+ 
+ 
+  constructor(private fb:FormBuilder,private lessonService: LessonService, private pubService:PublicationService, private route: ActivatedRoute, private router:Router){
+    this.pubForm = this.fb.group({
+      message: ['', [Validators.required, Validators.minLength(3)]],
 
-  constructor(private lessonService: LessonService, private sanitizer: DomSanitizer, private router:Router) { }
-
-  getSafeUrl(fileContent: string): SafeResourceUrl {
-    // Utilisez le DOMSanitizer pour sécuriser l'URL du contenu du fichier
-    return this.sanitizer.bypassSecurityTrustResourceUrl(fileContent);
+    });
+    this.lessonForm = this.fb.group({
+      title: ['', Validators.required],
+      content: ['', [Validators.required, Validators.minLength(3)]],
+    
+    });
   }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.getAllLessons();
+  isFieldInvalid(field: string) {
+    const control = this.pubForm.get(field);
+    return control && control.touched && control.invalid;
   }
-
-  getAllLessons(): void {
-    this.lessonService.getAll().subscribe(
-      (lessons: any[]) => {
-        this.lessons = lessons;
-        // Pour chaque leçon, récupérez et affichez le contenu du fichier
-        this.lessons.forEach((lesson: any) => {
-          this.getFileContent(lesson.content);
-        });
-      },
-      (error) => {
-        console.error('Error fetching lessons:', error);
-      }
-    );
-  }
-
-  // getFileContent(content: string): void {
-  //   this.lessonService.getFileContent(content).subscribe(
-  //     (fileContent: any) => {
-  //       // Faites quelque chose avec le contenu du fichier, par exemple l'afficher dans la console
-  //       console.log('File Content:', fileContent);
+  onSubmit() {
+    if (this.pubForm.valid) {
+      const newPub: Publication = {
+        message: this.pubForm.get('message')?.value,
         
+       
+      };
       
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching file content:', error);
-  //     }
-  //   );
-  // }
-
-  getFileContent(content: string): void {
-    this.lessonService.getFileContent(content).subscribe(
-      (fileContent: any) => {
-        console.log('File Content:', fileContent);
-        this.fileContent = fileContent; // Met à jour la propriété avec le contenu du fichier
+  
+      if (newPub.message !== null ) {
+        this.pubService.addModule(newPub).subscribe(
+          () => {
+            console.log('Publication added successfully!');
+            // Ajoutez ici la navigation ou d'autres actions après l'ajout réussi
+            this.router.navigate(['/allPublication']);
+          },
+          (error) => {
+            console.error('Error adding Publication ', error);
+          }
+        );
+      } else {
+        console.log('Form values are null. Cannot add Publication.');
+      }
+    } else {
+      console.log('Form is invalid. Cannot add Publication.');
+    }
+  }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.fileType = this.getFileType(file);
+    this.uploadedFileUrl = URL.createObjectURL(file);
+  
+    // Récupérez le titre depuis le formulaire
+    const title = this.lessonForm.get('title')?.value;
+  
+    // Appel au service d'upload pour envoyer le fichier au backend
+    this.lessonService.uploadFile(file, title).subscribe(
+      (response) => {
+        console.log('File uploaded successfully:', response);
+        // Mettez à jour votre modèle avec les données renvoyées par le backend si nécessaire
       },
       (error) => {
-        console.error('Error fetching file content:', error);
+        console.error('Error uploading file:', error);
       }
     );
   }
+  
+  
+    getFileType(file: File): string {
+      const fileName = file.name.toLowerCase();
+      if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
+        return 'image';
+      } else if (fileName.endsWith('.mp4') || fileName.endsWith('.avi')) {
+        return 'video';
+      } else if (fileName.endsWith('.pdf') || fileName.endsWith('.doc') || fileName.endsWith('.docx')) {
+        return 'document';
+      } else {
+        return 'other';
+      }
+    }
 }

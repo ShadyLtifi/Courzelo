@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Document
@@ -21,5 +22,9 @@ public class Comment {
     Date datecomment;
     @DBRef
    Publication publication;
+    @DBRef
+    Comment parentComment; // Champ pour représenter le commentaire parent
+    @DBRef
+    List<Comment> replies; // Champ pour stocker les réponses
 }
 

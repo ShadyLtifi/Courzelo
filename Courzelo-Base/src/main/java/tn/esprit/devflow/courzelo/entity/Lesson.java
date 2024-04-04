@@ -1,5 +1,6 @@
 package tn.esprit.devflow.courzelo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -10,6 +11,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -19,7 +22,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Lesson {
     @Id
     String idlesson;
-    @Size(max = 55)
+
     String title;
     String content;
 
@@ -32,4 +35,7 @@ public class Lesson {
 
     @DBRef
     Course course;
+    @DBRef
+
+    List<Publication> publications;
 }

@@ -55,6 +55,11 @@ import { EvaluationManagementComponent } from './evaluation-management/evaluatio
 import { EventManagementComponent } from './event-management/event-management.component';
 import { ForumManagementComponent } from './forum-management/forum-management.component';
 import { TestComponent } from './test/test.component';
+import { PublicationComponent } from './Publication/publication/publication.component';
+import { AddPublicationComponent } from './Publication/add-publication/add-publication.component';
+import { DetailPublicationComponent } from './Publication/detail-publication/detail-publication.component';
+import { UpdatePublicationComponent } from './Publication/update-publication/update-publication.component';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 const routes: Routes = [
   {path:"back",component:BackComponent},
@@ -111,9 +116,18 @@ const routes: Routes = [
   { path: 'evaluations', component:EvaluationManagementComponent},
   { path: 'events', component:EventManagementComponent},
   { path: 'forums', component:ForumManagementComponent},
+
+  { path: 'allPublication', component:PublicationComponent},
+  { path: 'addPublication', component:AddPublicationComponent},
+  { path: 'updatePub/:id', component: UpdatePublicationComponent },
+
+
+  {path : 'showPub/:id', component: DetailPublicationComponent},
   { path: 'tt', component:TestComponent},
   { path: 'content/:fileName', component: TestComponent },
   { path: 'dashboars', component:SidebarComponent},
+
+  { path: 'users', component:UserManagementComponent},
   
 
 

@@ -18,6 +18,8 @@ export class TeacherDashboardComponent {
   currentIndex = -1;
   commentForm: FormGroup <any>;
   comment: Comment = { message: "" }; 
+  uploadedFileUrl!: string;
+  fileType!: string;
 
   constructor(private fb: FormBuilder , private commService:CommentService , private lessonService: LessonService, private route: ActivatedRoute,  private router:Router) {
     this.updateForm = this.fb.group({
@@ -31,6 +33,12 @@ export class TeacherDashboardComponent {
     this.commentForm = this.fb.group({
       message: ['', [Validators.required]],
       datecomment: ['', Validators.required],
+    });
+
+    this.lessonForm = this.fb.group({
+      title: ['', Validators.required],
+      content: ['', [Validators.required, Validators.minLength(3)]],
+    
     });
   }
   onSubmit() {
@@ -253,7 +261,39 @@ isFieldInvalid(field: string) {
   const control = this.updateForm.get(field);
   return control && control.touched && control.invalid;
 }
-
+lessonForm: FormGroup <any>;
 showCommentField: boolean = true;
-  
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  this.fileType = this.getFileType(file);
+  this.uploadedFileUrl = URL.createObjectURL(file);
+
+  // Récupérez le titre depuis le formulaire
+  const title = this.lessonForm.get('title')?.value;
+
+  // Appel au service d'upload pour envoyer le fichier au backend
+  this.lessonService.uploadFile(file, title).subscribe(
+    (response) => {
+      console.log('File uploaded successfully:', response);
+      // Mettez à jour votre modèle avec les données renvoyées par le backend si nécessaire
+    },
+    (error) => {
+      console.error('Error uploading file:', error);
+    }
+  );
+}
+
+
+  getFileType(file: File): string {
+    const fileName = file.name.toLowerCase();
+    if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
+      return 'image';
+    } else if (fileName.endsWith('.mp4') || fileName.endsWith('.avi')) {
+      return 'video';
+    } else if (fileName.endsWith('.pdf') || fileName.endsWith('.doc') || fileName.endsWith('.docx')) {
+      return 'document';
+    } else {
+      return 'other';
+    }
+  }
 }
