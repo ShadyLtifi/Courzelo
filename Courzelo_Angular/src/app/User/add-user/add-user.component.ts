@@ -19,7 +19,7 @@ export class AddUserComponent {
     this.userForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      CIN: ['', Validators.required],
+      cin: ['', Validators.required],
       DateN: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', Validators.required],
@@ -33,7 +33,7 @@ export class AddUserComponent {
       const registerDto: RegisterDto = new RegisterDto(
         this.userForm.get('nom')!.value,
         this.userForm.get('prenom')!.value,
-        this.userForm.get('CIN')!.value,
+        this.userForm.get('cin')!.value,
         this.userForm.get('DateN')!.value,
         this.userForm.get('username')!.value,
         this.userForm.get('email')!.value,
@@ -41,9 +41,9 @@ export class AddUserComponent {
         this.userForm.get('password')!.value
       );
       this.userService.registerUser(registerDto).subscribe(
-        () => {
-          console.log('User registered successfully!');
-        },
+        () => {  
+        console.log('User registered successfully!');
+           },
         error => {
           console.error('Error registering user:', error);
         }

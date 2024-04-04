@@ -11,7 +11,7 @@
 				  <h2>Login</h2>
 				</div>
 			  </div>
-			  <form (ngSubmit)="login()">
+			  <form (ngSubmit)="login(username,password)">
 				<div class="form-group">
 				  <span class="form-label">Username</span>
 				  <input class="form-control" type="text" name="username" [(ngModel)]="username" placeholder="Enter username" required>

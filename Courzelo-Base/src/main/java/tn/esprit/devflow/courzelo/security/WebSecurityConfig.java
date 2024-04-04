@@ -31,7 +31,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(Registry -> Registry
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/auth/register").permitAll()
-                        .requestMatchers("/UserRestController/**").permitAll()
+                        .requestMatchers("/change-password").permitAll()
                         .requestMatchers("/auth/login").permitAll()
                                                 .requestMatchers("/verify").permitAll()
                         .requestMatchers("/reset-password/**").permitAll()

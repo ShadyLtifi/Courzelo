@@ -2,7 +2,7 @@ export class RegisterDto {
     constructor(
       public nom: string,
       public prenom: string,
-      public CIN: string,
+      public cin: string,
       public DateN: string,
       public username: string,
       public email: string,

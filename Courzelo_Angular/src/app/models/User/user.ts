@@ -2,7 +2,7 @@ export class User {
     iduser?: string;
     nom?: string;
     prenom?: string;
-    CIN?: number;
+    cin?: number;
     DateN?: Date;
     email?: string;
     password?: string;
