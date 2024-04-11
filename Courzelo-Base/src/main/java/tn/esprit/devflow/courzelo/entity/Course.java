@@ -29,5 +29,7 @@ public class Course {
     List<Lesson> lessons;
     @DBRef
     List<Quiz> quizzes;
+@DBRef
 
+    Module module;
 }

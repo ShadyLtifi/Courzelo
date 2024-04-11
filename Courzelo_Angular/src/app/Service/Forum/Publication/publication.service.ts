@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Comment } from 'src/app/models/Comment/Comment';
 import { Publication } from 'src/app/models/Publication/pub';
 
 @Injectable({
@@ -27,5 +28,9 @@ export class PublicationService {
   retrievePublication(Publicationid: string): Observable<Publication> {
     const url = `${this.apiUrl}/retrievePublication/${Publicationid}`;
     return this.http.get<Publication>(url);
+  }
+  addCommentToPublication(publicationId: string, comment: Comment): Observable<Comment> {
+    const url = `${this.apiUrl}/add/${publicationId}`;
+    return this.http.post<Comment>(url, comment);
   }
 }

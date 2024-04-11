@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,11 +22,13 @@ public class Publication {
     String idpub;
 
     String message;
-   LocalDate datepub;
-   @DBRef
+    @CreatedDate
+    LocalDate datepub;
+    @DBRef
 
-   List<Comment> comments;
-   @DBRef
+    List<Comment> comments;
+    @DBRef
 
-   private Lesson lesson;
+    private Lesson lesson;
+
 }

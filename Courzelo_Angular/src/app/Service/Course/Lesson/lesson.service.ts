@@ -1,7 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Lesson } from 'src/app/models/Lesson/lesson';
+import { Level } from 'src/app/models/Class/class';
+import { Lesson, Speciality } from 'src/app/models/Lesson/lesson';
 
 @Injectable({
   providedIn: 'root'
@@ -71,6 +72,20 @@ getFileContentAsArrayBuffer(content: string): Observable<ArrayBuffer> {
 getFileContentAsString(content: string): Observable<string> {
   return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'text' });
 }
+addLessonBySpecialityAndLevel(speciality: Speciality, level: Level, lesson: Lesson): Observable<Lesson> {
+  const url = `${this.apiUrl}/addLessonBySpecialityAndLevel?speciality=${speciality}&level=${level}`;
+  return this.http.post<Lesson>(url, lesson, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }).pipe(
+    catchError(this.handleError)
+  );
+}
 
+private handleError(error: any) {
+  console.error('An error occurred:', error);
+  return throwError(error);
+}
 
 }

@@ -4,10 +4,12 @@ import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +21,15 @@ public class Comment {
     @Id
     String idComment;
     String message;
-    Date datecomment;
+    @CreatedDate
+    LocalDate datecomment;
     @DBRef
    Publication publication;
     @DBRef
     Comment parentComment; // Champ pour représenter le commentaire parent
     @DBRef
     List<Comment> replies; // Champ pour stocker les réponses
+
+
 }
 

@@ -9,6 +9,7 @@ import tn.esprit.devflow.courzelo.entity.Publication;
 import tn.esprit.devflow.courzelo.repository.CommentRepository;
 import tn.esprit.devflow.courzelo.repository.PubRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,7 @@ public class CommentService implements ICommentService{
 
     @Override
     public Comment addComment(Comment Comment) {
+        Comment.setDatecomment(LocalDate.now());
         return commentRepository.save(Comment);
     }
 

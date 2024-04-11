@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import tn.esprit.devflow.courzelo.entity.Lesson;
+import tn.esprit.devflow.courzelo.entity.Level;
+import tn.esprit.devflow.courzelo.entity.Speciality;
 import tn.esprit.devflow.courzelo.services.ILessonService;
 import tn.esprit.devflow.courzelo.services.LessonService;
 
@@ -165,4 +167,26 @@ public class LessonController {
         }
     }
 
+//    @PostMapping("/addLessonBySpecialityAndLevel")
+//    public void addLessonBySpecialityAndLevel(@RequestBody Lesson lesson, @RequestParam String courseId, @RequestParam String idClass, @RequestParam String programId, @RequestParam Speciality speciality, @RequestParam Level level) {
+//        lessonServ.addLessonBySpecialityAndLevel(lesson, courseId, idClass, programId, speciality, level);
+//    }
+//@PostMapping("/addLessonBySpecialityAndLevel")
+//public void addLessonBySpecialityAndLevel(@RequestBody Lesson lesson, @RequestParam Speciality speciality, @RequestParam Level level) {
+//    lessonServ.addLessonBySpecialityAndLevel(lesson, speciality, level);
+//}
+
+    @PostMapping("/addLessonBySpecialityAndLevel")
+    public ResponseEntity<Lesson> addLessonBySpecialityAndLevel(
+            @RequestParam("speciality") Speciality speciality,
+            @RequestParam("level") Level level,
+            @RequestBody Lesson newLesson) {
+
+        if (level == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        Lesson addedLesson = lessonServ.addLessonBySpecialityAndLevel(speciality, level, newLesson);
+        return ResponseEntity.status(HttpStatus.CREATED).body(addedLesson);
+    }
 }

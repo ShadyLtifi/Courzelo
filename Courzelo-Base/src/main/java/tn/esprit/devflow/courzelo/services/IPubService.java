@@ -13,5 +13,6 @@ public interface IPubService {
     public void deletePublication(String idpub);
     public Publication retrievePublication (String idpub);
 
-    public Publication createPublication(String lessonId, String message);
+//    public Publication createPublication(String lessonId, String message);
+
 }

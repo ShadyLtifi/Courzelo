@@ -29,8 +29,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import tn.esprit.devflow.courzelo.entity.Lesson;
+
+import tn.esprit.devflow.courzelo.entity.*;
+import tn.esprit.devflow.courzelo.entity.Class;
+import tn.esprit.devflow.courzelo.repository.ClassRepository;
+import tn.esprit.devflow.courzelo.repository.CourseRepository;
 import tn.esprit.devflow.courzelo.repository.LessonRepository;
+import tn.esprit.devflow.courzelo.repository.ProgramRepository;
 
 import java.net.MalformedURLException;
 
@@ -45,7 +50,10 @@ public class LessonService implements  ILessonService{
     LessonRepository lessonRepository;
     @Autowired
     private Environment env;
-
+    @Autowired
+    ProgramRepository programRepository;
+    @Autowired
+    ClassRepository classRepository;
     @Override
     public List<Lesson> retrieveAllLesson() {
         return lessonRepository.findAll();
@@ -122,6 +130,30 @@ lessonRepository.deleteById(idlesson);
             return resource;
         }
         return null;
+    }
+    @Autowired
+    private CourseRepository courseRepository;
+
+    public Lesson addLessonBySpecialityAndLevel(Speciality speciality, Level level, Lesson newLesson) {
+        // Créer une nouvelle leçon avec la spécialité donnée
+        newLesson.setSpeciality(speciality);
+
+        // Trouver la classe correspondant au niveau donné
+        Class classe = classRepository.findByLevel(level);
+
+        if (classe != null) {
+            // Si une classe est trouvée, lier la leçon à cette classe
+            newLesson.setClasse(classe);
+        } else {
+            // Sinon, créer une nouvelle classe pour le niveau donné
+            classe = new Class();
+            classe.setLevel(level);
+            classRepository.save(classe);
+            newLesson.setClasse(classe);
+        }
+
+        // Enregistrer la leçon dans la base de données
+        return lessonRepository.save(newLesson);
     }
 
 

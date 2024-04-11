@@ -60,6 +60,10 @@ import { AddPublicationComponent } from './Publication/add-publication/add-publi
 import { DetailPublicationComponent } from './Publication/detail-publication/detail-publication.component';
 import { UpdatePublicationComponent } from './Publication/update-publication/update-publication.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { ForumComponent } from './forum/forum.component';
+import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
+import { StudentComponent } from './student/student.component';
+import { CoursesFrontComponent } from './courses-front/courses-front.component';
 
 const routes: Routes = [
   {path:"back",component:BackComponent},
@@ -129,10 +133,13 @@ const routes: Routes = [
 
   { path: 'users', component:UserManagementComponent},
   
-
-
+  { path: 'Forum', component:ForumComponent},
   
-
+  { path: 'student', component:StudentComponent},
+  { path: 'coursesFront', component:CoursesFrontComponent},
+  
+  { path: 'testeL', component:LessonTesteComponent},
+  
   { path: '**', component:NotfoundComponent},
 ];
 

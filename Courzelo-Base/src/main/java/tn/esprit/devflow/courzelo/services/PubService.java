@@ -25,6 +25,7 @@ public class PubService implements IPubService {
 
     @Override
     public Publication addPublication(Publication Publication) {
+        Publication.setDatepub(LocalDate.now());
         return pubRepository.save(Publication);
     }
 
@@ -44,30 +45,30 @@ pubRepository.deleteById(idpub);
         return pubOptional.get();
     }
 
-@Override
-    public Publication createPublication(String lessonId, String message) {
-        Optional<Lesson> lessonOptional = lessonRepository.findById(lessonId);
-        if (lessonOptional.isPresent()) {
-            Lesson lesson = lessonOptional.get();
-
-            Publication publication = new Publication();
-            publication.setMessage(message);
-            publication.setDatepub(LocalDate.now());
-            publication.setLesson(lesson);
-
-            return pubRepository.save(publication);
-        }
-        throw new IllegalArgumentException("Lesson not found with id: " + lessonId);
-    }
-
-    public Publication addPublicationWithLesson(Publication publication, Lesson lesson) {
-        if (lesson != null) {
-            Lesson savedLesson = lessonRepository.save(lesson);
-            publication.setLesson(savedLesson);
-        }
-        publication.setDatepub(LocalDate.now()); // Set publication date
-        return pubRepository.save(publication);
-    }
+//@Override
+//    public Publication createPublication(String lessonId, String message) {
+//        Optional<Lesson> lessonOptional = lessonRepository.findById(lessonId);
+//        if (lessonOptional.isPresent()) {
+//            Lesson lesson = lessonOptional.get();
+//
+//            Publication publication = new Publication();
+//            publication.setMessage(message);
+//            publication.setDatepub(LocalDate.now());
+//            publication.setLesson(lesson);
+//
+//            return pubRepository.save(publication);
+//        }
+//        throw new IllegalArgumentException("Lesson not found with id: " + lessonId);
+//    }
+//
+//    public Publication addPublicationWithLesson(Publication publication, Lesson lesson) {
+//        if (lesson != null) {
+//            Lesson savedLesson = lessonRepository.save(lesson);
+//            publication.setLesson(savedLesson);
+//        }
+//        publication.setDatepub(LocalDate.now()); // Set publication date
+//        return pubRepository.save(publication);
+//    }
 
 
     public Publication addLessonAsPublication(Lesson lesson) {

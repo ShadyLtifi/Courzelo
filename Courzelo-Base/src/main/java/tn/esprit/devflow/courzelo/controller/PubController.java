@@ -59,16 +59,16 @@ public class PubController {
         return pubService.retrievePublication(idPublication);
     }
 
-    @PostMapping("/publications/add")
-    public ResponseEntity<Publication> createPublication(@PathVariable String lessonId, @RequestBody String message) {
-        Publication publication = pubService.createPublication(lessonId, message);
-        return ResponseEntity.status(HttpStatus.CREATED).body(publication);
-    }
-    @PostMapping("/with-lesson")
-    public ResponseEntity<Publication> addPublicationWithLesson(@RequestBody Publication publication, @RequestBody Lesson lesson) {
-        Publication savedPublication = pubServices.addPublicationWithLesson(publication, lesson);
-        return ResponseEntity.ok(savedPublication);
-    }
+//    @PostMapping("/publications/add")
+//    public ResponseEntity<Publication> createPublication(@PathVariable String lessonId, @RequestBody String message) {
+//        Publication publication = pubService.createPublication(lessonId, message);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(publication);
+//    }
+//    @PostMapping("/with-lesson")
+//    public ResponseEntity<Publication> addPublicationWithLesson(@RequestBody Publication publication, @RequestBody Lesson lesson) {
+//        Publication savedPublication = pubServices.addPublicationWithLesson(publication, lesson);
+//        return ResponseEntity.ok(savedPublication);
+//    }
 
     @PostMapping("/add-lesson-as-publication")
     public ResponseEntity<Publication> addLessonAsPublication(@RequestBody Lesson lesson) {

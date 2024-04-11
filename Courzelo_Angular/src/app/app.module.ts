@@ -67,6 +67,10 @@ import { EventManagementComponent } from './event-management/event-management.co
 import { EvaluationManagementComponent } from './evaluation-management/evaluation-management.component';
 import { ForumManagementComponent } from './forum-management/forum-management.component';
 import { TestComponent } from './test/test.component';
+import { ForumComponent } from './forum/forum.component';
+import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
+import { StudentComponent } from './student/student.component';
+import { CoursesFrontComponent } from './courses-front/courses-front.component';
 
 @NgModule({
   declarations: [
@@ -139,6 +143,10 @@ import { TestComponent } from './test/test.component';
     EvaluationManagementComponent,
     ForumManagementComponent,
     TestComponent,
+    ForumComponent,
+    LessonTesteComponent,
+    StudentComponent,
+    CoursesFrontComponent,
     
    
   
