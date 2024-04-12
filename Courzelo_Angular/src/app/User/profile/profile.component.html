@@ -1,0 +1,17 @@
+<div *ngIf="hasRole('ADMIN')">
+    <!-- Contenu spécifique pour l'administrateur -->
+    <h1>Bienvenue Administrateur</h1>
+  </div>
+  <div *ngIf="hasRole('ENSEIGNANT')">
+    <!-- Contenu spécifique pour l'enseignant -->
+    <h1>Bienvenue Enseignant</h1>
+  </div>
+  <div *ngIf="hasRole('ETUDIANT')">
+    <!-- Contenu spécifique pour l'étudiant -->
+    <h1>Bienvenue Étudiant</h1>
+  </div>
+  <div *ngIf="hasRole('PARTENAIRE')">
+    <!-- Contenu spécifique pour le partenaire -->
+    <h1>Bienvenue Partenaire</h1>
+  </div>
+  

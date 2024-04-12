@@ -12,6 +12,8 @@ import { ContenuComponent } from './contenu/contenu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './User/add-user/add-user.component';
 import { UserService } from './Service/user.service';
+import { ProfileComponent } from './User/profile/profile.component';
+import { PartnerComponent } from './User/partner/partner.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { UserService } from './Service/user.service';
     LoginComponent,
     HeadderrComponent,
     ContenuComponent,
-    AddUserComponent  ],
+    AddUserComponent,
+    ProfileComponent,
+    PartnerComponent,
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,

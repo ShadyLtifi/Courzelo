@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -32,6 +33,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/auth/register").permitAll()
                         .requestMatchers("/change-password").permitAll()
+                        .requestMatchers("/UserRestController/getRoleByUsername/").permitAll()
                         .requestMatchers("/auth/login").permitAll()
                                                 .requestMatchers("/verify").permitAll()
                         .requestMatchers("/reset-password/**").permitAll()
@@ -53,5 +55,7 @@ public class WebSecurityConfig {
                 .passwordEncoder(passwordEncoder())
                 .and().build();
     }
+
+
 
 }

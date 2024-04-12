@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
+import tn.esprit.devflow.courzelo.entity.Roles;
 import tn.esprit.devflow.courzelo.entity.User;
 import tn.esprit.devflow.courzelo.errors.PasswordDoesNotMatchTheOld;
 import tn.esprit.devflow.courzelo.errors.UserNotFoundException;
@@ -16,7 +17,9 @@ import tn.esprit.devflow.courzelo.repository.UserRepository;
 import tn.esprit.devflow.courzelo.services.AuthService;
 import tn.esprit.devflow.courzelo.services.IUserService;
 
-@CrossOrigin(origins = "*")
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @AllArgsConstructor
 @RequestMapping("UserRestController")
@@ -96,5 +99,16 @@ public class UserRestController {
             return user;
     }
 
+    @GetMapping("/allusers")
+    @ResponseBody
+    public List<User> retrievealluser (){
+        return iUserService.retrieveAllUser();
+    }
 
+
+    @GetMapping("/getRoleByUsername/{username}")
+    @ResponseBody
+    Roles getRoleUserByUsername(@PathVariable("username") String username){
+        return iUserService.getRoleByUsername(username);
+    }
 }

@@ -2,13 +2,13 @@ package tn.esprit.devflow.courzelo.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
+import tn.esprit.devflow.courzelo.entity.Roles;
 import tn.esprit.devflow.courzelo.entity.User;
 import tn.esprit.devflow.courzelo.repository.UserRepository;
 
@@ -119,5 +119,20 @@ public class UserService implements IUserService {
         return userRepo.findUserByUsername(username);
     }
 
+    @Override
+    public List<User> retrieveAllUser() {
+        return userRepo.findAll();
+    }
+
+
+    @Override
+    public Roles getRoleByUsername(String username) {
+        User user = userRepo.findUserByUsername(username);
+        if (user != null) {
+            return user.getRole();
+        } else {
+            throw new RuntimeException("User not found with username: " + username);
+        }
+    }
 
 }

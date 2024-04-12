@@ -26,7 +26,7 @@ public class JwtIssuer {
 
         // Issue JWT token with claims
         return JWT.create()
-                .withSubject(username)
+                .withSubject(rolesString)
                 .withExpiresAt(Instant.now().plus(Duration.ofDays(1)))
                 .withClaim("username", username)
                 .withClaim("roles", rolesString) // Serialize roles as a single string

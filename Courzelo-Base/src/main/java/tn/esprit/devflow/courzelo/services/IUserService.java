@@ -1,6 +1,7 @@
 package tn.esprit.devflow.courzelo.services;
 
 
+import tn.esprit.devflow.courzelo.entity.Roles;
 import tn.esprit.devflow.courzelo.entity.User;
 
 import java.util.List;
@@ -14,4 +15,8 @@ public interface IUserService {
      User findByVerificationToken(String verificationToken);
      void disableInactiveAccounts();
      User findbyUsername(String username);
+
+     List<User> retrieveAllUser();
+
+     Roles getRoleByUsername(String username);
 }

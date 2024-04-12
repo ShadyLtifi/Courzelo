@@ -18,6 +18,6 @@ export enum TypeRole{
     ADMIN,
     TEACHER,
     STUDENT,
-    PARTNER
+    PARTENAIRE
 
 }
