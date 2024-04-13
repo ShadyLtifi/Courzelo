@@ -3,9 +3,16 @@ export class Class {
     capacity?: number;
     level?: Level;
     progress?: number;
+    speciality?: Speciality;
 }
 
 
+
+export enum Speciality{
+    Informatique='Informatique'
+    ,ElectroMecanique='ElectroMecanique'
+    ,GenieCivil='GenieCivil'
+}
 export enum Level{
     LEVEL_1='LEVEL_1'
     ,LEVEL_2='LEVEL_2'

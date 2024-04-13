@@ -44,6 +44,17 @@
                       <div *ngIf="isFieldInvalid('level')" class="alert alert-danger">Level is required.</div>
                     </div>
                 </div>
+
+                <div class="col-sm-11">
+                  <div class="mb-4">
+                    <label for="vulnerabilite" class="form-label">Speciality</label>
+                    <select id="vulnerabilite" name="vulnerabilite" class="form-control" formControlName="speciality" required>
+                      <option value="" disabled selected>Choisissez une option</option>
+                      <option *ngFor="let speciality of speciality" [value]="speciality">{{ speciality }}</option>
+                    </select>
+                    <div *ngIf="isFieldInvalid('speciality')" class="alert alert-danger">Speciality is required.</div>
+                  </div>
+              </div>
                 <div class="form-group">
                   <a (click)="onSubmit()" class="btn btn-outline-success" routerLink="/classe">
                       <i class="fas fa-check" style="font-size: 15px;"></i> 

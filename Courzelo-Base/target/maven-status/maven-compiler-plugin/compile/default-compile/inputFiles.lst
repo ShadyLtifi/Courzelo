@@ -1,6 +1,7 @@
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\CommentService.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\config\MongoConfig.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Class.java
+C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Notification.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\QuestionController.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Program.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Module.java
@@ -15,10 +16,10 @@ C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courze
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ISpeakerService.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\SpeakerRepository.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\ModuleController.java
+C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\NotificationService.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\ICourseService.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Status.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\User.java
-C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\ClaimMapper.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Speaker.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\Quiz.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IProgramService.java
@@ -36,7 +37,6 @@ C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courze
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\repository\QuestionRepository.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IClaimService.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\services\IClassService.java
-C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\DTO\ClaimDTO.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\QuizController.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\entity\TypeClaim.java
 C:\Users\Asus\Desktop\PiDev\Courzelo-Base\src\main\java\tn\esprit\devflow\courzelo\controller\CourseController.java

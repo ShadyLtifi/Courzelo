@@ -28,5 +28,11 @@ export class ModuleService {
     const url = `${this.apiUrl}/retrieveModule/${Moduleid}`;
     return this.http.get<Module>(url);
   }
- 
+  getModulesBySpeciality(speciality: string): Observable<Module[]> {
+    const url = `${this.apiUrl}/getModulesBySpeciality/${speciality}`;
+    return this.http.get<Module[]>(url);
+  }
+  getModulesBySpecialityAndLevel(speciality: string, level: string): Observable<Module[]> {
+    return this.http.get<Module[]>(`${this.apiUrl}/Moduless/${speciality}/${level}`);
+  }
 }

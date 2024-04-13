@@ -20,6 +20,7 @@
                 <th scope="col" class="custom-cell">Capacity</th>
                 <th scope="col" class="custom-cell">Level</th>
                 <th scope="col" class="custom-cell">Progress</th>
+                <th scope="col" class="custom-cell">Speciality</th>
                 <th scope="col" class="custom-cell">Actions</th>
               </tr>
             </thead>
@@ -28,6 +29,7 @@
                 <td class="custom-cell">{{ class.capacity }}</td>
                 <td class="custom-cell">{{ class.level }}</td>
                 <td class="custom-cell">{{ class.progress }}</td>
+                <td class="custom-cell">{{ class.speciality }}</td>
                 <td class="custom-cell">
                   <a routerLink="/updateClass/{{ class.idClass }}"><i class="bi bi-pencil-square text-success" style="font-size: 15px; margin-left: 15px;"></i></a>
                   <a (click)="deleteClass(class.idClass)"><i class="bi bi-trash text-danger" style="font-size: 15px; margin-left: 15px;"></i></a>

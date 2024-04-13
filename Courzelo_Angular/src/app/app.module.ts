@@ -71,6 +71,7 @@ import { ForumComponent } from './forum/forum.component';
 import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
 import { StudentComponent } from './student/student.component';
 import { CoursesFrontComponent } from './courses-front/courses-front.component';
+import { ModuleSpecialityComponent } from './module-speciality/module-speciality.component';
 
 @NgModule({
   declarations: [
@@ -147,6 +148,7 @@ import { CoursesFrontComponent } from './courses-front/courses-front.component';
     LessonTesteComponent,
     StudentComponent,
     CoursesFrontComponent,
+    ModuleSpecialityComponent,
     
    
   

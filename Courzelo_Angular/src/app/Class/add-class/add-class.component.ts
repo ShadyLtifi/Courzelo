@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/Service/Course/Class/class.service';
 import { Class, Level } from 'src/app/models/Class/class';
+import { Speciality } from 'src/app/models/Lesson/lesson';
 
 @Component({
   selector: 'app-add-class',
@@ -12,14 +13,15 @@ import { Class, Level } from 'src/app/models/Class/class';
 })
 export class AddClassComponent {
   classForm: FormGroup;
-  class: any = { capacity: '', level: "",progress: "" }; 
+  class: any = { capacity: '', level: "",progress: "",Speciality: "" }; 
   level = Object.values(Level);
- 
+  speciality = Object.values(Speciality);
   constructor(private fb:FormBuilder, private classService:ClassService, private route: ActivatedRoute, private router:Router){
     this.classForm = this.fb.group({
       capacity: ['', [Validators.required, Validators.minLength(3)]],
       level: ['', Validators.required],
       progress: ['', Validators.required],
+      speciality: ['', Validators.required],
     });
 
   }
@@ -32,9 +34,10 @@ export class AddClassComponent {
         capacity: this.classForm.get('capacity')?.value,
         level: this.classForm.get('level')?.value,
         progress: this.classForm.get('progress')?.value,
+        speciality: this.classForm.get('speciality')?.value,
       };
   
-      if (newClass.capacity !== null && newClass.level !== null && newClass.progress !== null) {
+      if (newClass.capacity !== null && newClass.level !== null && newClass.progress !== null && newClass.speciality !== null) {
         this.classService.addClass(newClass).subscribe(
           () => {
             console.log('Class added successfully!');

@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document
-@FieldDefaults(level= AccessLevel.PRIVATE)
+
 
 public class Lesson {
     @Id
@@ -26,8 +26,6 @@ public class Lesson {
     String title;
     String content;
 
-    @Field("speciality")
-    Speciality speciality;
 
    
     // Vous pouvez également conserver le constructeur avec le paramètre content si nécessaire

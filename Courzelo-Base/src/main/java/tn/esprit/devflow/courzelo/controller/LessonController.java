@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import tn.esprit.devflow.courzelo.entity.Lesson;
 import tn.esprit.devflow.courzelo.entity.Level;
+import tn.esprit.devflow.courzelo.entity.Module;
 import tn.esprit.devflow.courzelo.entity.Speciality;
 import tn.esprit.devflow.courzelo.services.ILessonService;
 import tn.esprit.devflow.courzelo.services.LessonService;
@@ -182,11 +183,38 @@ public class LessonController {
             @RequestParam("level") Level level,
             @RequestBody Lesson newLesson) {
 
-        if (level == null) {
+        // Vérifier si la spécialité et le niveau sont valides
+        if (speciality == null || level == null) {
             return ResponseEntity.badRequest().build();
         }
 
+        // Ajouter le cours en spécifiant la spécialité et le niveau
         Lesson addedLesson = lessonServ.addLessonBySpecialityAndLevel(speciality, level, newLesson);
-        return ResponseEntity.status(HttpStatus.CREATED).body(addedLesson);
+
+        // Vérifier si le cours a été ajouté avec succès
+        if (addedLesson != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(addedLesson);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+    @GetMapping("/lessons/{speciality}/{level}")
+    public List<Lesson> getLessonsBySpecialityAndLevel(@PathVariable("speciality") Speciality speciality, @PathVariable("level") Level level) {
+        return lessonServ.getLessonsBySpecialityAndLevel(speciality, level);
+    }
+//    @PostMapping("addLessonToModuleBySpecialityAndLevel/{speciality}/{level}")
+//    public Lesson addLessonToModuleBySpecialityAndLevel(@PathVariable("speciality") Speciality speciality,
+//                                                        @PathVariable("level") Level level,
+//                                                        @RequestBody Lesson newLesson) {
+//        return lessonServ.addLessonToModuleBySpecialityAndLevel(speciality, level, newLesson);
+//    }
+@GetMapping("/lessons/module/{moduleId}")
+public List<Lesson> getLessonsByModule(@PathVariable("moduleId") String moduleId) {
+    // Utilisez le service pour récupérer les leçons par module
+    Module module = new Module(); // Utilisez le constructeur avec un ID
+    return lessonServ.getLessonsByModule(module);
+}
+
+
+
 }

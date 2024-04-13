@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.InputStreamResource;
+
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -32,13 +32,12 @@ import java.nio.file.StandardCopyOption;
 
 import tn.esprit.devflow.courzelo.entity.*;
 import tn.esprit.devflow.courzelo.entity.Class;
-import tn.esprit.devflow.courzelo.repository.ClassRepository;
-import tn.esprit.devflow.courzelo.repository.CourseRepository;
-import tn.esprit.devflow.courzelo.repository.LessonRepository;
-import tn.esprit.devflow.courzelo.repository.ProgramRepository;
+import tn.esprit.devflow.courzelo.entity.Module;
+import tn.esprit.devflow.courzelo.repository.*;
 
 import java.net.MalformedURLException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Optional;
@@ -135,19 +134,17 @@ lessonRepository.deleteById(idlesson);
     private CourseRepository courseRepository;
 
     public Lesson addLessonBySpecialityAndLevel(Speciality speciality, Level level, Lesson newLesson) {
-        // Créer une nouvelle leçon avec la spécialité donnée
-        newLesson.setSpeciality(speciality);
-
-        // Trouver la classe correspondant au niveau donné
-        Class classe = classRepository.findByLevel(level);
+        // Trouver la classe correspondant au niveau donné et à la spécialité donnée
+        Class classe = classRepository.findByLevelAndAndSpeciality(level, speciality);
 
         if (classe != null) {
             // Si une classe est trouvée, lier la leçon à cette classe
             newLesson.setClasse(classe);
         } else {
-            // Sinon, créer une nouvelle classe pour le niveau donné
+            // Si aucune classe n'est trouvée pour la spécialité et le niveau donnés, créer une nouvelle classe
             classe = new Class();
             classe.setLevel(level);
+            classe.setSpeciality(speciality);
             classRepository.save(classe);
             newLesson.setClasse(classe);
         }
@@ -155,6 +152,44 @@ lessonRepository.deleteById(idlesson);
         // Enregistrer la leçon dans la base de données
         return lessonRepository.save(newLesson);
     }
+
+
+    public List<Lesson> getLessonsBySpecialityAndLevel(Speciality speciality, Level level) {
+        // Récupérer la classe correspondant à la spécialité et au niveau
+        Class classe = classRepository.findByLevelAndAndSpeciality(level , speciality);
+        if (classe != null) {
+            // Récupérer les leçons associées à cette classe
+            return lessonRepository.findByClasse(classe);
+        } else {
+            // Si aucune classe correspondant à la spécialité et au niveau n'est trouvée, retourner une liste vide
+            return new ArrayList<>();
+        }
+    }
+
+//    public Lesson addLessonToModuleBySpecialityAndLevel(Speciality speciality, Level level, Lesson newLesson) {
+//        // Assurez-vous que la spécialité, le niveau et la leçon ne sont pas nuls
+//        if (speciality == null || level == null || newLesson == null) {
+//            return null; // Ou lancez une exception appropriée
+//        }
+//
+//        // Rechercher la classe correspondant à la spécialité et au niveau donnés
+//        Class classe = classRepository.findByLevelAndAndSpeciality(level, speciality );
+//
+//        if (classe != null) {
+//            // Associer la leçon à la classe trouvée
+//            newLesson.setClasse(classe);
+//
+//            // Enregistrer la leçon dans la base de données
+//            return lessonRepository.save(newLesson);
+//        } else {
+//            // Si aucune classe correspondant à la spécialité et au niveau n'est trouvée, retournez null
+//            return null;
+//        }
+//    }
+public List<Lesson> getLessonsByModule(Module module) {
+    // Utilisez la méthode de votre repository pour récupérer les leçons par module
+    return lessonRepository.findByClasseModules(module);
+}
 
 
 

@@ -52,54 +52,59 @@
   </div>
   
 <br>
-<div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="assets/assets/img/info.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Computer Science</h5>
-            <p class="card-text">Computer Science encompasses the study, development, and application of information technologies, including programming, networks, security, artificial intelligence, and data analysis.
-            </p>
-           
-            
-            <div class="text-center mt-3">
-              <a href="#" class="btn btn-primary"> <span class="text-white">Go</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
+
   
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="assets/assets/img/gc.jpeg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Civil Engineering</h5>
-            <p class="card-text">
-Civil Engineering designs and maintains infrastructure like buildings, bridges, and roads to meet societal needs and environmental standards for sustainable development.</p>
+
+   <section id="tabs" class="tabs section custom-bg-color">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row">
+        <div class="col-lg-3">
+          <form (ngSubmit)="getModules()">
+            <div class="mb-3">
+              <label for="speciality" class="form-label">Speciality</label>
+              <select id="speciality" class="form-select" [(ngModel)]="selectedSpeciality" name="speciality">
+                <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="level" class="form-label">Level</label>
+              <select id="level" class="form-select" [(ngModel)]="selectedLevel" name="level">
+                <option *ngFor="let lvl of level" [value]="lvl">{{ lvl }}</option>
+              </select>
+            </div>
             <div class="text-center mt-3">
-              <a href="#" class="btn btn-primary"> <span class="text-white">Go</span></a>
+            <button type="submit" class="btn custom-btn-color" ><span class="text-white">Go</span></button>
+            </div>
+          </form>
+          
+        </div>
+
+        <div class="col-lg-8 details order-2 order-lg-1">
+          <h3>{{ selectedSpeciality }} - {{ selectedLevel }}</h3>
+          
+          <div class="row">
+            <div class="col-md-6" *ngFor="let module of modules">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">{{ module.titleModule }}</h5>
+                  <p class="card-text">Description : {{ module.description }}</p>
+
+                  <p class="card-text">Hours : {{ module.nbreHeure }}</p>
+              <p class="card-text">Progress : {{ module.progress }}</p>
+                  <!-- Ajoutez d'autres attributs de module ici -->
+                  <div class="text-center mt-3">
+                    <a href="#" class="btn custom-btn-color" > <span class="text-white">Go</span></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
-  
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="assets/assets/img/info.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Electromechanical Engineering</h5>
-            <p class="card-text">Electromechanical Engineering integrates electrical and mechanical principles to design, develop, and maintain systems like robotics, renewable energy, and automated manufacturing processes.</p>
-            <div class="text-center mt-3">
-              <a href="#" class="btn btn-primary"> <span class="text-white">Go</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
-  </div>
-  
 
-
-
-   
+  </section><!-- /Tabs Section -->
