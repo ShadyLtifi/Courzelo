@@ -35,4 +35,7 @@ export class ModuleService {
   getModulesBySpecialityAndLevel(speciality: string, level: string): Observable<Module[]> {
     return this.http.get<Module[]>(`${this.apiUrl}/Moduless/${speciality}/${level}`);
   }
+  getModuleBySpecialityAndLevel(speciality: string, level: string): Observable<Module[]> {
+    return this.http.get<Module[]>(`${this.apiUrl}/Moduless/${speciality}/${level}`);
+  }
 }

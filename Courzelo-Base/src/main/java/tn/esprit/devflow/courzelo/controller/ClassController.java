@@ -18,6 +18,8 @@ import java.util.List;
 public class ClassController {
     @Autowired
     IClassService classService;
+    @Autowired
+    ClassService classServ;
     @PostMapping("/addClass")
     public Class addClass(@RequestBody Class c) {
         return classService.addClass(c);
@@ -58,8 +60,7 @@ public class ClassController {
     public Class retrieveClass (@PathVariable ("classid")String idClass) {
         return classService.retrieveClass(idClass);
     }
-    @Autowired
-    private ClassService classServ;
+
 
     @PostMapping("/{classId}/addLesson")
     public ResponseEntity<String> addLessonToClass(@PathVariable String classId, @RequestBody Lesson lesson) {
@@ -79,5 +80,8 @@ public class ClassController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add lesson to classes: " + e.getMessage());
         }
+
+
+
     }
 }

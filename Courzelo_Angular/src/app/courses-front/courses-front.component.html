@@ -1,57 +1,196 @@
-<div id="topbar" class="d-flex align-items-center fixed-top">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-  
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 11AM - 23PM</span></i>
+<body class="g-sidenav-show  bg-gray-200">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
+    <br> <br> <br>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-gradient-primary" routerLink="/back">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10 ">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1 text-dark">Student</span>
+          </a>
+        </li>
+        <br>
+        
+          <div class="col-lg-11">
+    <form (ngSubmit)="getModules()">
+      <div class="mb-3">
+        <label for="speciality" class="form-label">Speciality</label>
+        <select id="speciality" class="form-select" [(ngModel)]="selectedSpeciality" name="speciality">
+          <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
+        </select>
       </div>
-  
-      <div class="languages d-none d-md-flex align-items-center">
-        <ul>
-          <li>En</li>
-          <li><a href="#">Fr</a></li>
-        </ul>
+      <div class="mb-3">
+        <label for="level" class="form-label">Level</label>
+        <select id="level" class="form-select" [(ngModel)]="selectedLevel" name="level">
+          <option *ngFor="let lvl of level" [value]="lvl">{{ lvl }}</option>
+        </select>
       </div>
-    </div>
-  </div>
+      <div class="text-center mt-3">
+        <button type="submit" class="btn custom-btn-color"><span class="text-white">Go</span></button>
+      </div>
+    </form>
+          </div>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/profile.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10 text-dark">person</i>
+            </div>
+            <span class="nav-link-text ms-1 text-dark">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/sign-in.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10 text-dark">login</i>
+            </div>
+            <span class="nav-link-text ms-1 text-dark">Sign In</span>
+          </a>
+        </li>
 
-<header id="header" class="fixed-top d-flex align-items-cente">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
-  
-      <h1 class="logo me-auto me-lg-0"><a href="index.html"><img src="assets/assets/img/logo.png"></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-  
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto " routerLink="/front">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto active" href="#menu">Courses</a></li>
-          <li><a class="nav-link scrollto" href="#events">Events</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      <a routerLink="/login" class="book-a-table-btn scrollto d-none d-lg-flex">Login</a>
-  
+      </ul>
     </div>
-  </header><!-- End Header -->
-<br> <br> 
-  <!-- Page Title -->
-  <div class="page-title" data-aos="fade" >
-   
-    
-    <nav class="breadcrumbs" style="background-color: rgba(252, 255, 255, 0.6);">
-      <div class="container">
-        <ol>
-          <li><a routerLink="/front">Home</a></li>
-          <li class="current">Courses</li>
-        </ol>
+
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+      data-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;" routerLink="/front">Home</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Student Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">Student Dashboard</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group input-group-outline">
+              <label class="form-label">Type here...</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            
+           
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign In</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-  </div>
+
+ 
   
+<br> <br>
 <br>
+
 
   
 
@@ -60,42 +199,47 @@
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
       <div class="row">
-        <div class="col-lg-3">
-          <form (ngSubmit)="getModules()">
-            <div class="mb-3">
-              <label for="speciality" class="form-label">Speciality</label>
-              <select id="speciality" class="form-select" [(ngModel)]="selectedSpeciality" name="speciality">
-                <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
-              </select>
+        <!-- <div class="col-lg-3">
+          <div class="card">
+            <div class="card-body">
+              <form (ngSubmit)="getModules()">
+                <div class="mb-3">
+                  <label for="speciality" class="form-label">Speciality</label>
+                  <select id="speciality" class="form-select" [(ngModel)]="selectedSpeciality" name="speciality">
+                    <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="level" class="form-label">Level</label>
+                  <select id="level" class="form-select" [(ngModel)]="selectedLevel" name="level">
+                    <option *ngFor="let lvl of level" [value]="lvl">{{ lvl }}</option>
+                  </select>
+                </div>
+                <div class="text-center mt-3">
+                  <button type="submit" class="btn custom-btn-color"><span class="text-white">Go</span></button>
+                </div>
+              </form>
             </div>
-            <div class="mb-3">
-              <label for="level" class="form-label">Level</label>
-              <select id="level" class="form-select" [(ngModel)]="selectedLevel" name="level">
-                <option *ngFor="let lvl of level" [value]="lvl">{{ lvl }}</option>
-              </select>
-            </div>
-            <div class="text-center mt-3">
-            <button type="submit" class="btn custom-btn-color" ><span class="text-white">Go</span></button>
-            </div>
-          </form>
+          </div>
           
-        </div>
+        </div> -->
 
-        <div class="col-lg-8 details order-2 order-lg-1">
+        <div class="col-lg-15 details order-2 order-lg-1">
           <h3>{{ selectedSpeciality }} - {{ selectedLevel }}</h3>
           
           <div class="row">
-            <div class="col-md-6" *ngFor="let module of modules">
-              <div class="card mb-4">
-                <div class="card-body">
+            <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4" *ngFor="let module of modules">
+              <div class="card mb-3">
+                <div class="card-header p-4 pt-2">
                   <h5 class="card-title">{{ module.titleModule }}</h5>
-                  <p class="card-text">Description : {{ module.description }}</p>
+                  <p class="card-text text-dark">Description : {{ module.description }}</p>
 
-                  <p class="card-text">Hours : {{ module.nbreHeure }}</p>
-              <p class="card-text">Progress : {{ module.progress }}</p>
+                  <p class="card-text text-dark">Hours : {{ module.nbreHeure }}</p>
+              <p class="card-text text-dark">Progress : {{ module.progress }}</p>
                   <!-- Ajoutez d'autres attributs de module ici -->
                   <div class="text-center mt-3">
                     <a href="#" class="btn custom-btn-color" > <span class="text-white">Go</span></a>
+                    <a routerLink="/student/{{ module.idmodule }}"><i class="bi bi-chat-left-text" style="font-size: 15px;margin-left: 15px;"></i></a>
                   </div>
                 </div>
               </div>

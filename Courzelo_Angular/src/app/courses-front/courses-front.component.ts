@@ -3,6 +3,7 @@ import { Level } from '../models/Class/class';
 import { Speciality } from '../models/Lesson/lesson';
 import { Module } from '../models/Module/module';
 import { ModuleService } from '../Service/Course/Module/module.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-courses-front',
@@ -18,7 +19,8 @@ export class CoursesFrontComponent {
   speciality: Speciality[] = Object.values(Speciality);
   selectedSpeciality!: Speciality;
   modules: Module[] = []; // Initialisez le tableau de modules
-  constructor(private moduleService: ModuleService) { }
+  moduleDetails: any;
+  constructor(private moduleService: ModuleService, private route: ActivatedRoute) { }
   getModules(): void {
     this.moduleService.getModulesBySpecialityAndLevel(this.selectedSpeciality, this.selectedLevel)
       .subscribe(modules => this.modules = modules);
@@ -26,4 +28,20 @@ export class CoursesFrontComponent {
   showAlert() {
     alert('Vous avez cliqué sur le bouton!');
   }  
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const Moduleid = params.get('id');
+      if (Moduleid !== null) {
+        this.moduleService.retrieveModule(Moduleid).subscribe(
+          (modDetails: any) => {
+            this.moduleDetails = modDetails;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    });
+  }
 }

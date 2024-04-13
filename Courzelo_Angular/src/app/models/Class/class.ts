@@ -1,9 +1,12 @@
+import { Lesson } from "../Lesson/lesson";
+
 export class Class {
     idClass?: string;
     capacity?: number;
     level?: Level;
     progress?: number;
     speciality?: Speciality;
+    lessons?: Lesson[];
 }
 
 

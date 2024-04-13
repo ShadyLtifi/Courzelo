@@ -88,4 +88,8 @@ private handleError(error: any) {
   return throwError(error);
 }
 
+getLessonOfClassByLevelAndSpeciality(level: Level, speciality: Speciality): Observable<Lesson[]> {
+  return this.http.get<Lesson[]>(`${this.apiUrl}/class/${level}/${speciality}`);
+}
+
 }

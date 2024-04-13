@@ -215,6 +215,17 @@ public List<Lesson> getLessonsByModule(@PathVariable("moduleId") String moduleId
     return lessonServ.getLessonsByModule(module);
 }
 
+    @GetMapping("/class/{level}/{speciality}")
+    public ResponseEntity<List<Lesson>> getLessonOfClassByLevelAndSpeciality(
+            @PathVariable Level level, @PathVariable Speciality speciality) {
+        List<Lesson> lessons = lessonServ.getLessonOfClassByLevelAndSpeciality(level, speciality);
+        return ResponseEntity.ok(lessons);
+    }
 
+    @GetMapping("/{classId}/lessons")
+    public ResponseEntity<List<Lesson>> getLessonsByClassId(@PathVariable String classId) {
+        List<Lesson> lessons = lessonServ.getLessonsByClassId(classId);
+        return ResponseEntity.ok(lessons);
+    }
 
 }

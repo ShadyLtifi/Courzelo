@@ -1,592 +1,267 @@
-<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-
-<nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">Navbar</a>
-  
-      <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars text-light"></i>
-      </button>
-  
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
-          <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link active" aria-current="page" href="#!">
-              <div>
-                <i class="fas fa-home fa-lg mb-1"></i>
-              </div>
-              Home
-            </a>
-          </li>
-          <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link" href="#!">
-              <div>
-                <i class="far fa-envelope fa-lg mb-1"></i>
-                <span class="badge rounded-pill badge-notification bg-dark">11</span>
-              </div>
-              Link
-            </a>
-          </li>
-          <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link disabled" aria-disabled="true" href="#!">
-              <div>
-                <i class="far fa-envelope fa-lg mb-1"></i>
-                <span class="badge rounded-pill badge-notification bg-dark">11</span>
-              </div>
-              Disabled
-            </a>
-          </li>
-          <li class="nav-item dropdown text-center mx-2 mx-lg-1">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown"
-              aria-expanded="false">
-              <div>
-                <i class="far fa-envelope fa-lg mb-1"></i>
-                <span class="badge rounded-pill badge-notification bg-dark">11</span>
-              </div>
-              Dropdown
-            </a>
-            <!-- Dropdown menu -->
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!-- Left links -->
-  
-        <!-- Right links -->
-        <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
-          <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link" href="#!">
-              <div>
-                <i class="fas fa-bell fa-lg mb-1"></i>
-                <span class="badge rounded-pill badge-notification bg-dark">11</span>
-              </div>
-              Messages
-            </a>
-          </li>
-          <li class="nav-item text-center mx-2 mx-lg-1">
-            <a class="nav-link" href="#!">
-              <div>
-                <i class="fas fa-globe-americas fa-lg mb-1"></i>
-                <span class="badge rounded-pill badge-notification bg-dark">11</span>
-              </div>
-              News
-            </a>
-          </li>
-        </ul>
-        <!-- Right links -->
-  
-        <!-- Search form -->
-        <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
-          <input type="search" class="form-control" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-white" type="button" data-mdb-ripple-color="dark">
-            Search
-          </button>
-        </form>
+<body class="g-sidenav-show  bg-gray-200">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
+    <br> <br> <br>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white active bg-gradient-primary" routerLink="/back">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10 ">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1 text-dark">Student</span>
+          </a>
+        </li>
+        <br>
+        
+          <div class="col-lg-11">
+    <form (ngSubmit)="getModules()">
+      <div class="mb-3">
+        <label for="speciality" class="form-label">Speciality</label>
+        <select id="speciality" class="form-select" [(ngModel)]="selectedSpeciality" name="speciality">
+          <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
+        </select>
       </div>
-      <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+      <div class="mb-3">
+        <label for="level" class="form-label">Level</label>
+        <select id="level" class="form-select" [(ngModel)]="selectedLevel" name="level">
+          <option *ngFor="let lvl of level" [value]="lvl">{{ lvl }}</option>
+        </select>
+      </div>
+      <div class="text-center mt-3">
+        <button type="submit" class="btn custom-btn-color"><span class="text-white">Go</span></button>
+      </div>
+    </form>
+          </div>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/profile.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10 text-dark">person</i>
+            </div>
+            <span class="nav-link-text ms-1 text-dark">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/sign-in.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10 text-dark">login</i>
+            </div>
+            <span class="nav-link-text ms-1 text-dark">Sign In</span>
+          </a>
+        </li>
 
-  <br>
-<div class="container">
+      </ul>
+    </div>
+
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+      data-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Student Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">Student Dashboard</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group input-group-outline">
+              <label class="form-label">Type here...</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            
+           
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">Sign In</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<br> <br>
+
+  <section id="courses-course-details" class="courses-course-details section">
+
+    <div class="container" data-aos="fade-up">
+
+      
       <div class="row">
-        <!-- Main content -->
-        <div class="col-lg-9 mb-3">
-          <div class="row text-left mb-5">
-            <div class="col-lg-6 mb-3 mb-sm-0">
-              <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" style="width: 100%;">
-              <select class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                <option> Categories </option>
-                <option> Learn </option>
-                <option> Share </option>
-                <option> Build </option>
-              </select>
-              </div>
+        <div class="col-lg-8">
+          <div class="container">
+            <div class="row">
+          <div class="publication-form">
+          <form  (ngSubmit)="addPublication()">
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" [(ngModel)]="newPublicationMessage" class="form-control" required></textarea>
             </div>
-            <div class="col-lg-6 text-lg-right">
-              <div class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" style="width: 100%;">
-                  <select class="form-control form-control-lg bg-white bg-op-9 ml-auto text-sm w-lg-50" data-toggle="select" tabindex="-98">
-                    <option> Filter by </option>
-                    <option> Votes </option>
-                    <option> Replys </option>
-                    <option> Views </option>
-                  </select>
-              </div>
-            </div>
+          
+          
+          
+            <!-- Ajoutez d'autres champs si nécessaire -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
           </div>
-          <!-- End of post 1 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
+          </div>
+          </div>
+          <!-- <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0"> -->
             <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Drupal 8 quick starter guide</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">20 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KenyeW</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">141 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">122 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">290 Views</span> </div>
+              <div class="col-md-15 mb-3 mb-sm-0">
+                <div class="row" *ngFor="let lesson of moduleDetails.classes?.lessons">
+                  <div class="col-20">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="#" class="text-primary">{{ lesson.title }}</a></h5>
+                        <p class="card-text"><span class="op-6">{{ lesson.content }}</span></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- /End of post 1 -->
-          <!-- End of post 2 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">54 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">256 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">251 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">223 Views</span> </div>
-                </div>
-              </div>
-            </div>
+  
+      
+    <!-- </div> -->
+
+    
+    <div class="col-lg-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Course Title : {{ moduleDetails.titleModule }}</h5>  
+    
+          <div class="course-info d-flex justify-content-between align-items-center mb-3" style="background-color: #e2d09d91;">
+            <h6>Course Title</h6>
+            <p>{{ moduleDetails.titleModule }}</p>
           </div>
-          <!-- /End of post 2 -->
-          <!-- End of post 3 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Bootstrap 4 development in record time with AppStrap Bootstrap 4 Theme</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">32 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">245 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">116 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">257 Views</span> </div>
-                </div>
-              </div>
-            </div>
+    
+          <div class="course-info d-flex justify-content-between align-items-center mb-3" style="background-color: #e2d09d91;">
+            <h6>Duration</h6>
+            <p>{{ moduleDetails.nbreHeure }}</p>
           </div>
-          <!-- /End of post 3 -->
-          <!-- End of post 4 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Bootstrap 4 development in record time with AppStrap Bootstrap 4 Theme</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">29 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Themelize.me</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> <a class="text-black mr-2" href="#">#Drupal</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">49 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">29 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">170 Views</span> </div>
-                </div>
-              </div>
-            </div>
+    
+          <div class="course-info d-flex justify-content-between align-items-center mb-3" style="background-color: #e2d09d91;">
+            <h6>Progress</h6>
+            <p>{{ moduleDetails.progress }}</p>
           </div>
-          <!-- /End of post 4 -->
-          <!-- End of post 5 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Drupal 8 quick starter guide</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">53 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Themelize.me</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#iOS</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">164 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">82 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">240 Views</span> </div>
-                </div>
-              </div>
-            </div>
+    
+          <div class="course-info d-flex justify-content-between align-items-center" style="background-color: #e2d09d91;">
+            <h6>Description</h6>
+            <p>{{ moduleDetails.description }}</p>
           </div>
-          <!-- /End of post 5 -->
-          <!-- End of post 6 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-danger border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Custom shortcut or command to launch command in terminal?</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">44 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">180 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">35 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">44 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 6 -->
-          <!-- End of post 7 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">3 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> <a class="text-black mr-2" href="#">#Drupal</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">236 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">79 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">162 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 7 -->
-          <!-- End of post 8 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Bootstrap 4 development in record time with AppStrap Bootstrap 4 Theme</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">46 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#Drupal</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">130 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">121 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">191 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 8 -->
-          <!-- End of post 9 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">41 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KylieJ</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">194 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">16 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">113 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 9 -->
-          <!-- End of post 10 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">30 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">179 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">194 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">167 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 10 -->
-          <!-- End of post 11 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Bootstrap 4 development in record time with AppStrap Bootstrap 4 Theme</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">56 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">11 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">120 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">240 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 11 -->
-          <!-- End of post 12 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-danger border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Windows batch, recursively copy files</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">25 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Wizzy</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">25 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">211 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">234 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 12 -->
-          <!-- End of post 13 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Drupal 8 quick starter guide</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">21 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KylieJ</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">70 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">187 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">234 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 13 -->
-          <!-- End of post 14 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Windows batch, recursively copy files</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">60 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KenyeW</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#iOS</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">288 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">206 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">1 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 14 -->
-          <!-- End of post 15 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Custom shortcut or command to launch command in terminal?</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">27 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KylieJ</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#AppStrap Theme</a> <a class="text-black mr-2" href="#">#Wordpress</a> <a class="text-black mr-2" href="#">#Drupal</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">144 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">92 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">25 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 15 -->
-          <!-- End of post 16 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">22 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Themelize.me</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">199 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">75 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">61 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 16 -->
-          <!-- End of post 17 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">14 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#Drupal</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">74 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">77 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">144 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 17 -->
-          <!-- End of post 18 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Custom shortcut or command to launch command in terminal?</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">15 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Themelize.me</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">88 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">48 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">283 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 18 -->
-          <!-- End of post 19 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Drupal 8 quick starter guide</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">59 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KylieJ</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Android</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">82 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">22 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">40 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 19 -->
-          <!-- End of post 20 -->
-          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
-            <div class="row align-items-center">
-              <div class="col-md-8 mb-3 mb-sm-0">
-                <h5>
-                  <a href="#" class="text-primary">Bootstrap 4 development in record time with AppStrap Bootstrap 4 Theme</a>
-                </h5>
-                <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">26 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Themelize.me</a></p>
-                <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#Development</a> <a class="text-black mr-2" href="#">#iOS</a> <a class="text-black mr-2" href="#">#Bootstrap 4</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div>
-              </div>
-              <div class="col-md-4 op-7">
-                <div class="row text-center op-7">
-                  <div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">163 Votes</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-chatboxes-outline icon-1x"></i> <span class="d-block text-sm">236 Replys</span> </div>
-                  <div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">22 Views</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /End of post 20 -->
-        </div>
-        <!-- Sidebar content -->
-        <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0">
-          <div style="visibility: hidden; display: none; width: 285px; height: 801px; margin: 0px; float: none; position: static; inset: 85px auto auto;"></div><div data-settings="{&quot;parent&quot;:&quot;#content&quot;,&quot;mind&quot;:&quot;#header&quot;,&quot;top&quot;:10,&quot;breakpoint&quot;:992}" data-toggle="sticky" class="sticky" style="top: 85px;"><div class="sticky-inner">
-            <a class="btn btn-lg btn-block btn-success rounded-0 py-4 mb-3 bg-op-6 roboto-bold" href="#">join a course</a>
-            <div class="bg-white mb-3">
-              <h4 class="px-3 py-4 op-5 m-0">
-                Active Topics
-              </h4>
-              <hr class="m-0">
-              <div class="pos-relative px-3 py-3">
-                <h6 class="text-primary text-sm">
-                  <a href="#" class="text-primary">Why Bootstrap 4 is so awesome? </a>
-                </h6>
-                <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">39 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
-              </div>
-              <hr class="m-0">
-              <div class="pos-relative px-3 py-3">
-                <h6 class="text-primary text-sm">
-                  <a href="#" class="text-primary">Custom shortcut or command to launch command in terminal? </a>
-                </h6>
-                <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">58 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-              </div>
-              <hr class="m-0">
-              <div class="pos-relative px-3 py-3">
-                <h6 class="text-primary text-sm">
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down </a>
-                </h6>
-                <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">48 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-              </div>
-              <hr class="m-0">
-              <div class="pos-relative px-3 py-3">
-                <h6 class="text-primary text-sm">
-                  <a href="#" class="text-primary">HELP! My Windows XP machine is down </a>
-                </h6>
-                <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">38 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-              </div>
-              <hr class="m-0">
-            </div>
-            <div class="bg-white text-sm">
-              <h4 class="px-3 py-4 op-5 m-0 roboto-bold">
-                Stats
-              </h4>
-              <hr class="my-0">
-              <div class="row text-center d-flex flex-row op-7 mx-0">
-                <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" href="#">58</a> Topics </div>
-                <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold" href="#">1.856</a> Posts </div>
-              </div>
-              <div class="row d-flex flex-row op-7">
-                <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"> <a class="d-block lead font-weight-bold" href="#">300</a> Members </div>
-                <div class="col-sm-6 flex-ew text-center py-3 mx-0"> <a class="d-block lead font-weight-bold" href="#">DanielD</a> Newest Member </div>
-              </div>
-            </div>
-          </div></div>
         </div>
       </div>
     </div>
+    
+      </div>
 
-  
+    </div>
+
+  </section>

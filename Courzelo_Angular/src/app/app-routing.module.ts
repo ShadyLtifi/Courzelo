@@ -135,7 +135,7 @@ const routes: Routes = [
   
   { path: 'Forum', component:ForumComponent},
   
-  { path: 'student', component:StudentComponent},
+  { path: 'student/:id', component:StudentComponent},
   { path: 'coursesFront', component:CoursesFrontComponent},
   
   { path: 'testeL', component:LessonTesteComponent},

@@ -191,7 +191,23 @@ public List<Lesson> getLessonsByModule(Module module) {
     return lessonRepository.findByClasseModules(module);
 }
 
+    public List<Lesson> getLessonOfClassByLevelAndSpeciality(Level level, Speciality speciality) {
+        // Récupérer la liste des classes pour le niveau et la spécialité donnés
+        List<Class> classes = classRepository.findBySpecialityAndLevel(speciality, level);
 
+        List<Lesson> lessons = new ArrayList<>();
+        // Parcourir chaque classe pour récupérer les leçons associées
+        for (Class classe : classes) {
+            // Ajouter les leçons de la classe à la liste
+            lessons.addAll(classe.getLessons());
+        }
+
+        return lessons;
+    }
+
+    public List<Lesson> getLessonsByClassId(String idClass) {
+        return lessonRepository.findByClasseIdClass(idClass);
+    }
 
 
 }
