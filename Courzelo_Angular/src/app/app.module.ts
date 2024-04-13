@@ -73,6 +73,7 @@ import { StudentComponent } from './student/student.component';
 import { CoursesFrontComponent } from './courses-front/courses-front.component';
 import { ModuleSpecialityComponent } from './module-speciality/module-speciality.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

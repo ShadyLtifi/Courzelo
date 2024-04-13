@@ -15,26 +15,25 @@
           </a>
         </li>
         <br>
-        
-          <div class="col-lg-11">
-    <form (ngSubmit)="getModules()">
-      <div class="mb-3">
-        <label for="speciality" class="form-label">Speciality</label>
-        <select id="speciality" class="form-select" [(ngModel)]="selectedSpeciality" name="speciality">
-          <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="level" class="form-label">Level</label>
-        <select id="level" class="form-select" [(ngModel)]="selectedLevel" name="level">
-          <option *ngFor="let lvl of level" [value]="lvl">{{ lvl }}</option>
-        </select>
-      </div>
-      <div class="text-center mt-3">
-        <button type="submit" class="btn custom-btn-color"><span class="text-white">Go</span></button>
-      </div>
-    </form>
+      
+
+
+        <div class="col-lg-10 mx-auto">
+          <div class="card mb-3" style="background-color: #40e0d0bb;">
+            <div class="card-body text-center">
+              <div class="mb-1">
+                <label for="speciality" class="form-label"></label>
+                <span class="ml-5 font-weight-bold ">{{ moduleDetails.classes?.speciality }}</span>
+              </div>
+              <div class="mb-3">
+                <label for="level" class="form-label"></label>
+                <span class="ml-5 font-weight-bold">{{ moduleDetails.classes?.level }}</span>
+              </div>
+            </div>
+            
           </div>
+        </div>
+        
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -206,11 +205,12 @@
           
           
             <!-- Ajoutez d'autres champs si nécessaire -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #11665ebb;">Submit</button>
           </form>
           </div>
           </div>
           </div>
+          <br>
           <!-- <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0"> -->
             <div class="row align-items-center">
               <div class="col-md-15 mb-3 mb-sm-0">
@@ -218,14 +218,22 @@
                   <div class="col-20">
                     <div class="card mb-4">
                       <div class="card-body">
-                        <h5 class="card-title"><a href="#" class="text-primary">{{ lesson.title }}</a></h5>
-                        <p class="card-text"><span class="op-6">{{ lesson.content }}</span></p>
+                        <h5 class="card-title"><a href="#" class="text-dark" >{{ lesson.title }}</a></h5>
+                        <p class="card-text">
+                          <!-- Afficher le contenu en fonction du type de fichier -->
+                          <ng-container *ngIf="isImage(lesson.content)">
+                            <img [src]="lesson.content" class="img-fluid" alt="Image">
+                          </ng-container>
+                         
+                          <!-- Ajoutez d'autres conditions pour d'autres types de fichiers si nécessaire -->
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            
           </div>
   
       
@@ -233,6 +241,20 @@
 
     
     <div class="col-lg-4">
+      <div class="container" data-aos="fade-up">
+        <div class="col-lg-8 mb-4 mb-lg-2 px-lg-3 mt-lg-0">
+          <div
+            style="visibility: hidden; display: none; width: 285px; height: 801px; margin: 0px; float: none; position: static; inset: 85px auto auto;">
+          </div>
+          <div
+            data-settings="{&quot;parent&quot;:&quot;#content&quot;,&quot;mind&quot;:&quot;#header&quot;,&quot;top&quot;:10,&quot;breakpoint&quot;:992}"
+            data-toggle="sticky" class="sticky" style="top: 85px;">
+            <div class="sticky-inner">
+              <a class="btn btn btn-outline-warning btn-block   rounded-0 py-3 mb-3 bg-op-6 roboto-bold text-dark" href="#" >Take a Test</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title">Course Title : {{ moduleDetails.titleModule }}</h5>  
@@ -263,5 +285,6 @@
       </div>
 
     </div>
-
+    
   </section>
+ 

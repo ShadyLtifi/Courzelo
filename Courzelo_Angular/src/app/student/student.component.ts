@@ -7,6 +7,7 @@ import { LessonService } from '../Service/Course/Lesson/lesson.service';
 import { ActivatedRoute } from '@angular/router';
 import { Publication } from '../models/Publication/pub';
 import { PublicationService } from '../Service/Forum/Publication/publication.service';
+import { ClassService } from '../Service/Course/Class/class.service';
 
 @Component({
   selector: 'app-student',
@@ -26,8 +27,9 @@ export class StudentComponent {
   publications: Publication[] = [];
   newPublicationMessage: string = '';
   newComment: string = '';
-  
-  constructor(private moduleService: ModuleService,private route: ActivatedRoute ,private publicationService: PublicationService) { }
+
+  constructor(private moduleService: ModuleService,private route: ActivatedRoute 
+    ,private publicationService: PublicationService , private fileService: LessonService, private classService: ClassService) { }
   getModules(): void {
     this.moduleService.getModulesBySpecialityAndLevel(this.selectedSpeciality, this.selectedLevel)
       .subscribe(modules => this.modules = modules);
@@ -61,4 +63,22 @@ export class StudentComponent {
       });
     }
   }
+  fileContent!: string;
+ 
+  isImage(url: string): boolean {
+    if (!url) {
+      return false; // Retourne false si l'URL est null ou undefined
+    }
+    
+    const parts = url.split('.');
+    if (parts.length === 0) {
+      return false; // Pas d'extension de fichier trouvée
+    }
+    
+    const extension = parts[parts.length - 1].toLowerCase(); // Récupère l'extension du fichier
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    return imageExtensions.includes(extension);
+  }
+ 
+
 }
