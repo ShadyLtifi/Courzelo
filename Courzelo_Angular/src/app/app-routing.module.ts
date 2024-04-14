@@ -64,6 +64,8 @@ import { ForumComponent } from './forum/forum.component';
 import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
 import { StudentComponent } from './student/student.component';
 import { CoursesFrontComponent } from './courses-front/courses-front.component';
+import { Exemple1Component } from './exemple1/exemple1.component';
+import { ContentidComponent } from './exemple1/contentid/contentid.component';
 
 const routes: Routes = [
   {path:"back",component:BackComponent},
@@ -137,7 +139,9 @@ const routes: Routes = [
   
   { path: 'student/:id', component:StudentComponent},
   { path: 'coursesFront', component:CoursesFrontComponent},
-  
+  { path: 'ex/:id', component:Exemple1Component},
+  { path: 'ex1', component:ContentidComponent},
+
   { path: 'testeL', component:LessonTesteComponent},
   
   { path: '**', component:NotfoundComponent},

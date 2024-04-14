@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Speciality, Lesson } from '../models/Lesson/lesson';
-import { LessonService } from '../Service/Course/Lesson/lesson.service';
-import { Level } from '../models/Class/class';
+
+import { Level, Speciality } from '../models/Class/class';
 import { Module } from '../models/Module/module';
 import { ModuleService } from '../Service/Course/Module/module.service';
 

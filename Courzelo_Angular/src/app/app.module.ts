@@ -72,6 +72,12 @@ import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
 import { StudentComponent } from './student/student.component';
 import { CoursesFrontComponent } from './courses-front/courses-front.component';
 import { ModuleSpecialityComponent } from './module-speciality/module-speciality.component';
+import { Exemple1Component } from './exemple1/exemple1.component';
+import { ContentidComponent } from './exemple1/contentid/contentid.component';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { AddLessonAlerteComponent } from './forum/add-lesson-alerte/add-lesson-alerte.component';
+
 
 
 @NgModule({
@@ -150,6 +156,9 @@ import { ModuleSpecialityComponent } from './module-speciality/module-speciality
     StudentComponent,
     CoursesFrontComponent,
     ModuleSpecialityComponent,
+    Exemple1Component,
+    ContentidComponent,
+    AddLessonAlerteComponent,
     
    
   
@@ -159,7 +168,10 @@ import { ModuleSpecialityComponent } from './module-speciality/module-speciality
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxExtendedPdfViewerModule, // Importez le module du visualiseur de PDF
+    NgxDocViewerModule,
+
  
   ],
   providers: [],

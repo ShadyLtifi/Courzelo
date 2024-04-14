@@ -25,7 +25,7 @@ public class Lesson {
 
     String title;
     String content;
-
+    String type;
 
    
     // Vous pouvez également conserver le constructeur avec le paramètre content si nécessaire

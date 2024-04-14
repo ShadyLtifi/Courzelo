@@ -2,7 +2,10 @@ package tn.esprit.devflow.courzelo.controller;
 
 import groovy.util.logging.Slf4j;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.io.Resource;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,7 @@ import tn.esprit.devflow.courzelo.entity.Lesson;
 import tn.esprit.devflow.courzelo.entity.Level;
 import tn.esprit.devflow.courzelo.entity.Module;
 import tn.esprit.devflow.courzelo.entity.Speciality;
+import tn.esprit.devflow.courzelo.repository.LessonRepository;
 import tn.esprit.devflow.courzelo.services.ILessonService;
 import tn.esprit.devflow.courzelo.services.LessonService;
 
@@ -33,6 +37,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -47,7 +52,8 @@ public class LessonController {
     ILessonService lessonService;
     @Autowired
     LessonService lessonServ;
-
+@Autowired
+    LessonRepository lessonRepository;
     @PostMapping("/addLesson")
     public Lesson addLesson(@RequestBody Lesson l) {
         return lessonService.addLesson(l);
@@ -148,9 +154,69 @@ public class LessonController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    @GetMapping("/contenu/{lessonId}")
+    public ResponseEntity<byte[]> getFileContentByLessonId(@PathVariable String lessonId) {
+        try {
+            // Obtenez le nom du fichier à partir de l'ID de la leçon
+            String fileName = lessonServ.getContentByLessonId(lessonId);
+            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(fileName);
+            byte[] fileContent = Files.readAllBytes(filePath);
+
+            HttpHeaders headers = new HttpHeaders();
+            String mimeType = Files.probeContentType(filePath);
+            if (mimeType == null) {
+                mimeType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+            }
+            headers.setContentType(MediaType.parseMediaType(mimeType));
+
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(fileContent);
+        } catch (IOException e) {
+            log.error("Error reading file content for lesson with ID {}.", lessonId, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
 
 
+
+//    @GetMapping("/content")
+//    public ResponseEntity<List<byte[]>> getAllFileContents() {
+//        try {
+//            Path directoryPath = Paths.get(env.getProperty("file.upload-dir"));
+//            List<byte[]> fileContents = new ArrayList<>();
+//
+//            // Parcourir tous les fichiers dans le répertoire et lire leur contenu
+//            Files.walk(directoryPath)
+//                    .filter(Files::isRegularFile)
+//                    .forEach(filePath -> {
+//                        try {
+//                            byte[] fileContent = Files.readAllBytes(filePath);
+//                            fileContents.add(fileContent);
+//                        } catch (IOException e) {
+//                            log.error("Error reading file content for file: {}", filePath.toString(), e);
+//                        }
+//                    });
+//
+//            return ResponseEntity.ok().body(fileContents);
+//        } catch (IOException e) {
+//            log.error("Error getting list of files.", e);
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+
+
+    @GetMapping("/{lessonId}/content")
+    public ResponseEntity<String> getLessonContents(@PathVariable String lessonId) {
+        String content = lessonServ.getLessonContents(lessonId);
+
+        // Vous pouvez ajuster les en-têtes en fonction de vos besoins
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+
+        return new ResponseEntity<>(content, headers, HttpStatus.OK);
+    }
 
     // Méthode pour déterminer le type MIME en fonction de l'extension du fichier
     private String determineMimeType(String fileName) {
@@ -168,14 +234,7 @@ public class LessonController {
         }
     }
 
-//    @PostMapping("/addLessonBySpecialityAndLevel")
-//    public void addLessonBySpecialityAndLevel(@RequestBody Lesson lesson, @RequestParam String courseId, @RequestParam String idClass, @RequestParam String programId, @RequestParam Speciality speciality, @RequestParam Level level) {
-//        lessonServ.addLessonBySpecialityAndLevel(lesson, courseId, idClass, programId, speciality, level);
-//    }
-//@PostMapping("/addLessonBySpecialityAndLevel")
-//public void addLessonBySpecialityAndLevel(@RequestBody Lesson lesson, @RequestParam Speciality speciality, @RequestParam Level level) {
-//    lessonServ.addLessonBySpecialityAndLevel(lesson, speciality, level);
-//}
+
 
     @PostMapping("/addLessonBySpecialityAndLevel")
     public ResponseEntity<Lesson> addLessonBySpecialityAndLevel(
@@ -227,5 +286,63 @@ public List<Lesson> getLessonsByModule(@PathVariable("moduleId") String moduleId
         List<Lesson> lessons = lessonServ.getLessonsByClassId(classId);
         return ResponseEntity.ok(lessons);
     }
+
+    private String determineContentType(String content) {
+        String extension = content.substring(content.lastIndexOf(".") + 1);
+        switch (extension.toLowerCase()) {
+            case "jpg":
+            case "jpeg":
+            case "png":
+            case "gif":
+                return "image";
+            case "pdf":
+                return "pdf";
+            default:
+                return "fichier";
+        }
+    }
+//    @GetMapping("/lessons")
+//    public ResponseEntity<List<Lesson>> getAllLessonsWithType() {
+//        try {
+//            List<Lesson> lessons = lessonRepository.findAll();
+//            for (Lesson lesson : lessons) {
+//                lesson.setType(determineContentType(lesson.getContent()));
+//            }
+//            return ResponseEntity.ok(lessons);
+//        } catch (Exception e) {
+//            log.error("Error fetching lessons with type.", e);
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+@GetMapping("/lesson/{title}")
+public ResponseEntity<?> getLessonContent(@PathVariable String title) {
+    try {
+        // Récupérer le contenu de la base de données en fonction du titre
+        Lesson lesson = lessonRepository.findByTitle(title);
+
+        if (lesson != null) {
+            // Récupérer le contenu de la leçon
+            String contentType = lesson.getType();
+            byte[] content = lesson.getContent().getBytes();
+
+            HttpHeaders headers = new HttpHeaders();
+            // Définir le type de contenu en fonction du type récupéré de la base de données
+            headers.setContentType(MediaType.parseMediaType(contentType));
+
+            // Retourner le contenu de la leçon
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(content);
+        } else {
+            // Si la leçon n'est pas trouvée, retourner une réponse appropriée
+            return ResponseEntity.notFound().build();
+        }
+    } catch (Exception e) {
+        log.error("Error fetching lesson content for {}.", title, e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+}
+
+
 
 }

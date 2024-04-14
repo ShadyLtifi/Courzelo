@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/Service/Course/Class/class.service';
-import { Class, Level } from 'src/app/models/Class/class';
-import { Speciality } from 'src/app/models/Lesson/lesson';
+import { Class, Level, Speciality } from 'src/app/models/Class/class';
+
 
 @Component({
   selector: 'app-add-class',

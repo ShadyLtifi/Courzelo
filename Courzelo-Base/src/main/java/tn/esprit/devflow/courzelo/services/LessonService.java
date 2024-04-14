@@ -107,7 +107,21 @@ lessonRepository.deleteById(idlesson);
             return null;
         }
     }
+    public String getLessonContents(String lessonId) {
+        Lesson lesson = lessonRepository.findById(lessonId)
+                .orElseThrow(() -> new IllegalArgumentException("Lesson not found with id: " + lessonId));
 
+        // Récupérer le contenu de la leçon
+        String content = lesson.getContent();
+
+        // Vérifier si le contenu n'est pas vide
+        if (content != null && !content.isEmpty()) {
+            return content;
+        }
+
+        // Si le contenu est vide, vous pouvez renvoyer null ou lancer une exception.
+        throw new IllegalArgumentException("Empty content");
+    }
 
     public List<String> getFiles() throws IOException {
 
@@ -208,6 +222,21 @@ public List<Lesson> getLessonsByModule(Module module) {
     public List<Lesson> getLessonsByClassId(String idClass) {
         return lessonRepository.findByClasseIdClass(idClass);
     }
+
+
+    public String getContentByLessonId(String lessonId) {
+        // Implémentez la logique pour récupérer le nom du fichier à partir de l'ID de la leçon
+        Lesson lesson = lessonRepository.findById(lessonId).orElse(null);
+        if (lesson != null) {
+            // Supposons que le nom du fichier est stocké dans l'entité Lesson
+            return lesson.getContent();
+        } else {
+            // Gérer le cas où la leçon avec l'ID donné n'existe pas
+            return null;
+        }
+    }
+
+
 
 
 }

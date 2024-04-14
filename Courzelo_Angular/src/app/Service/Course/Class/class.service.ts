@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Class } from 'src/app/models/Class/class';
+import { Class, Level, Speciality } from 'src/app/models/Class/class';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,10 @@ export class ClassService {
   retrieveClass(classid: string): Observable<Class> {
     const url = `${this.apiUrl}/retrieveClass/${classid}`;
     return this.http.get<Class>(url);
+  }
+
+  addLesson(level: Level, speciality: Speciality, lesson: any) {
+    // Envoyer la requête POST avec les données requises
+    return this.http.post<any>(`${this.apiUrl}/addLessonByLevelAndSpeciality?level=${level}&speciality=${speciality}`, lesson);
   }
 }

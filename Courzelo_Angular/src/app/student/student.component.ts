@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Class, Level } from '../models/Class/class';
-import { Lesson, Speciality } from '../models/Lesson/lesson';
+import { Class, Level, Speciality } from '../models/Class/class';
+
 import { Module } from '../models/Module/module';
 import { ModuleService } from '../Service/Course/Module/module.service';
 import { LessonService } from '../Service/Course/Lesson/lesson.service';
@@ -29,7 +29,7 @@ export class StudentComponent {
   newComment: string = '';
 
   constructor(private moduleService: ModuleService,private route: ActivatedRoute 
-    ,private publicationService: PublicationService , private fileService: LessonService, private classService: ClassService) { }
+    ,private publicationService: PublicationService , private lessonService: LessonService, private classService: ClassService) { }
   getModules(): void {
     this.moduleService.getModulesBySpecialityAndLevel(this.selectedSpeciality, this.selectedLevel)
       .subscribe(modules => this.modules = modules);
@@ -79,6 +79,47 @@ export class StudentComponent {
     const imageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     return imageExtensions.includes(extension);
   }
+  content: any [] = [];
+  lessonContent !: string;
+  contentType: string | null = null;
+
+
+
  
+  getFileContentByLessonId(): void {
+  this.route.paramMap.subscribe(params => {
+    const lessonId = params.get('id');
+    if (lessonId) {
+      this.lessonService.getFileContentByLessonId(lessonId).subscribe(
+        response => {
+          const mimeType = response.headers.get('content-type');
+          const fileContent = response.body;
+          if (fileContent) {
+            if (mimeType?.startsWith('image')) {
+              // Si le contenu est une image, créer une URL blob pour l'afficher
+              const blob = new Blob([fileContent], { type: mimeType });
+              this.lessonContent = URL.createObjectURL(blob);
+              this.contentType = 'image'; // Définir le type de contenu comme image
+            } else if (mimeType?.startsWith('pdf')) {
+              // Si le contenu est un PDF, créer une URL blob pour l'afficher dans un iframe
+              const blob = new Blob([fileContent], { type: mimeType });
+              this.lessonContent = URL.createObjectURL(blob);
+              this.contentType = 'pdf'; // Définir le type de contenu comme PDF
+            } else {
+              // Si le contenu est un texte ou autre, décoder en tant qu'UTF-8
+              this.lessonContent = new TextDecoder('utf-8').decode(fileContent);
+              this.contentType = 'text'; // Définir le type de contenu comme texte
+            }
+          } else {
+            console.error('Empty lesson content received');
+          }
+        },
+        error => {
+          console.error('Error fetching lesson content:', error);
+        }
+      );
+    }
+  });
+}
 
 }

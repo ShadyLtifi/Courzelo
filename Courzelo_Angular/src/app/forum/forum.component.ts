@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { Publication } from '../models/Publication/pub';
 import { PublicationService } from '../Service/Forum/Publication/publication.service';
 import { Comment } from '../models/Comment/Comment';
+import { ClassService } from '../Service/Course/Class/class.service';
+import { Level, Speciality } from '../models/Class/class';
+import { LessonService } from '../Service/Course/Lesson/lesson.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,9 +17,21 @@ export class ForumComponent {
   publications: Publication[] = [];
   newPublicationMessage: string = '';
   newComment: string = '';
+  lessonForm: FormGroup <any>;
+  lesson: any = { title:'' ,content: "",speciality:""  }; 
+  uploadedFileUrl!: string;
+  fileType!: string;
+  speciality = Object.values(Speciality);
+  level = Object.values(Speciality);
  
 
-  constructor(private publicationService: PublicationService) { }
+  constructor(private fb:FormBuilder,private publicationService: PublicationService, private classService : ClassService ,private lessonService:LessonService) { 
+    this.lessonForm = this.fb.group({
+      title: ['', Validators.required],
+      content: ['', [Validators.required, Validators.minLength(3)]],
+    
+    });
+  }
 
   ngOnInit(): void {
     this.getPublications();
@@ -71,6 +87,7 @@ export class ForumComponent {
     }
   }
 
+ 
+  }
   
-  
-}
+

@@ -17,4 +17,6 @@ public interface LessonRepository extends MongoRepository<Lesson,String> {
     List<Lesson> findByClasse(Class classe);
     List<Lesson> findByClasseModules(Module module);
     List<Lesson> findByClasseIdClass(String idClass);
+    Lesson findByTitle (String Title);
+    List<byte[]> getAllByContent ( String content);
 }

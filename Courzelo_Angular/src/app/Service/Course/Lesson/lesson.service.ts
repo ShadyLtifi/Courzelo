@@ -1,8 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Level } from 'src/app/models/Class/class';
-import { Lesson, Speciality } from 'src/app/models/Lesson/lesson';
+import { Level, Speciality } from 'src/app/models/Class/class';
+import { Lesson } from 'src/app/models/Lesson/lesson';
+
 
 @Injectable({
   providedIn: 'root'
@@ -64,14 +65,27 @@ export class LessonService {
   public getApiUrl(): string {
     return this.apiUrl;
   }
+  getFileContents(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/content`);
+  }
+  // getFileContentByLessonId(lessonId: string): Observable<any> {
+  //   return this.http.get(`${this.apiUrl}/contenu/${lessonId}`, { responseType: 'arraybuffer' });
+  // }
 
-getFileContentAsArrayBuffer(content: string): Observable<ArrayBuffer> {
-  return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'arraybuffer' });
-}
+  getFileContentByLessonId(lessonId: string): Observable<HttpResponse<ArrayBuffer>> {
+    return this.http.get(`${this.apiUrl}/contenu/${lessonId}`, {
+      responseType: 'arraybuffer',
+      observe: 'response'
+    });
+  }
 
-getFileContentAsString(content: string): Observable<string> {
-  return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'text' });
-}
+// getFileContentAsArrayBuffer(content: string): Observable<ArrayBuffer> {
+//   return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'arraybuffer' });
+// }
+
+// getFileContentAsString(content: string): Observable<string> {
+//   return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'text' });
+// }
 addLessonBySpecialityAndLevel(speciality: Speciality, level: Level, lesson: Lesson): Observable<Lesson> {
   const url = `${this.apiUrl}/addLessonBySpecialityAndLevel?speciality=${speciality}&level=${level}`;
   return this.http.post<Lesson>(url, lesson, {

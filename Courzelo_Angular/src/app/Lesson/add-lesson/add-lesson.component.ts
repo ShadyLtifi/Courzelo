@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from 'src/app/Service/Course/Lesson/lesson.service';
-import { Lesson, Speciality } from 'src/app/models/Lesson/lesson';
+import { Level, Speciality } from 'src/app/models/Class/class';
+import { Lesson } from 'src/app/models/Lesson/lesson';
+
 
 @Component({
   selector: 'app-add-lesson',
@@ -15,7 +17,7 @@ export class AddLessonComponent {
   uploadedFileUrl!: string;
   fileType!: string;
   speciality = Object.values(Speciality);
-  level = Object.values(Speciality);
+  level = Object.values(Level);
  
   constructor(private fb:FormBuilder, private lessonService:LessonService, private route: ActivatedRoute, private router:Router){
     this.lessonForm = this.fb.group({

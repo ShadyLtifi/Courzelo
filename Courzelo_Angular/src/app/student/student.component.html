@@ -218,7 +218,7 @@
                   <div class="col-20">
                     <div class="card mb-4">
                       <div class="card-body">
-                        <h5 class="card-title"><a href="#" class="text-dark" >{{ lesson.title }}</a></h5>
+                        <h5 class="card-title"><a routerLink="/ex/{{ lesson.idlesson }}" class="text-dark" >{{ lesson.title }}</a></h5>
                         <p class="card-text">
                           <!-- Afficher le contenu en fonction du type de fichier -->
                           <ng-container *ngIf="isImage(lesson.content)">
