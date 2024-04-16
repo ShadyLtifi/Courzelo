@@ -4,25 +4,21 @@ import groovy.util.logging.Slf4j;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.io.Resource;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
+
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
 import tn.esprit.devflow.courzelo.entity.Lesson;
 import tn.esprit.devflow.courzelo.entity.Level;
 import tn.esprit.devflow.courzelo.entity.Module;
@@ -37,7 +33,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Slf4j
@@ -179,44 +175,6 @@ public class LessonController {
     }
 
 
-
-
-//    @GetMapping("/content")
-//    public ResponseEntity<List<byte[]>> getAllFileContents() {
-//        try {
-//            Path directoryPath = Paths.get(env.getProperty("file.upload-dir"));
-//            List<byte[]> fileContents = new ArrayList<>();
-//
-//            // Parcourir tous les fichiers dans le répertoire et lire leur contenu
-//            Files.walk(directoryPath)
-//                    .filter(Files::isRegularFile)
-//                    .forEach(filePath -> {
-//                        try {
-//                            byte[] fileContent = Files.readAllBytes(filePath);
-//                            fileContents.add(fileContent);
-//                        } catch (IOException e) {
-//                            log.error("Error reading file content for file: {}", filePath.toString(), e);
-//                        }
-//                    });
-//
-//            return ResponseEntity.ok().body(fileContents);
-//        } catch (IOException e) {
-//            log.error("Error getting list of files.", e);
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
-//    }
-
-
-    @GetMapping("/{lessonId}/content")
-    public ResponseEntity<String> getLessonContents(@PathVariable String lessonId) {
-        String content = lessonServ.getLessonContents(lessonId);
-
-        // Vous pouvez ajuster les en-têtes en fonction de vos besoins
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.TEXT_PLAIN);
-
-        return new ResponseEntity<>(content, headers, HttpStatus.OK);
-    }
 
     // Méthode pour déterminer le type MIME en fonction de l'extension du fichier
     private String determineMimeType(String fileName) {

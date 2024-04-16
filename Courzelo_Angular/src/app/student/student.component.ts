@@ -86,40 +86,6 @@ export class StudentComponent {
 
 
  
-  getFileContentByLessonId(): void {
-  this.route.paramMap.subscribe(params => {
-    const lessonId = params.get('id');
-    if (lessonId) {
-      this.lessonService.getFileContentByLessonId(lessonId).subscribe(
-        response => {
-          const mimeType = response.headers.get('content-type');
-          const fileContent = response.body;
-          if (fileContent) {
-            if (mimeType?.startsWith('image')) {
-              // Si le contenu est une image, créer une URL blob pour l'afficher
-              const blob = new Blob([fileContent], { type: mimeType });
-              this.lessonContent = URL.createObjectURL(blob);
-              this.contentType = 'image'; // Définir le type de contenu comme image
-            } else if (mimeType?.startsWith('pdf')) {
-              // Si le contenu est un PDF, créer une URL blob pour l'afficher dans un iframe
-              const blob = new Blob([fileContent], { type: mimeType });
-              this.lessonContent = URL.createObjectURL(blob);
-              this.contentType = 'pdf'; // Définir le type de contenu comme PDF
-            } else {
-              // Si le contenu est un texte ou autre, décoder en tant qu'UTF-8
-              this.lessonContent = new TextDecoder('utf-8').decode(fileContent);
-              this.contentType = 'text'; // Définir le type de contenu comme texte
-            }
-          } else {
-            console.error('Empty lesson content received');
-          }
-        },
-        error => {
-          console.error('Error fetching lesson content:', error);
-        }
-      );
-    }
-  });
-}
+
 
 }

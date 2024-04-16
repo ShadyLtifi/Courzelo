@@ -77,6 +77,8 @@ import { ContentidComponent } from './exemple1/contentid/contentid.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { AddLessonAlerteComponent } from './forum/add-lesson-alerte/add-lesson-alerte.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { GetLessonWithIdClassComponent } from './forum/get-lesson-with-id-class/get-lesson-with-id-class.component';
 
 
 
@@ -159,6 +161,7 @@ import { AddLessonAlerteComponent } from './forum/add-lesson-alerte/add-lesson-a
     Exemple1Component,
     ContentidComponent,
     AddLessonAlerteComponent,
+    GetLessonWithIdClassComponent,
     
    
   
@@ -171,7 +174,7 @@ import { AddLessonAlerteComponent } from './forum/add-lesson-alerte/add-lesson-a
     ReactiveFormsModule,
     NgxExtendedPdfViewerModule, // Importez le module du visualiseur de PDF
     NgxDocViewerModule,
-
+    MatDialogModule
  
   ],
   providers: [],

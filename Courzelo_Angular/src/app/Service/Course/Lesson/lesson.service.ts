@@ -47,13 +47,7 @@ export class LessonService {
   getFilesWithInfo(): Observable<Lesson[]> {
     return this.http.get<Lesson[]>(`${this.apiUrl}/getFilesWithInfo`);
   }
-  // getFileContent(content: string): Observable<any> {
-  //   return this.http.get<any>(`${this.apiUrl}/getFileContent/${content}`);
-  // }
-  // getFileContent(content: string): Observable<string> {
-  //   const url = `${this.apiUrl}/content/${content}`;
-  //   return this.http.get<string>(url);
-  // }
+
   getFileContent(content: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/content/${content}`).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -68,9 +62,7 @@ export class LessonService {
   getFileContents(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/content`);
   }
-  // getFileContentByLessonId(lessonId: string): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}/contenu/${lessonId}`, { responseType: 'arraybuffer' });
-  // }
+  
 
   getFileContentByLessonId(lessonId: string): Observable<HttpResponse<ArrayBuffer>> {
     return this.http.get(`${this.apiUrl}/contenu/${lessonId}`, {
@@ -79,13 +71,7 @@ export class LessonService {
     });
   }
 
-// getFileContentAsArrayBuffer(content: string): Observable<ArrayBuffer> {
-//   return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'arraybuffer' });
-// }
 
-// getFileContentAsString(content: string): Observable<string> {
-//   return this.http.get(`${this.apiUrl}/content/${content}`, { responseType: 'text' });
-// }
 addLessonBySpecialityAndLevel(speciality: Speciality, level: Level, lesson: Lesson): Observable<Lesson> {
   const url = `${this.apiUrl}/addLessonBySpecialityAndLevel?speciality=${speciality}&level=${level}`;
   return this.http.post<Lesson>(url, lesson, {
@@ -104,6 +90,12 @@ private handleError(error: any) {
 
 getLessonOfClassByLevelAndSpeciality(level: Level, speciality: Speciality): Observable<Lesson[]> {
   return this.http.get<Lesson[]>(`${this.apiUrl}/class/${level}/${speciality}`);
+}
+
+
+getLessonsByClassId(classId: string) {
+  const url = `${this.apiUrl}/${classId}/lessons`; // Remplacez 'votre_url_backend' par l'URL de votre backend
+  return this.http.get<Lesson[]>(url);
 }
 
 }

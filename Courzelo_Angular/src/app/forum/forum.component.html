@@ -176,15 +176,19 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                        <i class="material-icons text-lg position-relative">settings</i>
+                      <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false"  >
+                        
+                        <i class="material-icons text-lg position-relative" (click)="onSubmit()">settings</i>
                         <span class="ms-1" >Add Lesson </span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </div>
-           
+              <button (click)="openLessonForms()" class="btn custom-btn-color"> <span class="text-white">Add Lesson</span></button>
+
+
+ 
            
             <div class="container">
               <div class="row">
@@ -205,44 +209,40 @@
 
 
 </div>
-
-<br> <br>
-<div class="inner-main-body p-2 p-sm-3 collapse forum-content show border-warning border-top-0 border-right-0 border-bottom-0 rounded-0 custom-card-blue" *ngFor="let pub of publications" class="publication">
-  <div class="card mb-2">
-      <div class="card-body p-2 p-sm-3" style="background-color: #cff5f2;">
-          <!-- Bouton de menu déroulant à l'extrémité en haut -->
-          <div class="dropdown float-end">
-            <a class="btn btn-success" href="path/to/settings" aria-label="Settings">
-              <i class="bi bi-pencil-square" aria-hidden="true"></i>
-            </a>
-            
-            <a class="btn btn-danger" href="path/to/settings" aria-label="Delete">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
-            
-            <a class="btn btn-primary" href="#navigation-main" aria-label="Skip to main navigation">
-              <i class="bi bi-chat-text" aria-hidden="true"></i>
-            </a>
-          </div>
-
-          <div class="media forum-item">
-              <div class="media-body">
-                  <p class="text-secondary">
-                      {{ pub.message }} 
-                  </p>
-              </div>
-          </div>
-          
-          <!-- Ajouter l'espace pour écrire un commentaire -->
-          <form (ngSubmit)="addComment(pub)">
-              <div class="form-group">
-                  <textarea [(ngModel)]="newComment" name="newComment" class="form-control" rows="2" placeholder="Écrire un commentaire"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="background-color: #afad13;">Publier</button>
-          </form>
+   
+ 
+<br>   
+<br> 
+<div class="row">
+  <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4" *ngFor="let class of classes">
+    <div class="card mb-3">
+      <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+        <i class="bi bi-people"></i>
       </div>
+      <div class="card-header p-4 pt-2">
+        <h5 class="card-title"> <div class="text-end pt-1">
+          <p class="text-sm mb-2 text-capitalize font-weight-bold">{{ class.speciality }}</p>
+          <p class="text-sm mb-1 text-capitalize font-weight-bold"> {{ class.level }}</p>
+          <h4 class="mb-0"></h4>
+        </div></h5>
+        
+        <hr class="dark horizontal my-2">
+        <div class="card-footer p-1 d-flex justify-content-center">
+          <a href="/classe" class="btn bg-turquoise">
+            <i class="bi bi-arrow-right"></i> Show Lessons
+          </a>
+        
+        </div>
+    
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+
 
 
 
