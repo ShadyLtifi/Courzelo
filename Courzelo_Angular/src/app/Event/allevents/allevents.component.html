@@ -1,0 +1,73 @@
+<app-sidebar></app-sidebar>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<div class="content-wrapper white-background">
+  <br> <br> <br>
+  <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+           <div class="card custom-blue">
+            <div class="content">
+            </div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+              <div class="search-container">
+                  <input class="search-input" type="text" [(ngModel)]="searchTerm" placeholder="Search events by title..." (keyup)="search()">
+                  <button class="search-button" (click)="search()">
+                      <i class="fas fa-search"></i> <!-- Icône de recherche (assurez-vous que FontAwesome est inclus dans votre projet) -->
+                  </button>
+              </div>
+              
+              </div>
+              <div class="ml-auto">
+                <a routerLink="/addEvent"><i class="bi bi-patch-plus-fill text-black" style="font-size: 40px;"></i></a>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-hover text-center custom-table">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col" class="custom-cell" style="font-weight: bold; color: black;">title</th>
+                    <th scope="col" class="custom-cell">photo</th>
+                    <th scope="col" class="custom-cell">maxcapacity</th>
+                    <th scope="col" class="custom-cell">duration</th>
+                    <th scope="col" class="custom-cell">debutdate</th>
+                    <th scope="col" class="custom-cell">price</th>
+                    <th scope="col" class="custom-cell">Speaker</th>
+                    <th scope="col" class="custom-cell">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let event of events">
+                    <td class="custom-cell"><p>{{ event.title }}</p></td>
+                    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+             <ul class="list-group list-group-flush">
+              <img *ngIf="event.photoUrl" [src]="event.photoUrl" alt="Event Image" width="100" height="100">
+            </ul>
+                    
+                    <td class="custom-cell">{{ event.maxcapacity }}</td>
+                    <td class="custom-cell">{{ event.duration }}</td>
+                    <td class="custom-cell">{{ event.debutdate | date }}</td>
+                    <td class="custom-cell">{{ event.price }}</td>
+                    <td class="custom-cell">{{ event.speaker?.name }}</td>
+                
+                    <td class="custom-cell">
+                      <button type="button" class="btn btn-outline-success"routerLink="/updateEvent/{{event.idevent}}">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger" (click)="deleteEvent(event.idevent)">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-info" [routerLink]="['/showevent', event.idevent]">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </td>
+                   </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

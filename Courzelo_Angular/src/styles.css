@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height:45%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.custom-blue {
+    background-color: #74cec76e; /* Une couleur entre bleu ciel et bleu turquoise */
+    color: rgb(8, 8, 8); /* Couleur du texte, vous pouvez ajuster selon vos préférences */
+    padding: 1px; /* Espacement intérieur */
+    text-align: center;
+    /* Lorsque vous survolez le conteneur */
+   /* Déplacez le conteneur vers la droite */
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+  
+    border: 2px solid rgb(154, 210, 1); /* Bordure */
+  }

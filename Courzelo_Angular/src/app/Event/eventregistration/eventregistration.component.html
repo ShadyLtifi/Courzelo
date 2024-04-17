@@ -1,0 +1,53 @@
+<app-sidebar></app-sidebar>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<div class="content-wrapper white-background">
+    <br> <br> <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="card custom-blue">
+            <div class="card-header">
+              <b>Event Registrations</b>
+            </div>
+            <div class="card-body">
+              <table class="table table-hover text-center custom-table" *ngIf="eventRegistrations.length > 0">
+                <thead>
+                  <tr class="table-info">
+                    <th scope="col" class="custom-cell">Registration Date</th>
+                    <th scope="col" class="custom-cell">User Email</th>
+                    <th scope="col" class="custom-cell">Events</th>
+                    <th scope="col" class="custom-cell">Status</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let registration of eventRegistrations">
+                    <td class="custom-cell">{{ registration.registrationDate | date }}</td>
+                    <td class="custom-cell">{{ registration.user.email }}</td>
+                    <td class="custom-cell">
+                      <ul>
+                        <li *ngFor="let event of registration.events">
+                          {{ event.title }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="custom-cell">
+                        <button *ngIf="!registration.confirmationStatus" (click)="confirmRegistration(registration.idreg)" class="btn ">Confirm</button>
+                        <span *ngIf="registration.confirmationStatus"><b>Confirmed</b></span>
+                      </td>
+                      <!-- events.component.html -->
+<button (click)="showStatistics()" class="btn btn-info">Show Statistics</button>
+
+                    </tr>
+                </tbody>
+              </table>
+              <div *ngIf="eventRegistrations.length === 0" class="alert alert-secondary" role="alert">
+                No registrations found.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

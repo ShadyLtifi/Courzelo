@@ -1,0 +1,167 @@
+body {
+    background-color: #FFEBEE
+}
+
+.card {
+    width: 400px;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px
+}
+
+label.radio {
+    cursor: pointer;
+    width: 100%
+}
+
+label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+label.radio span {
+    padding: 7px 14px;
+    border: 2px solid #eee;
+    display: inline-block;
+    color: #039be5;
+    border-radius: 10px;
+    width: 100%;
+    height: 48px;
+    line-height: 27px
+}
+
+label.radio input:checked+span {
+    border-color: #039BE5;
+    background-color: #81D4FA;
+    color: #fff;
+    border-radius: 9px;
+    height: 48px;
+    line-height: 27px
+}
+
+.form-control {
+    margin-top: 10px;
+    height: 48px;
+    border: 2px solid #eee;
+    border-radius: 10px
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid #039BE5
+}
+
+.agree-text {
+    font-size: 12px
+}
+
+.terms {
+    font-size: 12px;
+    text-decoration: none;
+    color: #039BE5
+}
+
+.confirm-button {
+    height: 50px;
+    border-radius: 10px
+}
+.white-background {
+    background-color: #fff; /* blanc */
+}
+.turquoise-background {
+    background-color: #bfe4e6a9; /* Turquoise */
+}
+
+/* Styles pour le modal */
+.modal-header {
+    background-color: #5cb85c; /* Couleur de fond verte pour l'en-tête */
+    color: white; /* Texte en blanc */
+    border-top-left-radius: 0.3rem; /* Arrondir les coins en haut à gauche */
+    border-top-right-radius: 0.3rem; /* Arrondir les coins en haut à droite */
+    padding: 1rem; /* Espacement interne pour l'en-tête */
+  }
+  
+  .modal-title {
+    font-weight: bold; /* Rendre le titre en gras */
+  }
+  
+  .modal-body {
+    padding: 1rem; /* Espacement interne pour le corps */
+  }
+  
+  .modal-content {
+    border-radius: 0.3rem; /* Arrondir tous les coins du modal */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour la profondeur */
+  }
+  
+  .modal-footer {
+    padding: 1rem; /* Espacement interne pour le pied */
+    border-top: 1px solid #e9ecef; /* Ligne de séparation */
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Couleur de fond grise pour le bouton secondaire */
+    color: white; /* Texte en blanc */
+  }
+  
+  .btn-primary {
+    background-color: #ba9c02; /* Couleur de fond bleue pour le bouton principal */
+    color: white; /* Texte en blanc */
+  }
+  
+  .custom-cell {
+    padding: 0.75rem 1.25rem; /* Espacement interne pour les cellules */
+    border-bottom: 1px solid #e9ecef; /* Ligne de séparation entre les éléments */
+  }
+  
+  /* Assurez-vous que les td sont contenus dans une table */
+  .table td {
+    padding: 0.6rem; /* Espacement intérieur pour les cellules */
+    border-top: 1.6px solid #bfe4e6a9; /* Ligne de séparation fine */
+    background-color: #23eeb841; /* Couleur de fond pour toutes les cellules */
+  }
+  
+  .custom-checkbox-label {
+    position: relative;
+    padding-left: 25px; /* Assurez-vous que cette valeur est suffisante pour contenir la case à cocher personnalisée */
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .custom-checkbox-input {
+    opacity: 0; /* Rendez la case à cocher par défaut complètement transparente */
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  .custom-checkbox-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee; /* Couleur de fond pour la case non cochée */
+    border-radius: 4px; /* Coins arrondis pour la case à cocher */
+    border: 1px solid #dcdcdc; /* Bordure pour la case à cocher */
+  }
+  
+  /* Style lorsque la case à cocher est cochée */
+  .custom-checkbox-input:checked ~ .custom-checkbox-box {
+    background-color: #efd808ed; /* Couleur de fond lorsque cochée */
+    border-color: #d9dbd4; /* Couleur de bordure lorsque cochée */
+  }
+  
+  /* Ajout d'une coche visuelle lorsqu'elle est cochée */
+  .custom-checkbox-input:checked ~ .custom-checkbox-box:after {
+    content: "✔";
+    position: absolute;
+    left: 6px;
+    top: 1px;
+    color: white; /* Couleur de la coche */
+    font-size: 14px;
+  }
+  
