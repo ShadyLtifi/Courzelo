@@ -16,6 +16,8 @@ import { ProfileComponent } from './User/profile/profile.component';
 import { PartnerComponent } from './User/partner/partner.component';
 import { UserProfileComponent } from './User/user-profile/user-profile.component';
 import { ResetpasswordComponent } from './User/resetpassword/resetpassword.component';
+import { AlluserComponent } from './User/alluser/alluser.component';
+import { UpdateuserComponent } from './User/updateuser/updateuser.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ResetpasswordComponent } from './User/resetpassword/resetpassword.compo
     PartnerComponent,
     UserProfileComponent,
     ResetpasswordComponent,
+    AlluserComponent,
+    UpdateuserComponent,
       ],
   imports: [
     BrowserModule,

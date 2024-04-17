@@ -8,6 +8,8 @@ import { ProfileComponent } from './User/profile/profile.component';
 import { PartnerComponent } from './User/partner/partner.component';
 import { UserProfileComponent } from './User/user-profile/user-profile.component';
 import { ResetpasswordComponent } from './User/resetpassword/resetpassword.component';
+import { AlluserComponent } from './User/alluser/alluser.component';
+import { UpdateuserComponent } from './User/updateuser/updateuser.component';
 
 
 const routes: Routes = [
@@ -20,7 +22,8 @@ const routes: Routes = [
   {path:'partner', component:PartnerComponent},
   {path: 'user', component:UserProfileComponent},
   {path: 'resetpassword', component:ResetpasswordComponent},
-
+  {path: 'alluser', component:AlluserComponent},
+  {path: 'updateuser/:username', component:UpdateuserComponent}
 
   
 ];

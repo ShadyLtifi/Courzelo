@@ -19,5 +19,7 @@ public interface IUserService {
      List<User> retrieveAllUser();
 
 
+    void deleteUser(String Id);
+
     Roles getRoleByUsername(String username);
 }

@@ -1,5 +1,5 @@
 export class User {
-    iduser?: string;
+    id?: string;
     nom?: string;
     prenom?: string;
     cin?: number;
@@ -8,6 +8,7 @@ export class User {
     password?: string;
     username?: string;
     role?: Roles;
+    enabled?: boolean;
 
 
 }

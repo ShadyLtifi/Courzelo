@@ -44,9 +44,12 @@ public class UserRestController {
     }
 
 
-    @PutMapping("updateUser")
-    User editUser( @RequestBody User user){
-        return iUserService.updateUser(user);
+    @PutMapping("/updateUser/{username}")
+    public ResponseEntity<User> editUser(@PathVariable("username") String username, @RequestBody User user) {
+        // Make sure to set the username in the User object if it's not already set
+        user.setUsername(username);
+        User updatedUser = iUserService.updateUser(user);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @PutMapping("/change-password")
@@ -111,6 +114,11 @@ public class UserRestController {
         return iUserService.getRoleByUsername(username);
     }
 
+
+    @DeleteMapping("/deleteuser/{username}")
+    public void deleteUser (@PathVariable ("username") String username){
+        iUserService.deleteUser(username);
+    }
 
 }
 

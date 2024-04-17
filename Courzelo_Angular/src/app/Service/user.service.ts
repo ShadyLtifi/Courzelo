@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { RegisterDto } from '../models/Registerdto/registerDto';
 import { JwtService } from './jwt-service.service';
 import * as jwt_decode from 'jwt-decode';
@@ -68,5 +68,29 @@ export class UserService {
   changePassword(email: string, oldPass: string, newPass: string): Observable<any> {
     const request = { email, oldPass,  newPass };
     return this.http.put(`${this.baseUrl}/change-password`, request, { responseType: 'text' });
+  }
+
+  getAll() : Observable<any> {
+    return this.http.get<any[]>(`${this.baseUrl}/allusers`);
+  }
+
+  deleteUser(username: string): Observable<void> {
+    const url = `${this.baseUrl}/deleteuser/${username}`;
+    return this.http.delete<void>(url);
+  }
+
+  updateUser(username: string, updatedUser: any): Observable<any> {
+    const url = `${this.baseUrl}/updateUser/${username}`;
+    return this.http.put(url, updatedUser).pipe(
+      catchError((error: any) => {
+        console.error('Error updating user:', error);
+        throw error; 
+      })
+    );
+  }
+
+  retrieveUser(username: string): Observable<User> {
+    const url = `${this.baseUrl}/findUserByUsername/${username}`;
+    return this.http.get<User>(url);
   }
 }

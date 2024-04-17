@@ -1,0 +1,56 @@
+<div class="content-wrapper white-background">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row justify-content-center"> 
+          <div class="col-md-10">
+            <div class="card custom-blue">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <span class="font-weight-bold"  style="font-size: 1.5rem; color: rgb(8, 8, 8);">User List</span>
+                </div>
+                <div class="ml-auto">
+                  <a routerLink="/adduser"><i class="bi bi-person-plus-fill text-black" style="font-size: 40px;"></i></a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover text-center custom-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">CIN</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Enabled</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of Users">  
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>{{ user.cin }}</td>
+                        <td>{{ user.dateN }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>{{ user.enabled }}</td>
+                        <td class="custom-cell">  
+                            <a routerLink="/updateuser/{{ user.username }}"><i class="bi bi-pencil-square text-success" style="font-size: 15px;margin-left: 15px;"></i></a>
+                            <a (click)="deleteUser(user.username)"><i class="bi bi-trash text-danger" style="font-size: 15px;margin-left: 15px;"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

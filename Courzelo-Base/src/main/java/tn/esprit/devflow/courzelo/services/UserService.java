@@ -41,24 +41,16 @@ public class UserService implements IUserService {
         }
     }
 
-    @JsonIgnore
     @Override
     public User updateUser(User user) {
-        System.out.println("test");
-        if (userRepo.existsById(user.getId())) {
-            System.out.println("test");
-            User existing = userRepo.findUserById(user.getId());
-            user.setPassword(existing.getPassword());
-            user.setEmail(existing.getEmail());
-            user.setRole(existing.getRole());
-            user.setUpdatedAt(new Date());
-
-            System.out.println(user.toString());
-            System.out.println("USER is = "+user);
-            return userRepo.save(user);
+        User u = userRepo.findUserByUsername(user.getUsername());
+        if (u != null) {
+            u.setNom(user.getNom());
+            u.setPrenom(user.getPrenom());
+            u.setEmail(user.getEmail());
+            return userRepo.save(u);
         } else {
-            System.out.println("exeption");
-            throw new RuntimeException("User not found with id: " + user.getId());
+            return null;
         }
     }
 
@@ -128,6 +120,11 @@ public class UserService implements IUserService {
     }
 
 
+    @Override
+    public void deleteUser(String username){
+        User u = userRepo.findUserByUsername(username);
+        userRepo.delete(u);
+    }
 
 
     @Override
