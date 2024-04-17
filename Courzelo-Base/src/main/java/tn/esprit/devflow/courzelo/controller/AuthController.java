@@ -20,6 +20,7 @@ import tn.esprit.devflow.courzelo.repository.UserRepository;
 import tn.esprit.devflow.courzelo.security.JwtIssuer;
 import tn.esprit.devflow.courzelo.security.JwtTokenUtil;
 import tn.esprit.devflow.courzelo.services.AuthService;
+import tn.esprit.devflow.courzelo.services.EmailService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -31,6 +32,7 @@ public class AuthController {
     public final JwtIssuer jwtIssuer;
     private final AuthenticationManager authenticationManager;
     private final AuthService authService;
+    private final EmailService emailService;
 
 
     @PostMapping("/auth/login")
@@ -61,6 +63,7 @@ public class AuthController {
             throw new UserNotFoundException("User exist by that email");
         }
         authService.registerUser(registerDto);
+        emailService.sendCodeByMail(registerDto.getEmail());
         return ResponseEntity.ok("User registered successfully");
     }
 

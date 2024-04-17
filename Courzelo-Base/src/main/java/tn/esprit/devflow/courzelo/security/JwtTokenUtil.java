@@ -5,16 +5,15 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtTokenUtil {
@@ -58,11 +57,17 @@ public class JwtTokenUtil {
 
     public static String generateToken(UserDetails userDetails) {
 
+        Collection<? extends GrantedAuthority> roles = userDetails.getAuthorities();
+        String rolesString = roles.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
         Map<String, Object> claims = new HashMap<>();
+        claims.put("username",userDetails.getUsername());
+        claims.put("role",rolesString);
+
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(userDetails.getAuthorities().toString())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY * 1000))
                 .signWith(key)

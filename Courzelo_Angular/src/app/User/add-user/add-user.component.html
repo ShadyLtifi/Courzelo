@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="date" id="DateN" class="form-control form-control-lg" formControlName="DateN">
-                  <label class="form-label" for="DateN">Your Birthday</label>
+                  <input type="date" id="dateN" class="form-control form-control-lg" formControlName="dateN">
+                  <label class="form-label" for="dateN">Your Birthday</label>
                 </div>
 
                 <div class="form-outline mb-4">
@@ -41,11 +41,11 @@
                 </div>
 
                 <div class="mb-4">
-                  <select id="Role" name="Role" class="form-control" formControlName="Role" required>
+                  <select id="role" name="role" class="form-control" formControlName="role" required>
                    <option value="" disabled selected>Choose a role</option>
-                   <option *ngFor="let role of Role" [value]="role">{{ role }}</option>
+                   <option *ngFor="let role of role" [value]="role">{{ role }}</option>
                  </select>
-                 <label class="form-label" for="Role">Your Role</label>
+                 <label class="form-label" for="role">Your Role</label>
                </div>
 
                <div class="form-outline mb-4">

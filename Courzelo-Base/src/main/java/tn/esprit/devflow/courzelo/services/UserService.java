@@ -11,6 +11,7 @@ import org.webjars.NotFoundException;
 import tn.esprit.devflow.courzelo.entity.Roles;
 import tn.esprit.devflow.courzelo.entity.User;
 import tn.esprit.devflow.courzelo.repository.UserRepository;
+import tn.esprit.devflow.courzelo.security.JwtTokenUtil;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -20,6 +21,8 @@ import java.util.*;
 public class UserService implements IUserService {
     private final UserRepository userRepo;
     private PasswordEncoder passwordEncoder;
+
+    private  JwtTokenUtil jwttkn;
 
     public UserService(UserRepository userRepo) {
         this.userRepo = userRepo;
@@ -123,6 +126,8 @@ public class UserService implements IUserService {
     public List<User> retrieveAllUser() {
         return userRepo.findAll();
     }
+
+
 
 
     @Override

@@ -3,10 +3,10 @@ export class RegisterDto {
       public nom: string,
       public prenom: string,
       public cin: string,
-      public DateN: string,
+      public dateN: string,
       public username: string,
       public email: string,
-      public Role: string,
+      public role: string,
       public password: string
   
     ) {}

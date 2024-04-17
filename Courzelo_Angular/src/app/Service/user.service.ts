@@ -3,13 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { RegisterDto } from '../models/Registerdto/registerDto';
-import  {jwtDecode} from 'jwt-decode'; 
 import { JwtService } from './jwt-service.service';
+import * as jwt_decode from 'jwt-decode';
+import { User } from '../models/User/user';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  getUserByUsername(username: string): Observable <User> {
+    return this.http.get<any>(`${this.baseUrl}/findUserByUsername/${username}`);
+  }
   private baseUrl = 'http://localhost:6085';
   private accessTokenKey = 'access_token';
 
@@ -34,23 +39,13 @@ export class UserService {
     return localStorage.getItem(this.accessTokenKey);
   }
   
-
   getUserRoles(): string[] | null {
     const accessToken = this.getAccessToken();
     if (accessToken) {
       try {
         const decodedToken: any = this.jwtService.decodeToken(accessToken);
-        if (decodedToken && decodedToken.sub) {
-          // Assuming roles are in an array format like '[ROLE_ADMIN]'
-          const rolesString = decodedToken.sub;
-          const rolesArray = rolesString.match(/\[(.*?)\]/);
-          if (rolesArray && rolesArray.length > 1) {
-            const roles = rolesArray[1].split(',');
-            return roles.map((role: string) => role.trim());
-          } else {
-            console.error('Invalid roles format in token:', rolesString);
-            return null;
-          }
+        if (decodedToken && decodedToken.role) {
+          return decodedToken.role;
         } else {
           console.error('Invalid token or missing roles:', decodedToken);
           return null;
@@ -61,5 +56,17 @@ export class UserService {
       }
     }
     return null;
+  }
+
+  getCurrentUserProfile(): Observable<any> {
+    const token = localStorage.getItem(this.accessTokenKey);
+    const decodedToken: any = jwt_decode.jwtDecode(token || ''); // Decode the token
+    const username = decodedToken ? decodedToken.username : ''; // Extract username from decoded token
+    return this.http.get<any>(`${this.baseUrl}/findUserByUsername/${username}`);
+  }  
+
+  changePassword(email: string, oldPass: string, newPass: string): Observable<any> {
+    const request = { email, oldPass,  newPass };
+    return this.http.put(`${this.baseUrl}/change-password`, request, { responseType: 'text' });
   }
 }

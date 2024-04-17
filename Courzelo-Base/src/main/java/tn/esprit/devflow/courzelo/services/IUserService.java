@@ -18,5 +18,6 @@ public interface IUserService {
 
      List<User> retrieveAllUser();
 
-     Roles getRoleByUsername(String username);
+
+    Roles getRoleByUsername(String username);
 }

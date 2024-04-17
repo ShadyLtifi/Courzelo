@@ -24,10 +24,9 @@ export class LoginComponent {
         const decodedToken = this.jwtService.decodeToken(token);
         if (decodedToken) {
           console.log('Decoded token:', decodedToken);
-          const roles = this.userService.getUserRoles(); // Retrieve roles from service
+          const roles = this.userService.getUserRoles();
           if (roles) {
             console.log('Roles:', roles);
-            // Proceed with handling roles as needed
             this.redirectBasedOnRole(roles);
           } else {
             console.error('Unable to retrieve user roles.');
@@ -46,20 +45,15 @@ export class LoginComponent {
     if (roles.includes('ROLE_ADMIN')) {
       console.log('Redirecting to /profile');
       this.router.navigate(['/profile']);
-      // Redirect logic goes here
     } else if (roles.includes('ROLE_PARTENAIRE')) {
       console.log('Redirecting to /partner');
       this.router.navigate(['/partner']);
-      // Redirect logic goes here
     } else if (roles.includes('ROLE_STUDENT')) {
       console.log('Redirecting to /etudiant');
-      // Redirect logic goes here
     } else if (roles.includes('ROLE_TEACHER')) {
       console.log('Redirecting to /teacher');
-      // Redirect logic goes here
     } else {
       console.error('Unknown role:', roles);
-      // Handle unknown roles or errors
     }
   }
 }

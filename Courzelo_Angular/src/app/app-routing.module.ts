@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './User/add-user/add-user.component';
 import { ProfileComponent } from './User/profile/profile.component';
 import { PartnerComponent } from './User/partner/partner.component';
+import { UserProfileComponent } from './User/user-profile/user-profile.component';
+import { ResetpasswordComponent } from './User/resetpassword/resetpassword.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path:'back', component:BackComponent},
   {path:'adduser', component:AddUserComponent}, 
   {path:'profile', component:ProfileComponent}, 
-  {path:'partner', component:PartnerComponent}, 
+  {path:'partner', component:PartnerComponent},
+  {path: 'user', component:UserProfileComponent},
+  {path: 'resetpassword', component:ResetpasswordComponent},
 
 
   

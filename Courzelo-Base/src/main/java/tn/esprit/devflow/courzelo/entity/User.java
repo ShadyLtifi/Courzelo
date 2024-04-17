@@ -21,21 +21,20 @@ import java.util.Date;
 public class User {
     @Id
     private String id;
-    private String email;
-    private String username;
     private String nom;
     private String prenom;
     private long cin;
+    private LocalDate dateN;
+    private String username;
+    private String email;
+    private Roles role;
     @JsonIgnore
     private String password;
-    private Roles role;
-    private LocalDate dateN ;
     private Date updatedAt;
     private Date createdAt;
     private boolean enabled = false ;
     private LocalDate lastLogin ;
     private String verificationToken;
-
 
 
     public boolean getEnabled(){

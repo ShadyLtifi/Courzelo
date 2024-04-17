@@ -14,6 +14,8 @@ import { AddUserComponent } from './User/add-user/add-user.component';
 import { UserService } from './Service/user.service';
 import { ProfileComponent } from './User/profile/profile.component';
 import { PartnerComponent } from './User/partner/partner.component';
+import { UserProfileComponent } from './User/user-profile/user-profile.component';
+import { ResetpasswordComponent } from './User/resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { PartnerComponent } from './User/partner/partner.component';
     AddUserComponent,
     ProfileComponent,
     PartnerComponent,
+    UserProfileComponent,
+    ResetpasswordComponent,
       ],
   imports: [
     BrowserModule,

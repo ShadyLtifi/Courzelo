@@ -3,21 +3,21 @@ export class User {
     nom?: string;
     prenom?: string;
     cin?: number;
-    DateN?: Date;
+    dateN?: Date;
     email?: string;
     password?: string;
     username?: string;
-    Role?: TypeRole;
+    role?: Roles;
 
 
 }
 
 
-export enum TypeRole{
+export enum Roles{
 
     ADMIN,
     TEACHER,
     STUDENT,
-    PARTENAIRE
+    PARTNER
 
 }

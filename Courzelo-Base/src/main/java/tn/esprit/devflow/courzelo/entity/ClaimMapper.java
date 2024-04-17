@@ -1,7 +1,8 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotNull;
 
 
 @Component

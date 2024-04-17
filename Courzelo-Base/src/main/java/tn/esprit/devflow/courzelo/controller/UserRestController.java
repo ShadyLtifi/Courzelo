@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
@@ -17,12 +19,12 @@ import tn.esprit.devflow.courzelo.repository.UserRepository;
 import tn.esprit.devflow.courzelo.services.AuthService;
 import tn.esprit.devflow.courzelo.services.IUserService;
 
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @AllArgsConstructor
-@RequestMapping("UserRestController")
 public class UserRestController {
     @Autowired
     IUserService iUserService ;
@@ -31,9 +33,14 @@ public class UserRestController {
     @Autowired
     private final UserRepository userRepo;
 
-    @GetMapping("findUserByEmail/{email}")
-    User getUserByEmail(@PathVariable("email") String email){
-        return iUserService.findByEmail(email);
+    @GetMapping("findUserByUsername/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
+        User user = iUserService.findbyUsername(username);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
@@ -89,15 +96,7 @@ public class UserRestController {
         }
 
     }
-        @PostMapping("/uploadImg/{idUser}")
-    public User addImg(@RequestParam("file") MultipartFile file , @PathVariable("idUser") String idUser) {
 
-        User user = userRepo.findUserById(idUser);
-        System.out.println("OK");
-
-            userRepo.save(user);
-            return user;
-    }
 
     @GetMapping("/allusers")
     @ResponseBody
@@ -111,4 +110,8 @@ public class UserRestController {
     Roles getRoleUserByUsername(@PathVariable("username") String username){
         return iUserService.getRoleByUsername(username);
     }
+
+
 }
+
+

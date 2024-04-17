@@ -1,61 +1,56 @@
 package tn.esprit.devflow.courzelo.security;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
-public class WebSecurityConfig {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final CustumUserDetailService custuUserDetailService;
+    private final CustumUserDetailService customUserDetailService;
 
-    @Bean
-    public SecurityFilterChain appSecurityFilterChain(HttpSecurity http) throws Exception{
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-        http.cors().disable()
-            .csrf().disable()
+    public WebSecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, CustumUserDetailService customUserDetailService) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.customUserDetailService = customUserDetailService;
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().formLogin().disable()
-                .securityMatcher("/**")
-                .authorizeHttpRequests(Registry -> Registry
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/auth/register").permitAll()
-                        .requestMatchers("/change-password").permitAll()
-                        .requestMatchers("/UserRestController/getRoleByUsername/").permitAll()
-                        .requestMatchers("/auth/login").permitAll()
-                                                .requestMatchers("/verify").permitAll()
-                        .requestMatchers("/reset-password/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                );
-        return http.build();
+                .and()
+                .formLogin().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/auth/register", "/findUserByUsername/{username}", "/allusers","/change-password",
+                        "/auth/login","/uploadImg/{idUser}", "/verify", "/reset-password/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception{
-        return  http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(custuUserDetailService)
-                .passwordEncoder(passwordEncoder())
-                .and().build();
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
     }
 
-
-
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 }
