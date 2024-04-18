@@ -1,0 +1,22 @@
+<!-- addquiz.component.html -->
+
+<!-- Quiz Form -->
+<form [formGroup]="quizForm" (ngSubmit)="saveQuiz()">
+  <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" formControlName="description">
+  </div>
+  <div>
+    <label for="duration">Duration:</label>
+    <input type="text" id="duration" formControlName="duration">
+  </div>
+  <div>
+    <label for="maxScore">Max Score:</label>
+    <input type="text" id="maxScore" formControlName="maxScore">
+  </div>
+  <!-- Other form fields if needed -->
+  <button type="submit">Save</button>
+</form>
+
+<!-- Button to Open Confirmation Dialog -->
+<button type="button" (click)="openDialog()">Select Questions</button>

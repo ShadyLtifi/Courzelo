@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ data.message }}</h1>
+<div mat-dialog-content>
+  <div *ngFor="let question of data.questions">
+    {{ question.idquestion }} - {{ question.questionText }}
+    <input type="checkbox" [checked]="selectedQuestions[question.idquestion || '']" (change)="toggleSelection(question)">
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="confirmSelection()">Confirm</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

@@ -1,0 +1,64 @@
+<body class="g-sidenav-show bg-gray-200">
+  <!-- Début de la navbar -->
+  <nav class="navbar custom-navbar">
+    <div class="container-fluid">
+      <!-- Zone du titre et du logo dans la navbar -->
+      <div class="navbar-header d-flex align-items-center justify-content-between w-100">
+        <h1 class="navbar-brand quiz-title mb-0 h1">Available Quizzes </h1>
+        <img src="assets/assets/img/logo.png" alt="Logo" class="quiz-logo">
+      </div>
+    </div>
+  </nav>
+  <div class="bootstrap-wrapper">
+    <div class="container-fluid py-4">
+      <!-- Votre contenu ici -->
+
+
+      <div class="row">
+        <ng-container *ngFor="let q of quizzes">
+          <div class="col-xl-4 col-sm-6 mb-xl-4 mb-3">
+            <mat-card class="mb-4">
+              <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                  <i class="material-icons opacity-10">description</i>
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize font-weight-bold"></p>
+                </div>
+
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title style="margin-right: 10%;">{{q.description}}</mat-card-title>
+                  <mat-card-subtitle>
+                    <!-- {{title}}-->
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button class="custom-button" [routerLink]="'/instruction/'+q.idquiz">
+                    <span class="button-text">Start</span>
+                  </button>
+                  <button mat-button class="custom-button">
+                    <span class="button-text">Questions : {{q.questions.length}}</span>
+                  </button>
+                  <button mat-button class="custom-button">
+                    <span class="button-text">M.S : {{q.maxScore}}</span>
+                  </button>
+                </mat-card-actions>
+              </div>
+            </mat-card>
+          </div>
+        </ng-container>
+        <div class="col-md-12" *ngIf="quizzes.length == 0">
+          <mat-card>
+            <mat-card-content>
+              <h1> No Data in this category</h1>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

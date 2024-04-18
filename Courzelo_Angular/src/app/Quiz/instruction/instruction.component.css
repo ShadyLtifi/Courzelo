@@ -1,0 +1,83 @@
+/* Styles globaux */
+body, h1, p {
+  margin: 10px;
+  padding: 0;
+}
+
+
+.mat-divider {
+  background-color: black;
+}
+
+
+/* Styles pour la carte */
+.mt20 {
+  background-color: #74c6b777; /* Couleur de fond claire pour la carte */
+  border-radius: 20px; /* Coins arrondis pour la douceur */
+  box-shadow: 20px 20px 20px rgba(5, 49, 41, 0.711); /* Ombre pour donner de la profondeur */
+  margin: 20px auto; /* Centrage et espacement autour de la carte */
+  padding: 20px;
+  /* Espacement interne */
+}
+
+/* Styles pour les en-têtes de la carte */
+.mat-card-title {
+  color: #333; /* Couleur foncée pour une meilleure lisibilité */
+  font-size: 24px; /* Taille de la police pour l'importance */
+  margin-bottom: 10px; /* Espacement sous le titre */
+}
+
+.mat-card-subtitle {
+  color: #666; /* Couleur plus douce pour le sous-titre */
+  font-size: 18px;
+  margin-bottom: 20px; /* Espacement sous le sous-titre */
+}
+
+/* Styles pour le contenu de la carte */
+.mat-card-content {
+  color: #444; /* Couleur de texte standard */
+  font-size: 16px; /* Taille de la police pour la lisibilité */
+  line-height: 2; /* Hauteur de ligne pour la lisibilité */
+  margin-left: 30px; /* Alignement du texte à gauche */
+}
+
+ul {
+  padding-left: 20px; /* Indentation pour les listes */
+}
+
+li {
+  margin-bottom: 10px; /* Espacement entre les éléments de liste */
+}
+
+/* Styles pour les actions de la carte */
+.mat-card-actions {
+  display: flex;
+  justify-content: center; /* Centre les boutons */
+  padding-top: 20px; /* Espacement au-dessus des boutons */
+}
+
+/* Styles pour les boutons */
+.custom-button {
+  background-color: #cdb35d; /* Vert vibrant pour le bouton */
+  color: white; /* Texte blanc pour le contraste */
+  font-size: 16px; /* Taille de la police */
+  padding: 10px 20px; /* Espacement intérieur pour le confort */
+  border-radius: 5px; /* Coins arrondis pour les boutons */
+  border: none; /* Suppression de la bordure par défaut */
+  cursor: pointer; /* Curseur de pointeur pour indiquer la clicabilité */
+  transition: background-color 0.3s; /* Transition fluide pour le survol */
+  border-radius: 20px; /* Augmentez la valeur pour rendre les coins plus arrondis */
+
+}
+
+.custom-button:hover {
+  background-color: #ac9655b5; /* Vert foncé au survol */
+}
+/* Média queries pour la réactivité */
+@media (max-width: 768px) {
+  .mat-card {
+    padding: 10px; /* Moins de padding sur les appareils mobiles */
+  }
+
+
+}

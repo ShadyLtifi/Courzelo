@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Assign Lesson to Module</h2>
+  
+    <!-- Class Selection Dropdown -->
+    <div class="form-group">
+      <label for="moduleSelect">Select Module:</label> 
+      <select class="form-control" id="moduleSelect" [(ngModel)]="selectedmoduleId">
+        <option *ngFor="let mdl of modules" [value]="mdl.idmodule">{{ mdl.titleModule }}</option>
+      </select>
+    </div>
+  
+    <!-- Lesson Selection Dropdown -->
+    <div class="form-group">
+      <label for="lessonSelect">Select Lesson:</label>
+      <select class="form-control" id="lessonSelect" [(ngModel)]="selectedLessonId">
+        <option *ngFor="let lesson of lessons" [value]="lesson.idLesson">{{ lesson.title }}</option>
+      </select>
+    </div>
+  
+    <!-- Assign Button -->
+    <button class="btn btn-primary" (click)="assignLessonToModule()">Assign Lesson</button>
+  </div>
+  

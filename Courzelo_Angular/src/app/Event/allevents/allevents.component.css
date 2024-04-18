@@ -1,0 +1,57 @@
+.custom-blue {
+  background-color: #74cec76e; /* Une couleur entre bleu ciel et bleu turquoise */
+  color: rgb(8, 8, 8); /* Couleur du texte, vous pouvez ajuster selon vos préférences */
+  width: 109%; /* Largeur de l'élément */
+  padding: 10px; /* Espacement intérieur */
+  text-align: center;
+  /* Lorsque vous survolez le conteneur */
+ /* Déplacez le conteneur vers la droite */
+  top: 54%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+
+  border: 2px solid #e5bd50; /* Bordure */
+}
+.custom-table .custom-cell {
+  background-color: #dcf5f3e5; /* Couleur des cellules du tableau */
+  color: rgb(8, 8, 8); /* Couleur du texte dans les cellules du tableau */
+}
+.white-background {
+  background-color: #fff; /* blanc */
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Ajoutez un espace en bas */
+}
+
+.search-input {
+  flex-grow: 1; /* Permet à l'input de grandir et de remplir l'espace disponible */
+ width: 300px;
+  padding: 10px;
+  margin-right: -1px; /* Alignez parfaitement le bouton avec l'entrée */
+  border: 3px solid #e5bd50;
+  border-radius: 5px 0 0 5px; /* Bord arrondi à gauche */
+}
+
+.search-button {
+  padding: 10px 20px;
+  border: 1px solid #50e5cf;
+  background-color: rgb(210, 179, 1);
+  color: white;
+  border-radius: 0 9px 9px 0; /* Bord arrondi à droite */
+  cursor: pointer; /* Indique que le bouton est cliquable */
+  transition: background-color 0.2s; /* Effet de transition pour le survol */
+}
+
+.search-button:hover {
+  background-color: #44e0c4; /* Assombrir le bouton lors du survol */
+}
+/* CSS */
+.my-calendar {
+  max-width: 400px;
+  margin: 0 auto; /* pour centrer le calendrier */
+}
+
+
+/* Assurez-vous que FontAwesome est inclus si vous utilisez l'icône de recherche */

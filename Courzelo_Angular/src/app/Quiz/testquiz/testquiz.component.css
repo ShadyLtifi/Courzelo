@@ -1,0 +1,111 @@
+
+/* Styles globaux */
+.bg-gray-200 {
+  background-color: #e2e8f0; /* couleur de fond ajustée pour la cohérence */
+}
+
+
+
+.mb-4 {
+  background-color: #74c6b777 !important;
+  border: 2px solid #cdb35d8b !important;
+  margin-top: 50px;
+  box-shadow: 20px 20px 20px rgba(5, 49, 41, 0.711); /* Ombre pour donner de la profondeur */
+
+
+}
+
+.mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* Icone de la carte de quiz */
+.icon.icon-lg {
+  background: linear-gradient(135deg, #5cdbae, #cdb35d);
+  color: #fff;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Boutons personnalisés */
+.custom-button {
+  border-radius: 8px;
+  padding: 10px 25px;
+  margin: 5px;
+  background-color: #cdb35d;
+  color: white;
+  box-shadow: none; /* Supprimez l'ombre par défaut */
+  transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+.custom-button:hover {
+  background-color: #daca96;
+  box-shadow: 0 2px 10px -1px rgba(0,0,0,0.25);
+}
+
+
+.quiz-header {
+  margin-bottom: 1rem;
+}
+
+
+
+.quiz-logo {
+  max-height: 100px; /* Hauteur maximale pour le logo */
+  width: 70px; /* Largeur automatique basée sur la hauteur */
+  margin-left: 30px; /* Espace entre le titre et le logo */
+}
+
+/* Si vous souhaitez centrer le titre et le logo verticalement et horizontalement */
+.container-fluid.py-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Assurez-vous que les chemins sont corrects dans 'src' pour votre logo et ajustez la taille selon vos besoins */
+/* Styles pour la navbar */
+/* Styles pour la navbar personnalisée */
+.custom-navbar {
+  background-color: #74c6b777; /* Couleur de fond semi-transparente */
+  border-radius: 20px; /* Coins arrondis */
+  padding: 0.5rem; /* Padding uniforme */
+  box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.1); /* Ombre douce pour un effet de profondeur */
+  margin-top: 20px; /* Espacement au-dessus de la navbar */
+  position: relative; /* Positionnement relatif */
+  z-index: 10; /* Élévation au-dessus des autres éléments */
+  border: 1px solid #cbb97f85; /* Ajout d'une bordure noire simple */
+}
+
+
+/* Styles pour le titre dans la navbar */
+.navbar-brand.quiz-title {
+  color: #cdb35d; /* Couleur du texte */
+  font-size: 2rem; /* Taille du texte */
+  font-weight: bold; /* Poids du texte */
+  font-family: 'Courier New', Courier, monospace; /* Famille de police */
+margin-left: 550px; 
+ text-shadow: 
+    -1px -1px 0 #ebe4e4,  
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #f6f6f6,
+     1px  1px 0 #fbfbfb; /* Ombre en noire autour du texte pour créer un contour */
+}
+
+
+
+
+/* Réajustements pour les mobiles */
+@media (max-width: 768px) {
+  .navbar-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quiz-logo {
+    margin-top: 0.5rem; /* Espacement pour le logo sur mobile */
+  }
+}
