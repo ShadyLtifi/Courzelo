@@ -3,6 +3,11 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EventService } from 'src/app/Service/Event/event.service';
 import { Event } from 'src/app/models/Event/event';
+import { Speaker } from 'src/app/models/Event/speaker';
+import Swal from 'sweetalert2';
+
+
+
 
 @Component({
   selector: 'app-allevents',
@@ -17,65 +22,88 @@ export class AlleventsComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   message = '';
-
+  speakers?: Speaker;
+  searchTerm: string = '';
+ 
   fileInfos?: Observable<any>;
 
-  constructor(private eventService: EventService, private router: Router) {}
+  constructor(private eventService: EventService, private router: Router   
+  ) {}
 
   ngOnInit(): void {
-    this.retrieveAllEvents();  
-    
+  this.retrieveAllEvents();
+
+
   }
+ 
   
+  
+
   selectFile(event:any): void{
     this.selectedFiles = event.target.files;
 
   }
-  retrieveAllEvents() {
+
+  retrieveAllEvents(): void {
     this.eventService.getAll().subscribe(
       data => {
         this.events = data;
-        // Récupérer les photos pour chaque événement
         this.events.forEach(event => {
-          if (event && event.idevent && typeof event.idevent === 'string') { 
-            const idevent = event.idevent as string; // Assurez-vous que idevent est de type string
-            // Vérifier si event et event.idevent sont définis et de type string
-            this.eventService.getEventPhoto(idevent).subscribe(
-              photoData => {
-                this.eventPhotos[idevent] = 'data:image/png;base64,' + photoData;
-              },
-              error => {
-                console.error(`Erreur lors du chargement de l'image pour l'événement ${event.idevent} :`, error);
-              }
-            );
+          if (event.idevent) {
+            this.eventService.getEventPhoto(event.idevent).subscribe(photoUrl => {
+              event.photoUrl = photoUrl; // Set the photo URL for each event
+            });
           }
         });
       },
       error => {
-        console.error('Erreur lors de la récupération des événements :', error);
+        console.error('Error fetching events:', error);
       }
     );
   }
-  
+
+
+search(): void {
+  if (this.searchTerm) {
+    this.eventService.searchEventsByTitle(this.searchTerm).subscribe({
+      next: (data) => this.events = data,
+      error: (err) => console.error('Error fetching search results:', err)
+    });
+  } else {
+    this.retrieveAllEvents(); // Charge tous les événements si le champ de recherche est vide
+  }
+}
 
 
 
   deleteEvent(idevent: string | undefined): void {
-    if (idevent) {
-      this.eventService.deleteEvent(idevent).subscribe(
-        () => {
-          console.log(`Event with ID ${idevent} deleted successfully.`);
-          // Actualiser la liste des événements après la suppression
-          this.retrieveAllEvents();
-        },
-        (error) => {
-          console.error("Error deleting event:", error);
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure ?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (idevent) {
+          this.eventService.deleteEvent(idevent).subscribe(
+            () => {
+              // console.log(`Event with ID ${idevent} deleted successfully.`);
+              // Actualiser la liste des événements après la suppression
+              this.retrieveAllEvents();
+              Swal.fire("Success !!", "Quiz deleted", 'success');
+            },
+            (error) => {
+              Swal.fire("Error !!", "Error in deleting quiz", 'error');
+            }
+          );
+        } else {
+          console.error('Quiz ID is undefined. Cannot delete.');
         }
-      );
-    }
+      }
+    });
   }
+}  
 
- 
 
-  
-}
+
+    

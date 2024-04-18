@@ -71,7 +71,7 @@ public class ModuleController {
             return ResponseEntity.badRequest().build(); // Spécialité invalide
         }
     }
-    @PostMapping("/addBySpecialityAndLevel")
+    @PostMapping("/addModuleBySpecialityAndLevel")
     public ResponseEntity<Module> addModuleBySpecialityAndLevel(@RequestParam("speciality") Speciality speciality, @RequestParam("level") Level level, @RequestBody Module newModule) {
         try {
             Module addedModule = moduleServ.addModuleBySpecialityAndLevel(speciality, level, newModule);

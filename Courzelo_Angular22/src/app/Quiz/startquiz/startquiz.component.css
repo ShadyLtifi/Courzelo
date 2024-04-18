@@ -1,0 +1,124 @@
+/* Styliser les cartes de manière plus subtile */
+mat-card {
+  background-color: #74c6b777; /* Couleur de fond blanche pour plus de clarté */
+  border-radius: 20px; /* Coins arrondis pour la douceur */
+  padding: 20px;
+  margin-top: 100px;
+  box-shadow: 20px 20px 20px rgba(5, 49, 41, 0.711); /* Ombre pour donner de la profondeur */
+
+}
+.quiz-logo {
+  max-height: 100px; /* Hauteur maximale pour le logo */
+  width: 70px; /* Largeur automatique basée sur la hauteur */
+  margin-left: 30px; /* Espace entre le titre et le logo */
+}
+.custom-navbar {
+  background-color: #74c6b777; /* Couleur de fond semi-transparente */
+  border-radius: 20px; /* Coins arrondis */
+  padding: 0.5rem; /* Padding uniforme */
+  box-shadow: 10px 10px 10px -1px rgba(0,0,0,0.1); /* Ombre douce pour un effet de profondeur */
+  margin-top: 20px; /* Espacement au-dessus de la navbar */
+  position: relative; /* Positionnement relatif */
+  z-index: 10; /* Élévation au-dessus des autres éléments */
+  border: 1px solid #cbb97f85; /* Ajout d'une bordure noire simple */
+}
+
+
+/* Styles pour le titre dans la navbar */
+.navbar-brand.quiz-title {
+  color: #cdb35d; /* Couleur du texte */
+  font-size: 2rem; /* Taille du texte */
+  font-weight: bold; /* Poids du texte */
+  font-family: 'Courier New', Courier, monospace; /* Famille de police */
+margin-left: 550px; 
+ text-shadow: 
+    -1px -1px 0 #ebe4e4,  
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #f6f6f6,
+     1px  1px 0 #fbfbfb; /* Ombre en noire autour du texte pour créer un contour */
+}
+
+/* Uniformiser les boutons */
+button, .b {
+  background-color: #005a4c; /* Couleur uniforme pour tous les boutons */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover, .b:hover {
+  background-color: #00463b; /* Couleur plus foncée au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Améliorer la lisibilité des titres */
+h1, h3, mat-card-title, mat-card-subtitle {
+  color: #333333; /* Couleur plus foncée pour une meilleure lisibilité */
+}
+
+/* Spinner avec une touche de couleur */
+mat-spinner {
+  color: #005a4c; /* Harmoniser avec la couleur des boutons */
+}
+mat-card.answered {
+  border-left: 5px solid #4CAF50; /* Bordure verte indiquant une réponse */
+}
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button:disabled {
+  color: #fffdf3;
+  background: #d5b85a72;
+  cursor: not-allowed;
+}
+.b{
+  padding: 10px 20px;
+  background-color: #299c8b;
+  color: black;
+  border: none;
+  border-radius: 20px; /* Augmentez la valeur pour rendre les coins plus arrondis */
+  cursor: pointer;
+
+}
+b:hover {
+  background-color: #03474f;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #cda45e;
+  color: black;
+  border: none;
+  border-radius: 20px; /* Augmentez la valeur pour rendre les coins plus arrondis */
+  cursor: pointer;
+}
+
+
+button:hover {
+  background-color: #7f6802;
+}
+.verification-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.grid-item {
+  width: 20px;          /* Taille du cercle */
+  height: 20px;         /* Taille du cercle */
+  margin: 2px;
+  background-color: #c5cfcb; /* Couleur de fond pour les éléments non répondues */
+  border-radius: 50%;   /* Rend les div parfaitement circulaires */
+  transition: background-color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.grid-item.answered {
+  background-color: #cdb662; /* Vert pour indiquer une réponse */
+}

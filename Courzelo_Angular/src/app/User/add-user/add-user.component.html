@@ -1,0 +1,72 @@
+
+<section class="vh-100 bg-image" style="background-image: url('https://web-assets.delphix.com/800x582/filters:quality(100)/f/137721/2031x1477/a282751662/istock-1136491835.jpg');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100 transparent-scrollbar" style="overflow-y: auto;">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.3);">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-outline mb-4" >
+                  <input type="text" id="nom" class="form-control form-control-lg" formControlName="nom">
+                  <label class="form-label" for="nom">Your Name</label>
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <input type="text" id="prenom" class="form-control form-control-lg" formControlName="prenom">
+                  <label class="form-label" for="prenom">Your Lastname</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="cin" class="form-control form-control-lg" formControlName="cin">
+                  <label class="form-label" for="cin">Your CIN</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="date" id="dateN" class="form-control form-control-lg" formControlName="dateN">
+                  <label class="form-label" for="dateN">Your Birthday</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="username" class="form-control form-control-lg" formControlName="username">
+                  <label class="form-label" for="username">Your Username</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" class="form-control form-control-lg" formControlName="email">
+                  <label class="form-label" for="email">Your Email</label>
+                </div>
+
+                <div class="mb-4">
+                  <select id="role" name="role" class="form-control" formControlName="role" required>
+                   <option value="" disabled selected>Choose a role</option>
+                   <option *ngFor="let role of role" [value]="role">{{ role }}</option>
+                 </select>
+                 <label class="form-label" for="role">Your Role</label>
+               </div>
+
+               <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control form-control-lg" formControlName="password">
+                <label class="form-label" for="password">Password</label>
+              </div>
+
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-success">Add</button>
+              </div>
+
+              <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#" class="fw-bold text-body"><u>Login here</u></a></p>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+

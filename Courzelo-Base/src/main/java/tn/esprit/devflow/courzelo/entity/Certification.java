@@ -1,7 +1,7 @@
 package tn.esprit.devflow.courzelo.entity;
 
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-import jakarta.validation.constraints.Size;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Date;
 

@@ -1,65 +1,43 @@
 package tn.esprit.devflow.courzelo.entity;
 
-
-
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.FieldDefaults;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.ReadOnlyProperty;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-import org.springframework.data.mongodb.core.mapping.Field;
 
-
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Data
+@Builder
+@ToString
 @Getter
 @Setter
-@Data
 @Document
-@FieldDefaults(level= AccessLevel.PRIVATE)
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
-    String iduser;
-
-
-
+    private String id;
     private String nom;
-
-
     private String prenom;
-
-    private int CIN;
-
-
-    private Date dateN;
-
-
-    private String email;
-
+    private long cin;
+    private LocalDate dateN;
     private String username;
-
+    private String email;
+    private Roles role;
+    @JsonIgnore
     private String password;
-
-    @Field("role")
-    TypeRole role;
-
-    @DBRef
-    List<EventRegistration> eventregs;
-
-    @DocumentReference(lazy = true, lookup = "{ 'user' : ?#{#self._id} }")
-    @ReadOnlyProperty
-    private Set<Claim> rec;
+    private Date updatedAt;
+    private Date createdAt;
+    private boolean enabled = false ;
+    private LocalDate lastLogin ;
+    private String verificationToken;
 
 
+    public boolean getEnabled(){
+        return this.enabled;
+    }
 }

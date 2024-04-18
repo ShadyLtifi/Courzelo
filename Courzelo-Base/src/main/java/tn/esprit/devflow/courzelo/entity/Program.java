@@ -1,6 +1,6 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import jakarta.validation.constraints.Size;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;

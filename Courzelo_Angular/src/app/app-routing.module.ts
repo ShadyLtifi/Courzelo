@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BackComponent } from './back/back.component';
 import { FrontComponent } from './front/front.component';
-import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { AddclaimComponent } from './Claim/addclaim/addclaim.component';
-import { AllclaimsComponent } from './Claim/allclaims/allclaims.component';
-import { ShowclaimComponent } from './Claim/showclaim/showclaim.component';
-import { UpdateclaimComponent } from './Claim/updateclaim/updateclaim.component';
+import { AddUserComponent } from './User/add-user/add-user.component';
+import { ProfileComponent } from './User/profile/profile.component';
+import { PartnerComponent } from './User/partner/partner.component';
+import { UserProfileComponent } from './User/user-profile/user-profile.component';
+import { ResetpasswordComponent } from './User/resetpassword/resetpassword.component';
+import { AlluserComponent } from './User/alluser/alluser.component';
+import { UpdateuserComponent } from './User/updateuser/updateuser.component';
+
 import { AddClassComponent } from './Class/add-class/add-class.component';
 import { AllClassComponent } from './Class/all-class/all-class.component';
 import { DetailClassComponent } from './Class/detail-class/detail-class.component';
@@ -36,6 +39,10 @@ import { AddProgramComponent } from './Program/add-program/add-program.component
 import { AllProgramComponent } from './Program/all-program/all-program.component';
 import { DetailProgramComponent } from './Program/detail-program/detail-program.component';
 import { UpdateProgramComponent } from './Program/update-program/update-program.component';
+import { AddPublicationComponent } from './Publication/add-publication/add-publication.component';
+import { DetailPublicationComponent } from './Publication/detail-publication/detail-publication.component';
+import { PublicationComponent } from './Publication/publication/publication.component';
+import { UpdatePublicationComponent } from './Publication/update-publication/update-publication.component';
 import { AddquestionComponent } from './Question/addquestion/addquestion.component';
 import { AllquestionsComponent } from './Question/allquestions/allquestions.component';
 import { ShowquestionComponent } from './Question/showquestion/showquestion.component';
@@ -48,27 +55,38 @@ import { AddspeakerComponent } from './Speaker/addspeaker/addspeaker.component';
 import { AllspeakersComponent } from './Speaker/allspeakers/allspeakers.component';
 import { ShowspeakerComponent } from './Speaker/showspeaker/showspeaker.component';
 import { UpdatespeakerComponent } from './Speaker/updatespeaker/updatespeaker.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
+import { CoursesFrontComponent } from './courses-front/courses-front.component';
 import { EvaluationManagementComponent } from './evaluation-management/evaluation-management.component';
 import { EventManagementComponent } from './event-management/event-management.component';
-import { ForumManagementComponent } from './forum-management/forum-management.component';
-import { TestComponent } from './test/test.component';
-import { PublicationComponent } from './Publication/publication/publication.component';
-import { AddPublicationComponent } from './Publication/add-publication/add-publication.component';
-import { DetailPublicationComponent } from './Publication/detail-publication/detail-publication.component';
-import { UpdatePublicationComponent } from './Publication/update-publication/update-publication.component';
-import { UserManagementComponent } from './user-management/user-management.component';
-import { ForumComponent } from './forum/forum.component';
-import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
-import { StudentComponent } from './student/student.component';
-import { CoursesFrontComponent } from './courses-front/courses-front.component';
-import { Exemple1Component } from './exemple1/exemple1.component';
 import { ContentidComponent } from './exemple1/contentid/contentid.component';
+import { Exemple1Component } from './exemple1/exemple1.component';
+import { ForumManagementComponent } from './forum-management/forum-management.component';
 import { AddLessonAlerteComponent } from './forum/add-lesson-alerte/add-lesson-alerte.component';
+import { ForumComponent } from './forum/forum.component';
+import { GetLessonWithIdClassComponent } from './forum/get-lesson-with-id-class/get-lesson-with-id-class.component';
+import { LessonTesteComponent } from './lesson-teste/lesson-teste.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { StudentComponent } from './student/student.component';
+import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
+import { TestComponent } from './test/test.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { AccountComponent } from './account/account.component';
+
 
 const routes: Routes = [
+  {path:'front', component:FrontComponent},
+  {path:'', redirectTo:'/front', pathMatch:'full'},
+  {path:'login', component:LoginComponent},
+  {path:'back', component:BackComponent},
+  {path:'adduser', component:AddUserComponent}, 
+  {path:'profile', component:ProfileComponent}, 
+  {path:'partner', component:PartnerComponent},
+  {path: 'user', component:UserProfileComponent},
+  {path: 'resetpassword', component:ResetpasswordComponent},
+  {path: 'alluser', component:AlluserComponent},
+  {path: 'updateuser/:username', component:UpdateuserComponent},
   {path:"back",component:BackComponent},
   {path:"front",component:FrontComponent},
   {path:"login",component:LoginComponent},
@@ -114,15 +132,13 @@ const routes: Routes = [
   { path: 'updateSpeaker/:id', component:UpdatespeakerComponent },
   { path: 'updateQuiz/:id', component:UpdatequizComponent},
   { path: 'updateQuestion/:id', component:UpdatequestionComponent},
-  { path: 'addClaim', component: AddclaimComponent },
-  { path: 'allclaims', component: AllclaimsComponent },
-  {path : 'showsclaim/:id', component: ShowclaimComponent},
-  { path: 'updateClaim/:id', component:UpdateclaimComponent},
+  
   { path: 'courses', component:CourseManagementComponent},
   { path: 'courses', component:CourseManagementComponent},
   { path: 'evaluations', component:EvaluationManagementComponent},
   { path: 'events', component:EventManagementComponent},
   { path: 'forums', component:ForumManagementComponent},
+  { path: 'account', component:AccountComponent},
 
   { path: 'allPublication', component:PublicationComponent},
   { path: 'addPublication', component:AddPublicationComponent},
@@ -145,8 +161,12 @@ const routes: Routes = [
   { path: 'LessonByLevelAndSpeciality', component:AddLessonAlerteComponent},
 
   { path: 'testeL', component:LessonTesteComponent},
-  
+  { path: 'lessonByIdClass/:id', component:GetLessonWithIdClassComponent},
+
   { path: '**', component:NotfoundComponent},
+
+
+  
 ];
 
 @NgModule({

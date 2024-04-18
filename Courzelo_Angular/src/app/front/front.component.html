@@ -1,4 +1,7 @@
 <app-headerr></app-headerr>
+<!-- Ajouter dans le <head> de votre document HTML -->
+
+
 <!-- ======= Hero Section ======= -->
  <section id="hero" class="d-flex align-items-center">
   <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
@@ -9,8 +12,9 @@
         <h2>Our E-Learning platform!</h2>
 
         <div class="btns">
-          <a href="#menu" class="btn-menu animated fadeInUp scrollto">Login</a>
-          <a routerLink="/coursesFront" class="btn-book animated fadeInUp scrollto">Courses</a>
+
+          <a class="btn-menu animated fadeInUp scrollto">Login</a>
+          <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Courses</a>
         </div>
       </div>
       <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
@@ -47,156 +51,103 @@
 
     </div>
   </section><!-- End About Section -->
-<br>
+
   <!-- ======= Why Us Section ======= -->
-<div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="assets/assets/img/info.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Computer Science</h5>
-            <p class="card-text">Computer Science encompasses the study, development, and application of information technologies, including programming, networks, security, artificial intelligence, and data analysis.
-            </p>
-           
-            
-            <div class="text-center mt-3">
-              <a routerLink="/coursesFront" class="btn custom-btn-color"> <span class="text-white">Go</span></a>
-            </div>
+  <section id="why-us" class="why-us">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Why Us</h2>
+        <p>Why Choose Our Platform</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-4">
+          <div class="box" data-aos="zoom-in" data-aos-delay="100">
+            <span>01</span>
+            <h4>Expertise and Experience</h4>
+            <p>Highlight any expertise or experience your team has in education, online learning, or relevant fields. 
+              Emphasize the qualifications of your instructors and content creators.</p>
           </div>
         </div>
-      </div>
-  
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="assets/assets/img/gc.jpeg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Civil Engineering</h5>
-            <p class="card-text">
-Civil Engineering designs and maintains infrastructure like buildings, bridges, and roads to meet societal needs and environmental standards for sustainable development.</p>
-            <div class="text-center mt-3">
-              <a routerLink="/coursesFront" class="btn custom-btn-color"> <span class="text-white">Go</span></a>
-            </div>
+
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <div class="box" data-aos="zoom-in" data-aos-delay="200">
+            <span>02</span>
+            <h4>Variety of Courses</h4>
+            <p> Highlight the variety of courses available on your platform. Whether it's a wide range of subjects, skill levels,
+               or formats (such as videos, quizzes, projects</p>
           </div>
         </div>
-      </div>
-  
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <img class="card-img-top" src="assets/assets/img/info.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Electromechanical Engineering</h5>
-            <p class="card-text">Electromechanical Engineering integrates electrical and mechanical principles to design, develop, and maintain systems like robotics, renewable energy, and automated manufacturing processes.</p>
-            <div class="text-center mt-3">
-              <a routerLink="/coursesFront" class="btn custom-btn-color"> <span class="text-white">Go</span></a>
-            </div>
+
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <div class="box" data-aos="zoom-in" data-aos-delay="300">
+            <span>03</span>
+            <h4>Community and Support</h4>
+            <p>Talk about the sense of community learners can expect to find on your platform. 
+              Mention any support services available to help learners succeed,such as customer service, or tutoring</p>
           </div>
         </div>
+
       </div>
+
     </div>
-  </div>
- 
+  </section><!-- End Why Us Section -->
+
 
  
   <!-- ======= Events Section ======= -->
   <section id="events" class="events">
     <div class="container" data-aos="fade-up">
-
       <div class="section-title">
         <h2>Events</h2>
-        <p>Organize Your Events in our Restaurant</p>
+        <p>Organize Your Events</p>
       </div>
-
-      <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-container" #swiperRef>
         <div class="swiper-wrapper">
-
-          <div class="swiper-slide">
+          <!-- Dynamic event items -->
+          <div class="swiper-slide" *ngFor="let event of events">
             <div class="row event-item">
               <div class="col-lg-6">
-                <img src="assets/assets/img/event-birthday.jpg" class="img-fluid" alt="">
+                <img *ngIf="event.photoUrl" [src]="event.photoUrl" alt="Event Image" style="width: 400px;  height: 400px; object-fit: cover;
+                box-shadow: 0 0px 0px 0 rgba(103, 190, 225, 0.2); /* Adjust the alpha for opacity */
+                border: solid 0px #cda45e;">
               </div>
+           
               <div class="col-lg-6 pt-4 pt-lg-0 content">
-                <h3>Birthday Parties</h3>
+                <h3>{{ event.title }}</h3>
                 <div class="price">
-                  <p><span>$189</span></p>
+                  <p><span style="font-weight: bold; font-size: 30px;">Price : {{event.price ? 'Yes' : 'No' }}</span></p>
                 </div>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur
-                </p>
+                
+                <p class="fst-italic"  style="font-weight: bold; font-size: 30px">{{ event.category }}</p>
+                <p class="fst-italic"  style="font-weight: bold; font-size: 20px"> Date : {{ event.debutdate }}</p>
+                <p class="fst-italic"  style="font-weight: bold; font-size: 20px">Duration :{{ event.duration }} hours</p>
+
+                
+
+                <button class="btn-menu animated fadeInUp scrollto" (click)="registerForEvent(event.idevent!)"
+
+                style="background-color: #cda45e; color: white; padding: 10px 20px; border: none; border-radius: 20px; text-transform: uppercase; font-weight: bold; transition: background-color 0.3s ease;"
+                onmouseover="this.style.backgroundColor='#775d2f'" 
+                onmouseout="this.style.backgroundColor='#cda45e'">
+            Participate
+        </button>
+        
               </div>
             </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="row event-item">
-              <div class="col-lg-6">
-                <img src="assets/assets/img/event-private.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col-lg-6 pt-4 pt-lg-0 content">
-                <h3>Private Parties</h3>
-                <div class="price">
-                  <p><span>$290</span></p>
-                </div>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur
-                </p>
-              </div>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="row event-item">
-              <div class="col-lg-6">
-                <img src="assets/assets/img/event-custom.jpg" class="img-fluid" alt="">
-              </div>
-              <div class="col-lg-6 pt-4 pt-lg-0 content">
-                <h3>Custom Parties</h3>
-                <div class="price">
-                  <p><span>$99</span></p>
-                </div>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur
-                </p>
-              </div>
-            </div>
-          </div><!-- End testimonial item -->
-
+          </div>
+          <!-- End dynamic event items -->
         </div>
-        <div class="swiper-pagination"></div>
       </div>
-
+      <div class="swiper-pagination"></div>
     </div>
-  </section><!-- End Events Section -->
+  </section>
+  
+  <!-- End testimonial item -->
+
+         
 
 
   <!-- ======= Testimonials Section ======= -->

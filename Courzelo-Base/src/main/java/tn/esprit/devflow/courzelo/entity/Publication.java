@@ -1,15 +1,14 @@
 package tn.esprit.devflow.courzelo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.Size;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,15 +19,11 @@ import java.util.List;
 public class Publication {
     @Id
     String idpub;
-
+    @Size(max = 55)
     String message;
-    @CreatedDate
-    LocalDate datepub;
-    @DBRef
-
-    List<Comment> comments;
-    @DBRef
-
-    private Lesson lesson;
-
+   LocalDate datepub;
+   @DBRef
+   List<Comment> comments;
+   @DBRef
+    User user;
 }

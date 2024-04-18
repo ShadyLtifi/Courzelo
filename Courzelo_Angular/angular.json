@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Courzelo-Angular": {
+    "Courzelo": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/courzelo-angular",
+            "outputPath": "dist/courzelo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Courzelo-Angular:build:production"
+              "browserTarget": "Courzelo:build:production"
             },
             "development": {
-              "browserTarget": "Courzelo-Angular:build:development"
+              "browserTarget": "Courzelo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Courzelo-Angular:build"
+            "browserTarget": "Courzelo:build"
           }
         },
         "test": {
@@ -88,7 +88,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
             ],
             "scripts": []
           }
@@ -97,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "8f245890-9df4-40fa-a438-c6f1b69ee506"
+    "analytics": "9ae721d2-cd56-4251-93cb-8ce5657b65fa"
   }
 }

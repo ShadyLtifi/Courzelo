@@ -6,5 +6,4 @@ import tn.esprit.devflow.courzelo.entity.Course;
 
 @Repository
 public interface CourseRepository extends MongoRepository<Course,String> {
-
 }

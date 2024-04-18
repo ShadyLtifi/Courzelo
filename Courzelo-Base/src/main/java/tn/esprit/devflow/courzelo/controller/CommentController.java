@@ -1,8 +1,6 @@
 package tn.esprit.devflow.courzelo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.devflow.courzelo.entity.Class;
 import tn.esprit.devflow.courzelo.entity.Comment;
@@ -53,22 +51,6 @@ public class CommentController {
 
     public Comment retrieveComment (@PathVariable ("commentid")String idComment) {
         return commentService.retrieveComm(idComment);
-    }
-
-    @PostMapping("/add/{publicationId}")
-    public ResponseEntity<Comment> addCommentToPublication(@PathVariable String publicationId, @RequestBody Comment comment) {
-        Comment addedComment = commentService.addCommentToPublication(publicationId, comment);
-        return new ResponseEntity<>(addedComment, HttpStatus.CREATED);
-    }
-
-    @PostMapping("/{commentId}/replies")
-    public ResponseEntity<Comment> addReplyToComment(@PathVariable String commentId, @RequestBody Comment reply) {
-        Comment addedReply = commentService.addReplyToComment(commentId, reply);
-        if (addedReply != null) {
-            return ResponseEntity.ok(addedReply);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
     }
 
 }

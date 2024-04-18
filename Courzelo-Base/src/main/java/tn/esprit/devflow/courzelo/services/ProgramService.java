@@ -38,6 +38,4 @@ progRepository.deleteById(idprog);
         Optional<Program> progOptional = progRepository.findById(idprog);
         return progOptional.get();
     }
-
-
 }

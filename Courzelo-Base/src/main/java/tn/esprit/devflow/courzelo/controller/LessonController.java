@@ -1,7 +1,7 @@
 package tn.esprit.devflow.courzelo.controller;
 
 import groovy.util.logging.Slf4j;
-import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.core.io.Resource;
 
 
@@ -28,6 +28,7 @@ import tn.esprit.devflow.courzelo.services.ILessonService;
 import tn.esprit.devflow.courzelo.services.LessonService;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -90,7 +91,7 @@ public class LessonController {
     }
 
 
-    @PostMapping(value = "/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/uploadContent", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Lesson> uploadFile(@RequestParam("file") MultipartFile file,
                                              @RequestParam("title") String title) {
         Lesson uploadedLesson = lessonServ.uploadFile(file, title);
@@ -99,12 +100,6 @@ public class LessonController {
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-    }
-
-    // Displays the list of uploaded files.
-    @GetMapping("/getFiles")
-    public List<String> getFiles() throws IOException {
-        return lessonServ.getFiles();
     }
 
 
@@ -127,30 +122,8 @@ public class LessonController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; content=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
-    @GetMapping("/content/{content}")
-    public ResponseEntity<byte[]> getFileContent(@PathVariable String content) {
-        try {
-            Path filePath = Paths.get(env.getProperty("file.upload-dir")).resolve(content);
-            byte[] fileContent = Files.readAllBytes(filePath);
 
-            HttpHeaders headers = new HttpHeaders();
-            // Déterminez le type MIME du fichier
-            String mimeType = Files.probeContentType(filePath);
-            // Si le type MIME ne peut pas être déterminé, utilisez un type MIME par défaut
-            if (mimeType == null) {
-                mimeType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
-            }
-            headers.setContentType(MediaType.parseMediaType(mimeType));
-
-            return ResponseEntity.ok()
-                    .headers(headers)
-                    .body(fileContent);
-        } catch (IOException e) {
-            log.error("Error reading file content for {}.", content, e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-    @GetMapping("/contenu/{lessonId}")
+    @GetMapping("/contents/{lessonId}")
     public ResponseEntity<byte[]> getFileContentByLessonId(@PathVariable String lessonId) {
         try {
             // Obtenez le nom du fichier à partir de l'ID de la leçon
@@ -219,12 +192,7 @@ public class LessonController {
     public List<Lesson> getLessonsBySpecialityAndLevel(@PathVariable("speciality") Speciality speciality, @PathVariable("level") Level level) {
         return lessonServ.getLessonsBySpecialityAndLevel(speciality, level);
     }
-//    @PostMapping("addLessonToModuleBySpecialityAndLevel/{speciality}/{level}")
-//    public Lesson addLessonToModuleBySpecialityAndLevel(@PathVariable("speciality") Speciality speciality,
-//                                                        @PathVariable("level") Level level,
-//                                                        @RequestBody Lesson newLesson) {
-//        return lessonServ.addLessonToModuleBySpecialityAndLevel(speciality, level, newLesson);
-//    }
+
 @GetMapping("/lessons/module/{moduleId}")
 public List<Lesson> getLessonsByModule(@PathVariable("moduleId") String moduleId) {
     // Utilisez le service pour récupérer les leçons par module
@@ -259,19 +227,7 @@ public List<Lesson> getLessonsByModule(@PathVariable("moduleId") String moduleId
                 return "fichier";
         }
     }
-//    @GetMapping("/lessons")
-//    public ResponseEntity<List<Lesson>> getAllLessonsWithType() {
-//        try {
-//            List<Lesson> lessons = lessonRepository.findAll();
-//            for (Lesson lesson : lessons) {
-//                lesson.setType(determineContentType(lesson.getContent()));
-//            }
-//            return ResponseEntity.ok(lessons);
-//        } catch (Exception e) {
-//            log.error("Error fetching lessons with type.", e);
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
-//    }
+
 @GetMapping("/lesson/{title}")
 public ResponseEntity<?> getLessonContent(@PathVariable String title) {
     try {

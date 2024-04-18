@@ -1,0 +1,14 @@
+
+<!--   -->
+
+<select [(ngModel)]="selectedSpeciality" (change)="getModules()">
+  <option *ngFor="let sp of speciality" [value]="sp">{{ sp }}</option>
+</select>
+<select [(ngModel)]="selectedLevel" (change)="getModules()">
+  <option *ngFor="let level of level" [value]="level">{{ level }}</option>
+</select>
+
+<div *ngFor="let module of modules">
+  <p>Titre : {{ module.titleModule }}</p> 
+  <p> Nombre Heure: {{ module.nbreHeure }}</p><!-- Ou tout autre élément que vous souhaitez afficher pour chaque module -->
+</div>
